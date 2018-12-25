@@ -1,6 +1,6 @@
-//: ## Objects and Classes
+//: ## 对象和类（Objects and Classes）
 //:
-//: Use `class` followed by the class’s name to create a class. A property declaration in a class is written the same way as a constant or variable declaration, except that it is in the context of a class. Likewise, method and function declarations are written the same way.
+//: 使用`class`和类名来创建一个类。类中属性的声明和常量、变量声明一样，唯一的区别就是它们的上下文是类。同样，方法和函数声明也一样。
 //:
 class Shape {
     var numberOfSides = 0
@@ -10,15 +10,31 @@ class Shape {
 }
 
 //: - Experiment:
-//: Add a constant property with `let`, and add another method that takes an argument.
+//: 使用`let`添加一个常量属性，再添加一个接收一个参数的方法。
 //:
-//: Create an instance of a class by putting parentheses after the class name. Use dot syntax to access the properties and methods of the instance.
+class Shape2 {
+	var numberOfSides = 0
+	func simpleDescription() -> String {
+		return "A shape with \(numberOfSides) sides."
+	}
+	let name: String;
+	init(_ name: String) {
+		self.name = name
+	}
+	init() {
+		name = "undefine"
+	}
+}
+var share2 = Shape2("A")
+share2.name
+
+//: 要创建一个类的实例，在类名后面加上括号。使用点语法来访问实例的属性和方法。
 //:
 var shape = Shape()
 shape.numberOfSides = 7
 var shapeDescription = shape.simpleDescription()
 
-//: This version of the `Shape` class is missing something important: an initializer to set up the class when an instance is created. Use `init` to create one.
+//: 这个版本的`Shape`类缺少了一些重要的东西：一个构造函数来初始化类实例。使用`init`来创建一个构造器。
 //:
 class NamedShape {
     var numberOfSides: Int = 0
@@ -33,27 +49,30 @@ class NamedShape {
     }
 }
 
-//: Notice how `self` is used to distinguish the `name` property from the `name` argument to the initializer. The arguments to the initializer are passed like a function call when you create an instance of the class. Every property needs a value assigned—either in its declaration (as with `numberOfSides`) or in the initializer (as with `name`).
+//: 注意`self`被用来区别实例变量。当你创建实例的时候，像传入函数参数一样给类传入构造器的参数。每个属性都需要赋值——无论是通过声明（就像`numberOfSides`）还是通过构造器（就像`name`）。
 //:
-//: Use `deinit` to create a deinitializer if you need to perform some cleanup before the object is deallocated.
+//: 如果你需要在删除对象之前进行一些清理工作，使用`deinit`创建一个析构函数。
 //:
-//: Subclasses include their superclass name after their class name, separated by a colon. There is no requirement for classes to subclass any standard root class, so you can include or omit a superclass as needed.
+//: 子类的定义方法是在它们的类名后面加上父类的名字，用冒号分割。创建类的时候并不需要一个标准的根类，所以你可以忽略父类。
 //:
-//: Methods on a subclass that override the superclass’s implementation are marked with `override`—overriding a method by accident, without `override`, is detected by the compiler as an error. The compiler also detects methods with `override` that don’t actually override any method in the superclass.
+//: 子类如果要重写父类的方法的话，需要用`override`标记——如果没有添加`override`就重写父类方法的话编译器会报错。编译器同样会检测`override`标记的方法是否确实在父类中。
 //:
 class Square: NamedShape {
     var sideLength: Double
 
+	// 新增构造函数
     init(sideLength: Double, name: String) {
         self.sideLength = sideLength
         super.init(name: name)
         numberOfSides = 4
     }
 
+	// 新增函数
     func area() -> Double {
         return sideLength * sideLength
     }
 
+	// 重写父类函数需要使用 override 关键字
     override func simpleDescription() -> String {
         return "A square with sides of length \(sideLength)."
     }
@@ -63,9 +82,20 @@ test.area()
 test.simpleDescription()
 
 //: - Experiment:
-//: Make another subclass of `NamedShape` called `Circle` that takes a radius and a name as arguments to its initializer. Implement an `area()` and a `simpleDescription()` method on the `Circle` class.
+//: 创建`NamedShape`的另一个子类`Circle`，构造器接收两个参数，一个是半径一个是名称，在子类`Circle`中实现`area()`和`simpleDescription()`方法。
 //:
-//: In addition to simple properties that are stored, properties can have a getter and a setter.
+class Circle: NamedShape {
+	var radius: Double;
+	
+	init(radius: Double, name: String) {
+		self.radius = radius
+		// 需要调用父类构造函数
+		super.init(name: name)
+	}
+}
+Circle(radius: 2.3, name: "Ring")
+
+//: 除了储存简单的属性之外，属性可以有 getter 和 setter 。
 //:
 class EquilateralTriangle: NamedShape {
     var sideLength: Double = 0.0
@@ -76,6 +106,7 @@ class EquilateralTriangle: NamedShape {
         numberOfSides = 3
     }
 
+	// 通过变量自身成为一个函数/闭包，get、set 函数都不需要参数，通过 get、set 的实现与否实现读写/只读，当然，get 函数是必须要实现的，且两者都没有默认实现
     var perimeter: Double {
         get {
              return 3.0 * sideLength
@@ -90,21 +121,21 @@ class EquilateralTriangle: NamedShape {
     }
 }
 var triangle = EquilateralTriangle(sideLength: 3.1, name: "a triangle")
-print(triangle.perimeter)
+//print(triangle.perimeter)
 triangle.perimeter = 9.9
-print(triangle.sideLength)
+//print(triangle.sideLength)
 
-//: In the setter for `perimeter`, the new value has the implicit name `newValue`. You can provide an explicit name in parentheses after `set`.
+//: 在`perimeter`的 setter 中，新值的名字是`newValue`。你可以在`set`之后显式的设置一个名字。
 //:
-//: Notice that the initializer for the `EquilateralTriangle` class has three different steps:
+//: 注意`EquilateralTriangle`类的构造器执行了三步：
 //:
-//: 1. Setting the value of properties that the subclass declares.
+//: 1. 设置子类声明的属性值
 //:
-//: 1. Calling the superclass’s initializer.
+//: 2. 调用父类的构造器
 //:
-//: 1. Changing the value of properties defined by the superclass. Any additional setup work that uses methods, getters, or setters can also be done at this point.
+//: 3. 改变父类定义的属性值。其他的工作比如调用方法、getters和setters也可以在这个阶段完成。
 //:
-//: If you don’t need to compute the property but still need to provide code that is run before and after setting a new value, use `willSet` and `didSet`. The code you provide is run any time the value changes outside of an initializer. For example, the class below ensures that the side length of its triangle is always the same as the side length of its square.
+//: 如果你不需要计算属性，但是仍然需要在设置一个新值之前或者之后运行代码，使用`willSet`和`didSet`。 当属性在构造器之外被改变时会调用你编写的这些代码。 比如，下面的类确保三角形的边长总是和正方形的边长相同。
 //:
 class TriangleAndSquare {
     var triangle: EquilateralTriangle {
@@ -123,12 +154,12 @@ class TriangleAndSquare {
     }
 }
 var triangleAndSquare = TriangleAndSquare(size: 10, name: "another test shape")
-print(triangleAndSquare.square.sideLength)
-print(triangleAndSquare.triangle.sideLength)
+//print(triangleAndSquare.square.sideLength)
+//print(triangleAndSquare.triangle.sideLength)
 triangleAndSquare.square = Square(sideLength: 50, name: "larger square")
-print(triangleAndSquare.triangle.sideLength)
+//print(triangleAndSquare.triangle.sideLength)
 
-//: When working with optional values, you can write `?` before operations like methods, properties, and subscripting. If the value before the `?` is `nil`, everything after the `?` is ignored and the value of the whole expression is `nil`. Otherwise, the optional value is unwrapped, and everything after the `?` acts on the unwrapped value. In both cases, the value of the whole expression is an optional value.
+//: 处理变量的可选值时，你可以在操作（比如方法、属性和子脚本）之前加`?`。如果`?`之前的值是`nil`，`?`后面的东西都会被忽略，并且整个表达式返回`nil`。否则，`?`之后的东西都会被运行。在这两种情况下，整个表达式的值也是一个可选值。
 //:
 let optionalSquare: Square? = Square(sideLength: 2.5, name: "optional square")
 let sideLength = optionalSquare?.sideLength
