@@ -1,6 +1,6 @@
-//: ## Control Flow
+//: ## 控制流（Control Flow）
 //:
-//: Use `if` and `switch` to make conditionals, and use `for`-`in`, `while`, and `repeat`-`while` to make loops. Parentheses around the condition or loop variable are optional. Braces around the body are required.
+//: 使用`if`和`switch`来进行条件操作，使用`for-in`、`for`、`while`和`repeat-while`来进行循环。包裹条件和循环变量括号可以省略，但是语句体的大括号是必须的。
 //:
 let individualScores = [75, 43, 103, 87, 12]
 var teamScore = 0
@@ -11,33 +11,36 @@ for score in individualScores {
         teamScore += 1
     }
 }
-print(teamScore)
+//print(teamScore)
 
-//: In an `if` statement, the conditional must be a Boolean expression—this means that code such as `if score { ... }` is an error, not an implicit comparison to zero.
+//: 在`if`语句中，条件必须是一个布尔表达式——这意味着像`if score { ... }`这样的代码将报错，而不会隐形地与 0 做对比。
 //:
-//: You can use `if` and `let` together to work with values that might be missing. These values are represented as optionals. An optional value either contains a value or contains `nil` to indicate that a value is missing. Write a question mark (`?`) after the type of a value to mark the value as optional.
+//: 你可以一起使用`if`和`let`来处理值缺失的情况。这些值可由可选值来代表。一个可选的值是一个具体的值或者是`nil`以表示值缺失。在类型后面加一个问号来标记这个变量的值是可选的。
 //:
 var optionalString: String? = "Hello"
-print(optionalString == nil)
+//print(optionalString == nil)
 
 var optionalName: String? = "John Appleseed"
 var greeting = "Hello!"
+//optionalName = nil
 if let name = optionalName {
+	// 使用 if let 这种方式赋值，在当值为空时不会进入函数体中
     greeting = "Hello, \(name)"
 }
 
 //: - Experiment:
-//: Change `optionalName` to `nil`. What greeting do you get? Add an `else` clause that sets a different greeting if `optionalName` is `nil`.
+//: 把`optionalName`改成`nil`，greeting会是什么？添加一个`else`语句，当`optionalName`是`nil`时给greeting赋一个不同的值。
 //:
-//: If the optional value is `nil`, the conditional is `false` and the code in braces is skipped. Otherwise, the optional value is unwrapped and assigned to the constant after `let`, which makes the unwrapped value available inside the block of code.
+//: 如果变量的可选值是`nil`，条件会判断为`false`，大括号中的代码会被跳过。如果不是`nil`，会将值赋给`let`后面的常量，这样代码块中就可以使用这个值了。
 //:
-//: Another way to handle optional values is to provide a default value using the `??` operator. If the optional value is missing, the default value is used instead.
+//: 另外一个处理可选类型的方法是使用运算符`??`提供一个默认值。如果可选类型的值发生缺失，就会使用默认值来代替。
 //:
-let nickName: String? = nil
+var nickName: String? = nil
+nickName = "Bq"
 let fullName: String = "John Appleseed"
 let informalGreeting = "Hi \(nickName ?? fullName)"
 
-//: Switches support any kind of data and a wide variety of comparison operations—they aren’t limited to integers and tests for equality.
+//: `switch`支持任意类型的数据以及各种比较操作——不仅仅是整数以及测试相等。
 //:
 let vegetable = "red pepper"
 switch vegetable {
@@ -52,55 +55,60 @@ switch vegetable {
 }
 
 //: - Experiment:
-//: Try removing the default case. What error do you get?
+//: 删除`default`语句，看看会有什么错误？（error: switch must be exhaustive）
 //:
-//: Notice how `let` can be used in a pattern to assign the value that matched the pattern to a constant.
+//: 注意`let`在上述例子的等式中是如何使用的，它将匹配等式的值赋给常量`x`。
 //:
-//: After executing the code inside the switch case that matched, the program exits from the switch statement. Execution doesn’t continue to the next case, so there is no need to explicitly break out of the switch at the end of each case’s code.
+//: 运行`switch`中匹配到的子句之后，程序会退出`switch`语句，并不会继续向下运行，所以不需要在每个子句结尾写`break`。
 //:
-//: You use `for`-`in` to iterate over items in a dictionary by providing a pair of names to use for each key-value pair. Dictionaries are an unordered collection, so their keys and values are iterated over in an arbitrary order.
+//: 你可以使用`for-in`来遍历字典，需要两个变量来表示每个键值对。字典是一个无序的集合，所以他们的键和值以任意顺序迭代结束。
 //:
 let interestingNumbers = [
     "Prime": [2, 3, 5, 7, 11, 13],
     "Fibonacci": [1, 1, 2, 3, 5, 8],
     "Square": [1, 4, 9, 16, 25],
 ]
-var largest = 0
+var largest = Int()
+var kingOfLargest = String()
+// 使用元组遍历字典的每一个元素
 for (kind, numbers) in interestingNumbers {
     for number in numbers {
         if number > largest {
             largest = number
+			kingOfLargest = kind
         }
     }
 }
-print(largest)
+print("larget is \(largest), kind of \(kingOfLargest)")
 
 //: - Experiment:
-//: Add another variable to keep track of which kind of number was the largest, as well as what that largest number was.
+//: 添加另一个变量来记录现在和之前最大数字的类型。
 //:
-//: Use `while` to repeat a block of code until a condition changes. The condition of a loop can be at the end instead, ensuring that the loop is run at least once.
+//: 使用`while`来重复运行一段代码直到不满足条件。循环条件也可以在结尾，保证能至少循环一次。
 //:
+// 当型循环
 var n = 2
 while n < 100 {
     n *= 2
 }
-print(n)
+//print(n)
 
+// 直到型循环
 var m = 2
 repeat {
     m *= 2
 } while m < 100
-print(m)
+//print(m)
 
-//: You can keep an index in a loop by using `..<` to make a range of indexes.
+//: 您可以使用`..<`来生成一系列索引，从而在循环中保留索引。
 //:
 var total = 0
 for i in 0..<4 {
     total += i
 }
-print(total)
+//print(total)
 
-//: Use `..<` to make a range that omits its upper value, and use `...` to make a range that includes both values.
+//: 使用`..<`创建的范围不包含上界，如果想包含的话需要使用`...`。
 //:
 
 
