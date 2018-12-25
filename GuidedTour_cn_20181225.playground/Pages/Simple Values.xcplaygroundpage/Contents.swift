@@ -78,7 +78,7 @@ occupations["Jayne"] = "Public Relations"
 //: 当你添加元素，数组会自动增长
 //:
 shoppingList.append("blue paint")
-print(shoppingList)
+//print(shoppingList)
 
 //: 要创建一个空数组或者字典，使用初始化语法。
 //:
