@@ -1,52 +1,57 @@
 //: # A Swift Tour
 //:
-//: Tradition suggests that the first program in a new language should print the words “Hello, world!” on the screen. In Swift, this can be done in a single line:
+//: 通常来说，编程语言教程中的第一个程序应该在屏幕上打印“Hello, world”。在 Swift 中，可以用一行代码实现：
 //:
 print("Hello, world!")
 
-//: If you have written code in C or Objective-C, this syntax looks familiar to you—in Swift, this line of code is a complete program. You don’t need to import a separate library for functionality like input/output or string handling. Code written at global scope is used as the entry point for the program, so you don’t need a `main()` function. You also don’t need to write semicolons at the end of every statement.
+//: 如果您写过 C 或者 Objective-C 代码，那您应该很熟悉这种形式——在 Swift 中，这行代码就是一个完整的程序。您不需要为了输入输出或者字符串处理导入一个单独的库。全局作用域中的代码会被自动当做程序的入口点，所以您也不需要`main()`函数。您同样不需要在每个语句结尾写上分号。
 //:
-//: This tour gives you enough information to start writing code in Swift by showing you how to accomplish a variety of programming tasks. Don’t worry if you don’t understand something—everything introduced in this tour is explained in detail in the rest of this book.
+//: 这个教程会通过一系列编程例子来让您对 Swift 有初步了解，如果您有什么不理解的地方也不用担心——任何本章介绍的内容都会在后面的章节中详细讲解。
 //:
-//: ## Simple Values
+//: ## 简单值
 //:
-//: Use `let` to make a constant and `var` to make a variable. The value of a constant doesn’t need to be known at compile time, but you must assign it a value exactly once. This means you can use constants to name a value that you determine once but use in many places.
+//: 使用`let`来声明常量，使用`var`来声明变量。一个常量的值，在编译的时候，并不需要有明确的值，但是您只能为它赋值一次。也就是说您可以用常量来表示这样一个值：您只需要设置一次，但是需要使用很多次。
 //:
 var myVariable = 42
 myVariable = 50
 let myConstant = 42
 
-//: A constant or variable must have the same type as the value you want to assign to it. However, you don’t always have to write the type explicitly. Providing a value when you create a constant or variable lets the compiler infer its type. In the example above, the compiler infers that `myVariable` is an integer because its initial value is an integer.
+//: 常量或者变量的类型必须和您赋给它们的值一样。然而，您不用明确地声明类型，声明的同时赋值的话，编译器会自动推断类型。在上面的例子中，编译器推断出`myVariable`是一个整数（integer）因为它的初始值是整数。
 //:
-//: If the initial value doesn’t provide enough information (or if there is no initial value), specify the type by writing it after the variable, separated by a colon.
+//: 如果初始值没有提供足够的信息（或者没有初始值），那您需要在变量后面声明类型，用冒号分割。
 //:
 let implicitInteger = 70
 let implicitDouble = 70.0
 let explicitDouble: Double = 70
 
-//: - Experiment:
-//: Create a constant with an explicit type of `Float` and a value of `4`.
+//: > **练习**:
+//: > 创建一个常量，声明它的类型为`Float`并且值为`4`。
 //:
-//: Values are never implicitly converted to another type. If you need to convert a value to a different type, explicitly make an instance of the desired type.
+let testConst: Float = 4
+//print(testConst)
+
+//: 值永远不会隐式的转换为另一种类型。如果需要转换为其他类型的一个值， 请创建一个所需类型的实例。
 //:
 let label = "The width is "
 let width = 94
 let widthLabel = label + String(width)
 
-//: - Experiment:
-//: Try removing the conversion to `String` from the last line. What error do you get?
+//: > **练习**:
+//: > 删除最后一行中的`String`，错误提示是什么？
 //:
-//: There’s an even simpler way to include values in strings: Write the value in parentheses, and write a backslash (`\`) before the parentheses. For example:
+//: 有一种更简单的把值转换成字符串的方法：把值写到括号中，并且在括号之前写一个反斜杠。例如：
 //:
 let apples = 3
 let oranges = 5
 let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 
-//: - Experiment:
-//: Use `\()` to include a floating-point calculation in a string and to include someone’s name in a greeting.
+//: > **练习**:
+//: > 使用`\()`来把一个浮点计算转换成字符串，并加上某人的名字，和他打个招呼。
 //:
-//: Use three double quotation marks (`"""`) for strings that take up multiple lines. Indentation at the start of each quoted line is removed, as long as it matches the indentation of the closing quotation marks. For example:
+//print("你 \(testConst) 不 \(testConst) 傻")
+
+//: 对于多行字符串，使用三对双引号（`"""`）。只要每一行的行首缩进与右引号的缩进相同，其缩进都会被移除。例如：
 //:
 let quotation = """
     Even though there's whitespace to the left,
@@ -56,8 +61,9 @@ let quotation = """
 
     I still have \(apples + oranges) pieces of fruit.
     """
+//print(quotation)
 
-//: Create arrays and dictionaries using brackets (`[]`), and access their elements by writing the index or key in brackets. A comma is allowed after the last element.
+//: 使用方括号`[]`来创建数组和字典，并使用下标或者键（key）来访问元素。最后一个元素后面允许有个逗号。
 //:
 var shoppingList = ["catfish", "water", "tulips"]
 shoppingList[1] = "bottle of water"
@@ -67,24 +73,25 @@ var occupations = [
     "Kaylee": "Mechanic",
  ]
 occupations["Jayne"] = "Public Relations"
+//print(occupations)
 
-//: Arrays automatically grow as you add elements.
+//: 当你添加元素，数组会自动增长
 //:
 shoppingList.append("blue paint")
 print(shoppingList)
 
-//: To create an empty array or dictionary, use the initializer syntax.
+//: 要创建一个空数组或者字典，使用初始化语法。
 //:
 let emptyArray = [String]()
 let emptyDictionary = [String: Float]()
 
-//: If type information can be inferred, you can write an empty array as `[]` and an empty dictionary as `[:]`—for example, when you set a new value for a variable or pass an argument to a function.
+//: 如果类型信息可以被推断出来，您可以用`[]`和`[:]`来创建空数组和空字典——就像您声明变量或者给函数传参数的时候一样。
 //:
 shoppingList = []
 occupations = [:]
 
 
 
-//: See [License](License) for this sample's licensing information.
+//: 查看 [许可证](License) 信息。
 //: 
 //: [Next](@next)
