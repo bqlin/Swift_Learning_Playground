@@ -24,8 +24,8 @@ let implicitInteger = 70
 let implicitDouble = 70.0
 let explicitDouble: Double = 70
 
-//: > **练习**:
-//: > 创建一个常量，声明它的类型为`Float`并且值为`4`。
+//: - Experiment:
+//: 创建一个常量，声明它的类型为`Float`并且值为`4`。
 //:
 let testConst: Float = 4
 //print(testConst)
@@ -36,8 +36,8 @@ let label = "The width is "
 let width = 94
 let widthLabel = label + String(width)
 
-//: > **练习**:
-//: > 删除最后一行中的`String`，错误提示是什么？
+//: - Experiment:
+//: 删除最后一行中的`String`，错误提示是什么？
 //:
 //: 有一种更简单的把值转换成字符串的方法：把值写到括号中，并且在括号之前写一个反斜杠。例如：
 //:
@@ -46,8 +46,8 @@ let oranges = 5
 let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 
-//: > **练习**:
-//: > 使用`\()`来把一个浮点计算转换成字符串，并加上某人的名字，和他打个招呼。
+//: - Experiment:
+//: 使用`\()`来把一个浮点计算转换成字符串，并加上某人的名字，和他打个招呼。
 //:
 //print("你 \(testConst) 不 \(testConst) 傻")
 
@@ -89,7 +89,6 @@ let emptyDictionary = [String: Float]()
 //:
 shoppingList = []
 occupations = [:]
-
 
 
 //: 查看 [许可证](License) 信息。
