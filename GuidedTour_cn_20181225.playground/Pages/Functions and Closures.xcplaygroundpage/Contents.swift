@@ -1,6 +1,6 @@
-//: ## Functions and Closures
+//: ## 函数和闭包（Functions and Closures）
 //:
-//: Use `func` to declare a function. Call a function by following its name with a list of arguments in parentheses. Use `->` to separate the parameter names and types from the function’s return type.
+//: 使用`func`来声明一个函数，使用名字和参数来调用函数。使用`->`来指定函数返回值的类型。
 //:
 func greet(person: String, day: String) -> String {
     return "Hello \(person), today is \(day)."
@@ -8,16 +8,21 @@ func greet(person: String, day: String) -> String {
 greet(person: "Bob", day: "Tuesday")
 
 //: - Experiment:
-//: Remove the `day` parameter. Add a parameter to include today’s lunch special in the greeting.
+//: 删除`day`参数，添加一个参数来表示今天吃了什么午饭。
 //:
-//: By default, functions use their parameter names as labels for their arguments. Write a custom argument label before the parameter name, or write `_` to use no argument label.
+func greet2(person: String, food: String) -> String {
+	return "\(person)食左\(food)。"
+}
+greet2(person: "Bq", food: "柠檬")
+
+//: 默认情况下，函数使用其参数名称作为其参数的标签。你还可以在参数名称前添加一个自定义参数标签，或者`_`以不使用参数标签。
 //:
 func greet(_ person: String, on day: String) -> String {
     return "Hello \(person), today is \(day)."
 }
 greet("John", on: "Wednesday")
 
-//: Use a tuple to make a compound value—for example, to return multiple values from a function. The elements of a tuple can be referred to either by name or by number.
+//: 使用元组来让一个函数返回多个值。该元组的元素可以用名称或数字来表示。
 //:
 func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     var min = scores[0]
@@ -36,10 +41,10 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
     return (min, max, sum)
 }
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
-print(statistics.sum)
-print(statistics.2)
+//print(statistics.sum)
+//print(statistics.2)
 
-//: Functions can be nested. Nested functions have access to variables that were declared in the outer function. You can use nested functions to organize the code in a function that is long or complex.
+//: 函数可以嵌套。嵌套函数可以访问外部函数中声明的变量。你可以使用嵌套函数的形式组织冗长或复杂的代码。
 //:
 func returnFifteen() -> Int {
     var y = 10
@@ -51,7 +56,7 @@ func returnFifteen() -> Int {
 }
 returnFifteen()
 
-//: Functions are a first-class type. This means that a function can return another function as its value.
+//: 函数是一等的类型。这意味着函数可以作为返回值使用。
 //:
 func makeIncrementer() -> ((Int) -> Int) {
     func addOne(number: Int) -> Int {
@@ -62,7 +67,7 @@ func makeIncrementer() -> ((Int) -> Int) {
 var increment = makeIncrementer()
 increment(7)
 
-//: A function can take another function as one of its arguments.
+//: 函数也可以作为另一个函数的参数值使用。
 //:
 func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
     for item in list {
@@ -78,7 +83,7 @@ func lessThanTen(number: Int) -> Bool {
 var numbers = [20, 19, 7, 12]
 hasAnyMatches(list: numbers, condition: lessThanTen)
 
-//: Functions are actually a special case of closures: blocks of code that can be called later. The code in a closure has access to things like variables and functions that were available in the scope where the closure was created, even if the closure is in a different scope when it is executed—you saw an example of this already with nested functions. You can write a closure without a name by surrounding code with braces (`{}`). Use `in` to separate the arguments and return type from the body.
+//: 函数实际上是闭包的一种特殊形式：可以在以后调用的代码块。闭包中的代码可以访问创建闭包时作用域中可用的变量和函数，即使闭包在执行时的作用域不同——你已经看到了嵌套函数的示例。您可以使用大括号（`{}`）来编写没有名称的闭包。使用`in`将参数和返回类型与函数体分开。
 //:
 numbers.map({ (number: Int) -> Int in
     let result = 3 * number
@@ -86,17 +91,24 @@ numbers.map({ (number: Int) -> Int in
 })
 
 //: - Experiment:
-//: Rewrite the closure to return zero for all odd numbers.
+//: 重写闭包，对所有奇数返回零。
 //:
-//: You have several options for writing closures more concisely. When a closure’s type is already known, such as the callback for a delegate, you can omit the type of its parameters, its return type, or both. Single statement closures implicitly return the value of their only statement.
+numbers.map { (number: Int) -> Int in
+	if number % 2 == 1 {
+		return 0
+	}
+	return number
+}
+
+//: 你可以通过几种方式更简洁地编写闭包。当已知闭包的类型（例如委托的回调）时，可以省略其参数的类型，返回类型或两者。在单个闭包语句中还可以直接隐式返回其值。
 //:
 let mappedNumbers = numbers.map({ number in 3 * number })
-print(mappedNumbers)
+//print(mappedNumbers)
 
-//: You can refer to parameters by number instead of by name—this approach is especially useful in very short closures. A closure passed as the last argument to a function can appear immediately after the parentheses. When a closure is the only argument to a function, you can omit the parentheses entirely.
+//: 你可以使用参数编号取代参数名称来引用参数——这种方法在非常短的闭包中特别有用。当闭包作为函数的最后一个参数传递时，可以在括号后面立即出现。当闭包是函数的唯一参数时，可以完全省略括号。
 //:
 let sortedNumbers = numbers.sorted { $0 > $1 }
-print(sortedNumbers)
+//print(sortedNumbers)
 
 
 
