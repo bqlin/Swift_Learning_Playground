@@ -1,6 +1,6 @@
-//: ## Generics
+//: ## 泛型（Generics）
 //:
-//: Write a name inside angle brackets to make a generic function or type.
+//: 在尖括号里写一个名字来创建一个泛型函数或者类型。
 //:
 func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
     var result = [Item]()
@@ -11,9 +11,9 @@ func makeArray<Item>(repeating item: Item, numberOfTimes: Int) -> [Item] {
 }
 makeArray(repeating: "knock", numberOfTimes: 4)
 
-//: You can make generic forms of functions and methods, as well as classes, enumerations, and structures.
+//: 你也可以创建泛型函数、方法、类、枚举和结构体。
 //:
-// Reimplement the Swift standard library's optional type
+// 重新实现Swift标准库的可选类型
 enum OptionalValue<Wrapped> {
     case none
     case some(Wrapped)
@@ -21,7 +21,7 @@ enum OptionalValue<Wrapped> {
 var possibleInteger: OptionalValue<Int> = .none
 possibleInteger = .some(100)
 
-//: Use `where` right before the body to specify a list of requirements—for example, to require the type to implement a protocol, to require two types to be the same, or to require a class to have a particular superclass.
+//: 在函数体之前，使用 `where` 来指定泛型的序列列表——例如，限定类型实现一个协议，限定两个类型是相同的，或者限定某个类必须有一个特定的父类。
 //:
 func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
     where T.Element: Equatable, T.Element == U.Element
@@ -38,10 +38,24 @@ func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
 anyCommonElements([1, 2, 3], [3])
 
 //: - Experiment:
-//: Modify the `anyCommonElements(_:_:)` function to make a function that returns an array of the elements that any two sequences have in common.
+//: 修改`anyCommonElements(_:_:)`函数来创建一个函数，返回一个数组，内容是两个序列的共有元素。
 //:
-//: Writing `<T: Equatable>` is the same as writing `<T> ... where T: Equatable`.
+func allCommonElements<A: Sequence, B: Sequence>(_ aSeq: A, _ bSeq: B) -> [A.Element]
+	where A.Element: Equatable, B.Element == A.Element
+{
+	var allCommonElements = [A.Element]()
+	for aItem in aSeq {
+		if bSeq.contains(aItem) {
+			allCommonElements.append(aItem)
+		}
+	}
+	return allCommonElements
+}
+allCommonElements([1, 2, 3.12], [2, 3.19999999])
+
+//:  `<T: Equatable>`和`<T where T: Equatable>`是完全等价的。
 //:
+
 
 
 //: [Previous](@previous) | [Next](@next)
