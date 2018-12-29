@@ -16,7 +16,7 @@ var x = 0.0, y = 0.0, z = 0.0
 //: ### 类型标注
 //: 当你声明常量或者变量的时候可以加上*类型标注（type annotation）*，说明常量或者变量中要存储的值的类型。如果要添加类型标注，需要在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。
 //:
-var welcomeMessage: String
+let welcomeMessage: String
 welcomeMessage = "Hello"
 // 在一行中定义多个同类型变量，在最后一个变量之后添加类型标注
 var red, green, blue: Double
