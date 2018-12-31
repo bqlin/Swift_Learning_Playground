@@ -7,5 +7,6 @@
         <page name='Collectoin_Types'/>
         <page name='Control_Flow'/>
         <page name='Functions'/>
+        <page name='Closures'/>
     </pages>
 </playground>
