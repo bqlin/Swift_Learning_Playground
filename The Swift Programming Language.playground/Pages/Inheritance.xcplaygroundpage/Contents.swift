@@ -119,7 +119,7 @@ print("AutomaticCar: \(automatic.description)")
 
 //: ## 防止重写
 //:
-//: 你可以通过把方法，属性或下标标记为*`final`*来防止它们被重写，只需要在声明关键字前加上 `final` 修饰符即可（例如：`final var`，`final func`，`final class func`，以及 `final subscript`）。
+//: 你可以通过把方法，属性或下标标记为 *`final`* 来防止它们被重写，只需要在声明关键字前加上 `final` 修饰符即可（例如：`final var`、`final func`、`final class func` 以及 `final subscript`）。
 //:
 //: 任何试图对带有 `final` 标记的方法、属性或下标进行重写的代码，都会在编译时会报错。在类扩展中的方法，属性或下标也可以在扩展的定义里标记为 `final`。
 //:
