@@ -17,5 +17,6 @@
         <page name='Initialization'/>
         <page name='Deinitialization'/>
         <page name='Optional_Chaining'/>
+        <page name='Error_Handling'/>
     </pages>
 </playground>
