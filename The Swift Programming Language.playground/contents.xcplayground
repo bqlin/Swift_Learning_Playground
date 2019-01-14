@@ -19,5 +19,6 @@
         <page name='Optional_Chaining'/>
         <page name='Error_Handling'/>
         <page name='Type_Casting'/>
+        <page name='Nested_Types'/>
     </pages>
 </playground>
