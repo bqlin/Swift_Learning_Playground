@@ -22,5 +22,6 @@
         <page name='Nested_Types'/>
         <page name='Extensions'/>
         <page name='Protocols'/>
+        <page name='Generics'/>
     </pages>
 </playground>
