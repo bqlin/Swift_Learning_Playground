@@ -23,5 +23,6 @@
         <page name='Extensions'/>
         <page name='Protocols'/>
         <page name='Generics'/>
+        <page name='Automatic_Reference_Counting'/>
     </pages>
 </playground>
