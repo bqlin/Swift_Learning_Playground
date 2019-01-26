@@ -202,7 +202,7 @@ let http200Status = (statusCode: 200, description: "OK")
 //print("The status message is \(http200Status.description)")
 // 输出 "The status message is OK"
 
-//: > 元组在临时组织值的时候很有用，但是并不适合创建复杂的数据结构。如果你的数据结构并不是临时使用，请使用类或者结构体而不是元组。请参考[类和结构体](Classes_and_Structures)。
+//: > 元组在临时组织值的时候很有用，但是并不适合创建复杂的数据结构。如果你的数据结构并不是临时使用，请使用类或者结构体而不是元组。请参考[类和结构体](Structures_And_Classes)。
 
 //: ## 可选类型
 //: 使用*可选类型（optionals）*来处理值可能缺失的情况。可选类型表示两种可能：

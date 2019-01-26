@@ -393,7 +393,7 @@ print(game.prettyTextualDescription)
 
 //: 在以上例子中，协议 `SomeClassOnlyProtocol` 只能被类类型遵循。如果尝试让结构体或枚举类型遵循 `SomeClassOnlyProtocol` 协议，则会导致编译时错误。
 //:
-//: > 当协议定义的要求需要遵循协议的类型必须是引用语义而非值语义时，应该采用类类型专属协议。关于引用语义和值语义的更多内容，请查看[结构体和枚举是值类型](Classes_and_Structures)和[类是引用类型](Classes_and_Structures)。
+//: > 当协议定义的要求需要遵循协议的类型必须是引用语义而非值语义时，应该采用类类型专属协议。关于引用语义和值语义的更多内容，请查看[结构体和枚举是值类型](Structures_And_Classes)和[类是引用类型](Structures_And_Classes)。
 //:
 //: ## 协议合成
 //:
