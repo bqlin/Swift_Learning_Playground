@@ -39,14 +39,14 @@ let 🐶🐮 = "dogcow"
 //: 你可以用 `print(_:separator:terminator:)` 函数来输出当前常量或变量的值:
 //:
 var friendlyWelcome = "Hello!"
-print(friendlyWelcome)
+//print(friendlyWelcome)
 // 输出 "Bonjour!"
 
 //: `print(_:separator:terminator:)` 是一个用来输出一个或多个值到适当输出区的全局函数。如果你用 Xcode，`print(_:separator:terminator:)` 将会输出内容到“console”面板上。`separator` 和 `terminator` 参数具有默认值，因此你调用这个函数的时候可以忽略它们。默认情况下，该函数通过添加换行符来结束当前行。如果不想换行，可以传递一个空字符串给 `terminator` 参数--例如，`print(someValue, terminator:"")` 。关于参数默认值的更多信息，请参考[默认参数值](Functions)。
 //:
 //: Swift 用*字符串插值（string interpolation）*的方式把常量名或者变量名当做占位符加入到长字符串中，Swift 会用当前常量或变量的值替换这些占位符。将常量或变量名放入圆括号中，并在开括号前使用反斜杠将其转义：
 //:
-print("The current value of friendlyWelcome is \(friendlyWelcome)")
+//print("The current value of friendlyWelcome is \(friendlyWelcome)")
 // 输出 "The current value of friendlyWelcome is Bonjour!
 
 //: > 字符串插值所有可用的选项，请参考[字符串插值](Strings_and_Characters)。
@@ -171,9 +171,9 @@ let orangesAreOrange = true
 let turnipsAreDelicious = false
 
 if turnipsAreDelicious {
-	print("Mmm, tasty turnips!")
+//	print("Mmm, tasty turnips!")
 } else {
-	print("Eww, turnips are horrible.")
+//	print("Eww, turnips are horrible.")
 }
 // 输出 "Eww, turnips are horrible."
 
@@ -190,16 +190,16 @@ let http404Error = (404, "Not Found")
 // http404Error 的类型是 (Int, String)，值是 (404, "Not Found")
 
 // 通过下标访问元素
-print("The status code is \(http404Error.0)")
+//print("The status code is \(http404Error.0)")
 // 输出 "The status code is 404"
-print("The status message is \(http404Error.1)")
+//print("The status message is \(http404Error.1)")
 // 输出 "The status message is Not Found"
 
 // 在定义时给单个元素命名
 let http200Status = (statusCode: 200, description: "OK")
-print("The status code is \(http200Status.statusCode)")
+//print("The status code is \(http200Status.statusCode)")
 // 输出 "The status code is 200"
-print("The status message is \(http200Status.description)")
+//print("The status message is \(http200Status.description)")
 // 输出 "The status message is OK"
 
 //: > 元组在临时组织值的时候很有用，但是并不适合创建复杂的数据结构。如果你的数据结构并不是临时使用，请使用类或者结构体而不是元组。请参考[类和结构体](Classes_and_Structures)。
@@ -231,14 +231,14 @@ var surveyAnswer: String?
 //: 如果可选类型有值，它将不等于 `nil`：
 //:
 if convertedNumber != nil {
-	print("convertedNumber contains some integer value.")
+//	print("convertedNumber contains some integer value.")
 }
 // 输出 "convertedNumber contains some integer value."
 
 //: 当你确定可选类型确实包含值之后，你可以在可选的名字后面加一个感叹号（`!`）来获取值。这个惊叹号表示“我知道这个可选有值，请使用它。”这被称为可选值的*强制解析（forced unwrapping）*：
 //:
 if convertedNumber != nil {
-	print("convertedNumber has an integer value of \(convertedNumber!).")
+//	print("convertedNumber has an integer value of \(convertedNumber!).")
 }
 // 输出 "convertedNumber has an integer value of 123."
 
@@ -250,23 +250,23 @@ if convertedNumber != nil {
 //print(Int(possibleNumber))
 // 它已经被可选类型 *包含的* 值初始化过，所以不需要再使用 `!` 后缀来获取它的值。而 if let constantName = someOptional {} 这种语法的值绑定，就限定了等号的右边必须是可选类型。
 if let actualNumber = Int(possibleNumber) {
-	print("\'\(possibleNumber)\' has an integer value of \(actualNumber)")
+//	print("\'\(possibleNumber)\' has an integer value of \(actualNumber)")
 } else {
-	print("\'\(possibleNumber)\' could not be converted to an integer")
+//	print("\'\(possibleNumber)\' could not be converted to an integer")
 }
 // 输出 "'123' has an integer value of 123"
 
 //: 你可以包含多个可选绑定或多个布尔条件在一个 `if` 语句中，只要使用逗号分开就行。只要有任意一个可选绑定的值为 `nil`，或者任意一个布尔条件为 `false`，则整个 `if` 条件判断为 `false`，这时你就需要使用嵌套 `if` 条件语句来处理，如下所示：
 //:
 if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
-	print("\(firstNumber) < \(secondNumber) < 100")
+//	print("\(firstNumber) < \(secondNumber) < 100")
 }
 // 输出 "4 < 42 < 100"
 
 if let firstNumber = Int("4") {
 	if let secondNumber = Int("42") {
 		if firstNumber < secondNumber && secondNumber < 100 {
-			print("\(firstNumber) < \(secondNumber) < 100")
+//			print("\(firstNumber) < \(secondNumber) < 100")
 		}
 	}
 }
@@ -289,7 +289,7 @@ let implicitString: String = assumedString  // 不需要感叹号
 
 // 可选绑定
 if let definiteString = assumedString {
-	print(definiteString)
+//	print(definiteString)
 }
 // 输出 "An implicitly unwrapped optional string."
 
@@ -347,9 +347,9 @@ let age = -3
 //: 如果代码已经检查了条件，你可以使用 `assertionFailure(_:file:line:)` 函数来表明断言失败了，例如：
 //:
 if age > 10 {
-	print("You can ride the roller-coaster or the ferris wheel.")
+//	print("You can ride the roller-coaster or the ferris wheel.")
 } else if age > 0 {
-	print("You can ride the ferris wheel.")
+//	print("You can ride the ferris wheel.")
 } else {
 	//assertionFailure("A person's age can't be less than zero.")
 }
