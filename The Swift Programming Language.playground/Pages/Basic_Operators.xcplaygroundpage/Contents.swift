@@ -71,7 +71,7 @@ colorNameToUse = userDefinedColorName ?? defaultColorName
 //: ### 闭区间运算符
 //: *闭区间运算符*（`a...b`）定义一个包含从 `a` 到 `b`（包括 `a` 和 `b`）的所有值的区间。`a` 的值不能超过 `b`。
 for index in 1...5 {
-	print("\(index) * 5 = \(index * 5)")
+//	print("\(index) * 5 = \(index * 5)")
 }
 // 1 * 5 = 5
 // 2 * 5 = 10
@@ -87,7 +87,7 @@ for index in 1...5 {
 let names = ["Anna", "Alex", "Brian", "Jack"]
 let count = names.count
 for i in 0..<count {
-	print("第 \(i + 1) 个人叫 \(names[i])")
+//	print("第 \(i + 1) 个人叫 \(names[i])")
 }
 // 第 1 个人叫 Anna
 // 第 2 个人叫 Alex
@@ -97,13 +97,13 @@ for i in 0..<count {
 //: ### 单侧区间
 //: 闭区间操作符有另一个表达形式，可以表达往一侧无限延伸的区间 —— 例如，一个包含了数组从索引 2 到结尾的所有值的区间。在这些情况下，你可以省略掉区间操作符一侧的值。这种区间叫做单侧区间，因为操作符只有一侧有值。例如：
 for name in names[2...] {
-	print(name)
+//	print(name)
 }
 // Brian
 // Jack
 
 for name in names[...2] {
-	print(name)
+//	print(name)
 }
 // Anna
 // Alex
@@ -112,7 +112,7 @@ for name in names[...2] {
 //: 半开区间操作符也有单侧表达形式，附带上它的最终值。就像你使用区间去包含一个值，最终值并不会落在区间内。例如：
 //:
 for name in names[..<2] {
-	print(name)
+//	print(name)
 }
 // Anna
 // Alex
