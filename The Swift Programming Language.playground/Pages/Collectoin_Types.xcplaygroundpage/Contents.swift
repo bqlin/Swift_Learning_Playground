@@ -15,7 +15,7 @@
 //: ### 创建一个空数组
 //:
 var someInts = [Int]()
-print("someInts is of type [Int] with \(someInts.count) items.")
+//print("someInts is of type [Int] with \(someInts.count) items.")
 // 打印 "someInts is of type [Int] with 0 items."
 
 someInts.append(3)
@@ -41,18 +41,17 @@ var sixDoubles = threeDoubles + anotherThreeDoubles
 //: ### 用数组字面量构造数组
 //:
 var shoppingList = ["Eggs", "Milk"]
-
 var tests = [1, 2, 3] + ["1.1", "1.2", "3.2"];
 
 //: ### 访问和修改数组
 //:
-print("The shopping list contains \(shoppingList.count) items.")
+//print("The shopping list contains \(shoppingList.count) items.")
 // 输出 "The shopping list contains 2 items."（这个数组有2个项）
 
 if shoppingList.isEmpty {
-	print("The shopping list is empty.")
+//	print("The shopping list is empty.")
 } else {
-	print("The shopping list is not empty.")
+//	print("The shopping list is not empty.")
 }
 // 打印 "The shopping list is not empty."（shoppinglist 不是空的）
 
@@ -97,7 +96,7 @@ let apples = shoppingList.removeLast()
 //: ### 数组的遍历
 //:
 for item in shoppingList {
-	print(item)
+//	print(item)
 }
 // Six eggs
 // Milk
@@ -106,7 +105,7 @@ for item in shoppingList {
 // Bananas
 
 for (index, value) in shoppingList.enumerated() {
-	print("Item \(String(index + 1)): \(value)")
+//	print("Item \(index + 1): \(value)")
 }
 // Item 1: Six eggs
 // Item 2: Milk
@@ -126,7 +125,7 @@ for (index, value) in shoppingList.enumerated() {
 //: ### 集合类型语法
 //:
 var letters = Set<Character>()
-print("letters is of type Set<Character> with \(letters.count) items.")
+//print("letters is of type Set<Character> with \(letters.count) items.")
 // 打印 "letters is of type Set<Character> with 0 items."
 
 letters.insert("a")
@@ -140,13 +139,13 @@ var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 
 //: ### 访问和修改一个集合
 //:
-print("I have \(favoriteGenres.count) favorite music genres.")
+//print("I have \(favoriteGenres.count) favorite music genres.")
 // 打印 "I have 3 favorite music genres."
 
 if favoriteGenres.isEmpty {
-	print("As far as music goes, I'm not picky.")
+//	print("As far as music goes, I'm not picky.")
 } else {
-	print("I have particular music preferences.")
+//	print("I have particular music preferences.")
 }
 // 打印 "I have particular music preferences."
 
@@ -154,34 +153,34 @@ favoriteGenres.insert("Jazz")
 // favoriteGenres 现在包含4个元素
 
 if let removedGenre = favoriteGenres.remove("Rock") {
-	print("\(removedGenre)? I'm over it.")
+//	print("\(removedGenre)? I'm over it.")
 } else {
-	print("I never much cared for that.")
+//	print("I never much cared for that.")
 }
 // 打印 "Rock? I'm over it."
 
 if favoriteGenres.contains("Funk") {
-	print("I get up on the good foot.")
+//	print("I get up on the good foot.")
 } else {
-	print("It's too funky in here.")
+//	print("It's too funky in here.")
 }
 // 打印 "It's too funky in here."
 
 //: ### 遍历一个集合
 //:
 for genre in favoriteGenres {
-	print("\(genre)")
+//	print("\(genre)")
 }
 // Classical
 // Jazz
 // Hip hop
 
 for genre in favoriteGenres.sorted() {
-	print("\(genre)")
+//	print("\(genre)")
 }
-// prints "Classical"
-// prints "Hip hop"
-// prints "Jazz
+// Classical
+// Hip hop
+// Jazz
 
 //: ## 集合操作
 //:
@@ -244,13 +243,13 @@ var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
 
 //: ### 访问和修改字典
 //:
-print("The dictionary of airports contains \(airports.count) items.")
+//print("The dictionary of airports contains \(airports.count) items.")
 // 打印 "The dictionary of airports contains 2 items."（这个字典有两个数据项）
 
 if airports.isEmpty {
-	print("The airports dictionary is empty.")
+//	print("The airports dictionary is empty.")
 } else {
-	print("The airports dictionary is not empty.")
+//	print("The airports dictionary is not empty.")
 }
 // 打印 "The airports dictionary is not empty."
 
@@ -258,14 +257,14 @@ airports["LHR"] = "London"
 // airports 字典现在有三个数据项
 
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
-	print("The old value for DUB was \(oldValue).")
+//	print("The old value for DUB was \(oldValue).")
 }
 // 输出 "The old value for DUB was Dublin."
 
 if let airportName = airports["DUB"] {
-	print("The name of the airport is \(airportName).")
+//	print("The name of the airport is \(airportName).")
 } else {
-	print("That airport is not in the airports dictionary.")
+//	print("That airport is not in the airports dictionary.")
 }
 // 打印 "The name of the airport is Dublin Airport."
 
@@ -275,9 +274,9 @@ airports["APL"] = nil
 // APL 现在被移除了
 
 if let removedValue = airports.removeValue(forKey: "DUB") {
-	print("The removed airport's name is \(removedValue).")
+//	print("The removed airport's name is \(removedValue).")
 } else {
-	print("The airports dictionary does not contain a value for DUB.")
+//	print("The airports dictionary does not contain a value for DUB.")
 }
 // prints "The removed airport's name is Dublin Airport."
 
@@ -285,19 +284,19 @@ if let removedValue = airports.removeValue(forKey: "DUB") {
 //: 我们可以使用 `for-in` 循环来遍历某个字典中的键值对。每一个字典中的数据项都以 `(key, value)` 元组形式返回，并且我们可以使用临时常量或者变量来分解这些元组：
 //:
 for (airportCode, airportName) in airports {
-	print("\(airportCode): \(airportName)")
+//	print("\(airportCode): \(airportName)")
 }
 // YYZ: Toronto Pearson
 // LHR: London Heathrow
 
 for airportCode in airports.keys {
-	print("Airport code: \(airportCode)")
+//	print("Airport code: \(airportCode)")
 }
 // Airport code: YYZ
 // Airport code: LHR
 
 for airportName in airports.values {
-	print("Airport name: \(airportName)")
+//	print("Airport name: \(airportName)")
 }
 // Airport name: Toronto Pearson
 // Airport name: London Heathrow
