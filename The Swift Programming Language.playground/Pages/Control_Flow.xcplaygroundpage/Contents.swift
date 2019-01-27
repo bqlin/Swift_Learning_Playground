@@ -6,7 +6,7 @@
 // for-in 遍历一个数组
 let names = ["Anna", "Alex", "Brian", "Jack"]
 for name in names {
-	print("Hello, \(name)!")
+//	print("Hello, \(name)!")
 }
 // Hello, Anna!
 // Hello, Alex!
@@ -16,7 +16,7 @@ for name in names {
 // for-in 遍历一个字典
 let numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
 for (animalName, legCount) in numberOfLegs {
-	print("\(animalName)s have \(legCount) legs")
+//	print("\(animalName)s have \(legCount) legs")
 }
 // ants have 6 legs
 // spiders have 8 legs
@@ -24,7 +24,7 @@ for (animalName, legCount) in numberOfLegs {
 
 // for-in 遍历一个数字范围
 for index in 1...5 {
-	print("\(index) times 5 is \(index * 5)")
+//	print("\(index) times 5 is \(index * 5)")
 }
 // 1 times 5 is 5
 // 2 times 5 is 10
@@ -39,7 +39,7 @@ var answer = 1
 for _ in 1...power {
 	answer *= base
 }
-print("\(base) to the power of \(power) is \(answer)")
+//print("\(base) to the power of \(power) is \(answer)")
 // 输出 "3 to the power of 10 is 59049"
 
 let minutes = 60
@@ -89,7 +89,7 @@ while square < finalSquare {
 		square += board[square]
 	}
 }
-print("Game over!")
+//print("Game over!")
 
 //: ### Repeat-While
 //: `while` 循环的另外一种形式是 `repeat-while`，它和 `while` 的区别是在判断循环条件之前，先执行一次循环的代码块。然后重复循环直到条件为 `false`。
@@ -115,7 +115,6 @@ print("Game over!")
 
 //: ## 条件语句
 //:
-
 //: ### Switch
 //: `switch` 语句会尝试把某个值与若干个模式（pattern）进行匹配。根据第一个匹配成功的模式，`switch` 语句会执行对应的代码。当有可能的情况较多时，通常用 `switch` 语句替换 `if` 语句。
 //:
@@ -179,7 +178,7 @@ case 100..<1000:
 default:
 	naturalCount = "many"
 }
-print("There are \(naturalCount) \(countedThings).")
+//print("There are \(naturalCount) \(countedThings).")
 // 输出 "There are dozens of moons orbiting Saturn."
 
 //: #### 元组
@@ -278,9 +277,9 @@ default:
 	break
 }
 if let integerValue = possibleIntegerValue {
-	print("The integer value of \(numberSymbol) is \(integerValue).")
+//	print("The integer value of \(numberSymbol) is \(integerValue).")
 } else {
-	print("An integer value could not be found for \(numberSymbol).")
+//	print("An integer value could not be found for \(numberSymbol).")
 }
 // 输出 "The integer value of 三 is 3."
 
@@ -299,7 +298,7 @@ case 2, 3, 5, 7, 11, 13, 17, 19:
 default:
 	description += " an integer."
 }
-print(description)
+//print(description)
 // 输出 "The number 5 is a prime number, and also an integer."
 
 //: > `fallthrough` 关键字不会检查它下一个将会落入执行的 case 中的匹配条件。`fallthrough` 简单地使代码继续连接到下一个 case 中的代码，这和 C 语言标准中的 `switch` 语句特性是一样的。
@@ -308,23 +307,23 @@ print(description)
 //:
 //: 声明一个带标签的语句是通过在该语句的关键词的同一行前面放置一个标签，作为这个语句的前导关键字（introducor keyword），并且该标签后面跟随一个冒号。
 //:
-gameLoop: while square != finalSquare {
-	diceRoll += 1
-	if diceRoll == 7 { diceRoll = 1 }
-	switch square + diceRoll {
-	case finalSquare:
-		// 骰子数刚好使玩家移动到最终的方格里，游戏结束。
-		break gameLoop
-	case let newSquare where newSquare > finalSquare:
-		// 骰子数将会使玩家的移动超出最后的方格，那么这种移动是不合法的，玩家需要重新掷骰子
-		continue gameLoop
-	default:
-		// 合法移动，做正常的处理
-		square += diceRoll
-		square += board[square]
-	}
-}
-print("Game over!")
+//gameLoop: while square != finalSquare {
+//	diceRoll += 1
+//	if diceRoll == 7 { diceRoll = 1 }
+//	switch square + diceRoll {
+//	case finalSquare:
+//		// 骰子数刚好使玩家移动到最终的方格里，游戏结束。
+//		break gameLoop
+//	case let newSquare where newSquare > finalSquare:
+//		// 骰子数将会使玩家的移动超出最后的方格，那么这种移动是不合法的，玩家需要重新掷骰子
+//		continue gameLoop
+//	default:
+//		// 合法移动，做正常的处理
+//		square += diceRoll
+//		square += board[square]
+//	}
+//}
+//print("Game over!")
 
 //: > 如果上述的 `break` 语句没有使用 `gameLoop` 标签，那么它将会中断 `switch` 语句而不是 `while` 循环。使用 `gameLoop` 标签清晰的表明了 `break` 想要中断的是哪个代码块。
 //:
@@ -336,19 +335,23 @@ func greet(person: [String: String]) {
 	guard let name = person["name"] else {
 		return
 	}
-	print("Hello \(name)")
+	
+//	print("Hello \(name)!")
+	
 	guard let location = person["location"] else {
 		print("I hope the weather is nice near you.")
 		return
 	}
-	print("I hope the weather is nice in \(location).")
+	
+//	print("I hope the weather is nice in \(location).")
 }
-greet(["name": "John"])
-// 输出 "Hello John!"
-// 输出 "I hope the weather is nice near you."
-greet(["name": "Jane", "location": "Cupertino"])
-// 输出 "Hello Jane!"
-// 输出 "I hope the weather is nice in Cupertino."
+
+greet(person: ["name": "John"])
+// 输出“Hello John!”
+// 输出“I hope the weather is nice near you.”
+greet(person: ["name": "Jane", "location": "Cupertino"])
+// 输出“Hello Jane!”
+// 输出“I hope the weather is nice in Cupertino.”
 
 //: 相比于可以实现同样功能的 `if` 语句，按需使用 `guard` 语句会提升我们代码的可读性。它可以使你的代码连贯的被执行而不需要将它包在 `else` 块中，它可以使你在紧邻条件判断的地方，处理违规的情况。
 
@@ -368,5 +371,7 @@ if #available(iOS 10, macOS 10.12, *) {
 //:
 //: 在它一般的形式中，可用性条件使用了一个平台名字和版本的列表。平台名字可以是 `iOS`，`macOS`，`watchOS` 和 `tvOS`——请访问[声明属性](../chapter3/06_Attributes.html)来获取完整列表。除了指定像 iOS 8 或 macOS 10.10 的大版本号，也可以指定像 iOS 11.2.6 以及 macOS 10.13.3 的小版本号。
 //: 
+
+
 
 //: [上一页](@previous) | [下一页](@next)
