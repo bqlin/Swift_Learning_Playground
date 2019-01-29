@@ -23,12 +23,12 @@ func greetAgain(person: String) -> String {
 //: 所有的这些信息汇总起来成为函数的*定义*，并以 `func` 作为前缀。指定函数返回类型时，用返回箭头 `->`（一个连字符后跟一个右尖括号）后跟返回类型的名称的方式来表示。
 //:
 
-print(greet(person: "Anna"))
+//print(greet(person: "Anna"))
 // 打印 "Hello, Anna!"
-print(greet(person: "Brian"))
+//print(greet(person: "Brian"))
 // 打印 "Hello, Brian!"
 
-//: > `print(_:separator:terminator:)` 函数的第一个参数并没有设置一个标签，而其他的参数因为已经有了默认值，因此是可选的。关于这些函数语法上的变化详见下方关于 函数参数标签和参数名以及默认参数值。
+//: > `print(_:separator:terminator:)` 函数的第一个参数并没有设置一个标签，而其他的参数因为已经有了默认值，因此是可选的。关于这些函数语法上的变化详见下方关于函数参数标签和参数名以及默认参数值。
 //:
 
 //: ## 函数参数与返回值
@@ -39,7 +39,7 @@ print(greet(person: "Brian"))
 func sayHelloWorld() -> String {
 	return "hello, world"
 }
-print(sayHelloWorld())
+//print(sayHelloWorld())
 // 打印 "hello, world"
 
 //: ### 多参数函数
@@ -53,7 +53,7 @@ func greet(person: String, alreadyGreeted: Bool) -> String {
 		return greet(person: person)
 	}
 }
-print(greet(person: "Tim", alreadyGreeted: true))
+//print(greet(person: "Tim", alreadyGreeted: true))
 // 打印 "Hello again, Tim!"
 
 //: ### 无返回值函数
@@ -66,7 +66,7 @@ print(greet(person: "Tim", alreadyGreeted: true))
 //:
 
 func printAndCount(string: String) -> Int {
-	print(string)
+//	print(string)
 	return string.count
 }
 func printWithoutCounting(string: String) {
@@ -116,7 +116,7 @@ func minMax2(array: [Int]) -> (min: Int, max: Int)? {
 }
 
 if let bounds = minMax2(array: [8, -6, 2, 109, 3, 71]) {
-	print("min is \(bounds.min) and max is \(bounds.max)")
+//	print("min is \(bounds.min) and max is \(bounds.max)")
 }
 // 打印 "min is -6 and max is 109"
 
@@ -197,7 +197,7 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
-print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+//print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 // 打印 "someInt is now 107, and anotherInt is now 3"
 
 //: > 输入输出参数和返回值是不一样的。上面的 `swapTwoInts` 函数并没有定义任何返回值，但仍然修改了 `someInt` 和 `anotherInt` 的值。输入输出参数是函数对函数体外产生影响的另一种方式。
@@ -219,7 +219,7 @@ func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
 //: 这两个函数的类型是 `(Int, Int) -> Int`。
 //:
 func printHelloWorld() {
-	print("hello, world")
+//	print("hello, world")
 }
 
 //: 这个函数的类型是：`() -> Void`，或者叫“没有参数，并返回 `Void` 类型的函数”。
@@ -235,7 +235,7 @@ var mathFunction: (Int, Int) -> Int = addTwoInts
 //: 你可以用 `(Int, Int) -> Int` 这样的函数类型作为另一个函数的参数类型。这样你可以将函数的一部分实现留给函数的调用者来提供。
 //:
 func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
-	print("Result: \(mathFunction(a, b))")
+//	print("Result: \(mathFunction(a, b))")
 }
 printMathResult(addTwoInts, 3, 5)
 // 打印 "Result: 8"
@@ -258,13 +258,13 @@ var currentValue = 3
 let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
 // moveNearerToZero 现在指向 stepBackward() 函数。
 
-print("Counting to zero:")
+//print("Counting to zero:")
 // Counting to zero:
 while currentValue != 0 {
-	print("\(currentValue)... ")
+//	print("\(currentValue)... ")
 	currentValue = moveNearerToZero(currentValue)
 }
-print("zero!")
+//print("zero!")
 // 3...
 // 2...
 // 1...
@@ -283,10 +283,10 @@ var currentValue2 = -4
 let moveNearerToZero2 = chooseStepFunction2(backward: currentValue2 > 0)
 // moveNearerToZero now refers to the nested stepForward() function
 while currentValue2 != 0 {
-	print("\(currentValue2)... ")
+//	print("\(currentValue2)... ")
 	currentValue2 = moveNearerToZero2(currentValue2)
 }
-print("zero!")
+//print("zero!")
 // -4...
 // -3...
 // -2...
