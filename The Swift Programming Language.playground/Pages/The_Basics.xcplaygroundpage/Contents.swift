@@ -281,9 +281,11 @@ if let firstNumber = Int("4") {
 //:
 //: 一个隐式解析可选类型其实就是一个普通的可选类型，但是可以被当做非可选类型来使用，并不需要每次都使用解析来获取可选值。下面的例子展示了可选类型 `String` 和隐式解析可选类型 `String` 之间的区别：
 //:
+// 可选类型
 let possibleString: String? = "An optional string."
 let forcedString: String = possibleString! // 需要感叹号来获取值
 
+// 隐式解析可选类型
 let assumedString: String! = "An implicitly unwrapped optional string."
 let implicitString: String = assumedString  // 不需要感叹号
 
@@ -351,7 +353,8 @@ if age > 10 {
 } else if age > 0 {
 //	print("You can ride the ferris wheel.")
 } else {
-	//assertionFailure("A person's age can't be less than zero.")
+//	assertionFailure("A person's age can't be less than zero.")
+//	fatalError("A person's age can't be less than zero.")
 }
 
 //: ### 强制执行先决条件
