@@ -112,6 +112,7 @@ let numbers = [16, 58, 510]
 
 let strings = numbers.map {
 	(number) -> String in
+	// 处理每一个元素，处理完后返回对应指定的返回值
 	var number = number
 	var output = ""
 	repeat {
@@ -171,7 +172,7 @@ incrementByTen()
 //: 一种能使闭包“逃逸”出函数的方法是，将这个闭包保存在一个函数外部定义的变量中。举个例子，很多启动异步操作的函数接受一个闭包参数作为 completion handler。这类函数会在异步操作开始之后立刻返回，但是闭包直到异步操作结束后才会被调用。在这种情况下，闭包需要“逃逸”出函数，因为闭包需要在函数返回之后被调用。（关键词：异步调用）例如：
 //:
 var completionHandlers: [() -> Void] = []
-func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> ()) {
 	completionHandlers.append(completionHandler)
 }
 
@@ -193,11 +194,11 @@ class SomeClass {
 
 let instance = SomeClass()
 instance.doSomething()
-print(instance.x)
+//print(instance.x)
 // 打印出 "200"
 
 completionHandlers.first?()
-print(instance.x)
+//print(instance.x)
 // 打印出 "100"
 
 //: ## 自动闭包
@@ -209,22 +210,22 @@ print(instance.x)
 //: 自动闭包让你能够延迟求值，因为直到你调用这个闭包，代码段才会被执行。延迟求值对于那些有副作用（Side Effect）和高计算成本的代码来说是很有益处的，因为它使得你能控制代码的执行时机。下面的代码展示了闭包如何延时求值。
 //:
 var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
-print(customersInLine.count)
+//print(customersInLine.count)
 // 打印出 "5"
 
 // 该闭包不接受任何参数，就像只是封装了一段代码
 let customerProvider = { customersInLine.remove(at: 0) }
-print(customersInLine.count)
+//print(customersInLine.count)
 // 打印出 "5"
 
-print("Now serving \(customerProvider())!")
+//print("Now serving \(customerProvider())!")
 // Prints "Now serving Chris!"
-print(customersInLine.count)
+//print(customersInLine.count)
 // 打印出 "4"
 
 // customersInLine is ["Alex", "Ewa", "Barry", "Daniella"]
 func serve(customer customerProvider: () -> String) {
-	print("Now serving \(customerProvider())!")
+//	print("Now serving \(customerProvider())!")
 }
 serve(customer: { customersInLine.remove(at: 0) } )
 // 打印出 "Now serving Alex!"
@@ -233,7 +234,7 @@ serve(customer: { customersInLine.remove(at: 0) } )
 //:
 // customersInLine is ["Ewa", "Barry", "Daniella"]
 func serve(customer customerProvider: @autoclosure () -> String) {
-	print("Now serving \(customerProvider())!")
+//	print("Now serving \(customerProvider())!")
 }
 // 传递 @autoclosure 的参数，甚至都不需要花括号
 serve(customer: customersInLine.remove(at: 0))
@@ -251,10 +252,10 @@ func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -> S
 collectCustomerProviders(customersInLine.remove(at: 0))
 collectCustomerProviders(customersInLine.remove(at: 0))
 
-print("Collected \(customerProviders.count) closures.")
+//print("Collected \(customerProviders.count) closures.")
 // 打印 "Collected 2 closures."
 for customerProvider in customerProviders {
-	print("Now serving \(customerProvider())!")
+//	print("Now serving \(customerProvider())!")
 }
 // 打印 "Now serving Barry!"
 // 打印 "Now serving Daniella!"
