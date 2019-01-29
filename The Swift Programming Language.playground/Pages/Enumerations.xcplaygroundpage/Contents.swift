@@ -62,19 +62,19 @@ default:
 //:
 
 // Xcode 10 以上可用
-//enum Beverage: CaseIterable {
-//	case coffee, tea, juice
-//}
-//let numberOfChoices = Beverage.allCases.count
+enum Beverage: CaseIterable {
+	case coffee, tea, juice
+}
+let numberOfChoices = Beverage.allCases.count
 //print("\(numberOfChoices) beverages available")
-//// 打印 "3 beverages available"
-//
-//for beverage in Beverage.allCases {
+// 打印 "3 beverages available"
+
+for beverage in Beverage.allCases {
 //	print(beverage)
-//}
-//// coffee
-//// tea
-//// juice
+}
+// coffee
+// tea
+// juice
 
 //: ## 关联值
 //:
@@ -149,7 +149,7 @@ if let somePlanet = Planet2(rawValue: positionToFind) {
 		print("Not a safe place for humans")
 	}
 } else {
-	print("There isn't a planet at position \(positionToFind)")
+//	print("There isn't a planet at position \(positionToFind)")
 }
 // 打印 "There isn't a planet at position 11"
 
@@ -194,7 +194,7 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 	}
 }
 
-print(evaluate(product))
+//print(evaluate(product))
 // 打印 "18"
 
 
