@@ -61,7 +61,7 @@ manager.data.append("Some data")
 manager.data.append("Some more data")
 // DataImporter 实例的 importer 属性还没有被创建
 
-print(manager.importer.fileName)
+//print(manager.importer.fileName)
 // DataImporter 实例的 importer 属性现在被创建了
 // 输出 "data.txt”
 
@@ -102,7 +102,7 @@ var square = Rect(origin: Point(x: 0.0, y: 0.0),
 				  size: Size(width: 10.0, height: 10.0))
 let initialSquareCenter = square.center
 square.center = Point(x: 15.0, y: 15.0)
-print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+//print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 // 打印 "square.origin is now at (10.0, 10.0)"
 
 //: ### 简化 Setter 声明
@@ -138,7 +138,7 @@ struct Cuboid {
 	}
 }
 let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
-print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
+//print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // 打印 "the volume of fourByFiveByTwo is 40.0"
 
 //: ## 属性观察器
@@ -161,11 +161,11 @@ print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 class StepCounter {
 	var totalSteps: Int = 0 {
 		willSet(newTotalSteps) {
-			print("About to set totalSteps to \(newTotalSteps)")
+//			print("About to set totalSteps to \(newTotalSteps)")
 		}
 		didSet {
 			if totalSteps > oldValue  {
-				print("Added \(totalSteps - oldValue) steps")
+//				print("Added \(totalSteps - oldValue) steps")
 			}
 		}
 	}
@@ -241,14 +241,14 @@ class SomeClass {
 //:
 //: 跟实例属性一样，类型属性也是通过点运算符来访问。但是，类型属性是通过类型本身来访问，而不是通过实例。比如：
 //:
-print(SomeStructure.storedTypeProperty)
+//print(SomeStructure.storedTypeProperty)
 // 打印 "Some value."
 SomeStructure.storedTypeProperty = "Another value."
-print(SomeStructure.storedTypeProperty)
+//print(SomeStructure.storedTypeProperty)
 // 打印 "Another value.”
-print(SomeEnumeration.computedTypeProperty)
+//print(SomeEnumeration.computedTypeProperty)
 // 打印 "6"
-print(SomeClass.computedTypeProperty)
+//print(SomeClass.computedTypeProperty)
 // 打印 "27"
 
 struct AudioChannel {
@@ -273,14 +273,14 @@ struct AudioChannel {
 var leftChannel = AudioChannel()
 var rightChannel = AudioChannel()
 leftChannel.currentLevel = 7
-print(leftChannel.currentLevel)
+//print(leftChannel.currentLevel)
 // 输出 "7"
-print(AudioChannel.maxInputLevelForAllChannels)
+//print(AudioChannel.maxInputLevelForAllChannels)
 // 输出 "7"
 rightChannel.currentLevel = 11
-print(rightChannel.currentLevel)
+//print(rightChannel.currentLevel)
 // 输出 "10"
-print(AudioChannel.maxInputLevelForAllChannels)
+//print(AudioChannel.maxInputLevelForAllChannels)
 // 输出 "10"
 
 
