@@ -61,13 +61,13 @@ let someVideoMode = VideoMode()
 //:
 //: 你可以通过使用*点语法*访问实例的属性。其语法规则是，实例名后面紧跟属性名，两者以点号（`.`）分隔，不带空格：
 //:
-print("The width of someResolution is \(someResolution.width)")
+//print("The width of someResolution is \(someResolution.width)")
 // 打印 "The width of someResolution is 0"
-print("The width of someVideoMode is \(someVideoMode.resolution.width)")
+//print("The width of someVideoMode is \(someVideoMode.resolution.width)")
 // 打印 "The width of someVideoMode is 0"
 
 someVideoMode.resolution.width = 1280
-print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
+//print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // 打印 "The width of someVideoMode is now 1280"
 
 //: ### 结构体类型的成员逐一构造器
@@ -88,10 +88,10 @@ let hd = Resolution(width: 1920, height: 1080)
 var cinema = hd
 
 cinema.width = 2048
-print("cinema is now  \(cinema.width) pixels wide")
+//print("cinema is now  \(cinema.width) pixels wide")
 // 打印 "cinema is now 2048 pixels wide"
 
-print("hd is still \(hd.width) pixels wide")
+//print("hd is still \(hd.width) pixels wide")
 // 打印 "hd is still 1920 pixels wide"
 
 enum CompassPoint {
@@ -104,8 +104,8 @@ var currentDirection = CompassPoint.west
 let rememberedDirection = currentDirection
 currentDirection.turnNorth()
 
-print("The current direction is \(currentDirection)")
-print("The remembered direction is \(rememberedDirection)")
+//print("The current direction is \(currentDirection)")
+//print("The remembered direction is \(rememberedDirection)")
 // 打印 "The current direction is north"
 // 打印 "The remembered direction is west"
 
@@ -122,7 +122,7 @@ tenEighty.frameRate = 25.0
 let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 
-print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
+//print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 // 打印 "The frameRate property of theEighty is now 30.0"
 
 //: ### 恒等运算符
@@ -133,7 +133,7 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 //: * 不相同（`!==`）
 //:
 if tenEighty === alsoTenEighty {
-	print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
+//	print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
 }
 // 打印 "tenEighty and alsoTenEighty refer to the same VideoMode instance."
 
