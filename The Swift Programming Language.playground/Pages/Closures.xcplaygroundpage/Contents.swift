@@ -102,6 +102,17 @@ aa(b: "sssColumn") { b in
 	
 }
 
+func aaa(a: () -> (), b: (String) -> Void, c: () -> Int) {
+	
+}
+aaa(a: {
+	
+}, b: { a in
+	
+}) { () -> Int in
+	return 1
+}
+
 //: 当闭包非常长以至于不能在一行中进行书写时，尾随闭包变得非常有用。举例来说，Swift 的 `Array` 类型有一个 `map(_:)` 方法，这个方法获取一个闭包表达式作为其唯一参数。该闭包函数会为数组中的每一个元素调用一次，并返回该元素所映射的值。具体的映射方式和返回值类型由闭包来指定。
 //:
 let digitNames = [
@@ -172,7 +183,7 @@ incrementByTen()
 //: 一种能使闭包“逃逸”出函数的方法是，将这个闭包保存在一个函数外部定义的变量中。举个例子，很多启动异步操作的函数接受一个闭包参数作为 completion handler。这类函数会在异步操作开始之后立刻返回，但是闭包直到异步操作结束后才会被调用。在这种情况下，闭包需要“逃逸”出函数，因为闭包需要在函数返回之后被调用。（关键词：异步调用）例如：
 //:
 var completionHandlers: [() -> Void] = []
-func someFunctionWithEscapingClosure(completionHandler: @escaping () -> ()) {
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -> Void) {
 	completionHandlers.append(completionHandler)
 }
 
