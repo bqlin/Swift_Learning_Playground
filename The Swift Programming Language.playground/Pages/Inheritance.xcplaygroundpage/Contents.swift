@@ -22,7 +22,7 @@ class Vehicle {
 }
 
 let someVehicle = Vehicle()
-print("Vehicle: \(someVehicle.description)")
+//print("Vehicle: \(someVehicle.description)")
 // 打印 "Vehicle: traveling at 0.0 miles per hour"
 
 //: ## 子类生成
@@ -33,7 +33,7 @@ class Bicycle: Vehicle {
 let bicycle = Bicycle()
 bicycle.hasBasket = true
 bicycle.currentSpeed = 15.0
-print("Bicycle: \(bicycle.description)")
+//print("Bicycle: \(bicycle.description)")
 // 打印 "Bicycle: traveling at 15.0 miles per hour"
 
 class Tandem: Bicycle {
@@ -43,7 +43,7 @@ let tandem = Tandem()
 tandem.hasBasket = true
 tandem.currentNumberOfPassengers = 2
 tandem.currentSpeed = 22.0
-print("Tandem: \(tandem.description)")
+//print("Tandem: \(tandem.description)")
 // 打印："Tandem: traveling at 22.0 miles per hour"
 
 //: ## 重写
@@ -68,7 +68,7 @@ print("Tandem: \(tandem.description)")
 //:
 class Train: Vehicle {
 	override func makeNoise() {
-		print("Choo Choo")
+//		print("Choo Choo")
 	}
 }
 let train = Train()
@@ -96,7 +96,7 @@ class Car: Vehicle {
 let car = Car()
 car.currentSpeed = 25.0
 car.gear = 3
-print("Car: \(car.description)")
+//print("Car: \(car.description)")
 // 打印 "Car: traveling at 25.0 miles per hour in gear 3"
 
 //: #### 重写属性观察器
@@ -114,9 +114,33 @@ class AutomaticCar: Car {
 }
 let automatic = AutomaticCar()
 automatic.currentSpeed = 35.0
-print("AutomaticCar: \(automatic.description)")
+//print("AutomaticCar: \(automatic.description)")
 // 打印 "AutomaticCar: traveling at 35.0 miles per hour in gear 4"
 
+class Aaa {
+	internal(set) var a: Int
+	var b: Int {
+		get {
+			return a
+		}
+	}
+	init() {
+		a = 0
+	}
+}
+class Bbb: Aaa {
+	override var b: Int {
+		set {
+			self.a = newValue
+		}
+		get {
+			return super.b
+		}
+	}
+}
+
+var aa = Bbb()
+aa.b = 45
 //: ## 防止重写
 //:
 //: 你可以通过把方法，属性或下标标记为 *`final`* 来防止它们被重写，只需要在声明关键字前加上 `final` 修饰符即可（例如：`final var`、`final func`、`final class func` 以及 `final subscript`）。
