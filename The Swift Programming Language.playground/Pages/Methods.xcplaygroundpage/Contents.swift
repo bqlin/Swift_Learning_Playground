@@ -45,7 +45,7 @@ struct Point {
 }
 let somePoint = Point(x: 4.0, y: 5.0)
 if somePoint.isToTheRightOfX(1.0) {
-	print("This point is to the right of the line where x == 1.0")
+//	print("This point is to the right of the line where x == 1.0")
 }
 // 打印 "This point is to the right of the line where x == 1.0"
 
@@ -66,7 +66,7 @@ struct Point2 {
 }
 var somePoint2 = Point2(x: 1.0, y: 1.0)
 somePoint2.moveByX(2.0, y: 3.0)
-print("The point is now at (\(somePoint2.x), \(somePoint2.y))")
+//print("The point is now at (\(somePoint2.x), \(somePoint2.y))")
 // 打印 "The point is now at (3.0, 4.0)"
 
 //: 注意，不能在结构体类型的常量（a constant of structure type）上调用可变方法，因为其属性不能被改变，即使属性是变量属性，详情参见[常量结构体的存储属性](Properties)：
@@ -134,7 +134,7 @@ struct LevelTracker {
 	}
 }
 
-//: 为了便于管理 `currentLevel` 属性，`LevelTracker` 定义了实例方法 `advance(to:)`。这个方法会在更新 `currentLevel` 之前检查所请求的新等级是否已经解锁。`advance(to:)` 方法返回布尔值以指示是否能够设置 `currentLevel`。因为允许在调用 `advance(to:)` 时候忽略返回值，不会产生编译警告，所以函数被标注为 `@discardableResult` 属性，更多关于属性信息，请参考[属性](Attributes章节。
+//: 为了便于管理 `currentLevel` 属性，`LevelTracker` 定义了实例方法 `advance(to:)`。这个方法会在更新 `currentLevel` 之前检查所请求的新等级是否已经解锁。`advance(to:)` 方法返回布尔值以指示是否能够设置 `currentLevel`。因为允许在调用 `advance(to:)` 时候忽略返回值，不会产生编译警告，所以函数被标注为 `@discardableResult` 属性，更多关于属性信息，请参考[属性](Attributes)章节。
 //:
 class Player {
 	var tracker = LevelTracker()
@@ -149,14 +149,14 @@ class Player {
 }
 var player = Player(name: "Argyrios")
 player.complete(level: 1)
-print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
+//print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
 // 打印 "highest unlocked level is now 2"
 
 player = Player(name: "Beto")
 if player.tracker.advance(to: 6) {
-	print("player is now on level 6")
+//	print("player is now on level 6")
 } else {
-	print("level 6 has not yet been unlocked")
+//	print("level 6 has not yet been unlocked")
 }
 // 打印 "level 6 has not yet been unlocked"
 
