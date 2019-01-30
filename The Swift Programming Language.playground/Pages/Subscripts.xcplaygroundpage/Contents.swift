@@ -23,7 +23,7 @@ struct TimesTable {
 	}
 }
 let threeTimesTable = TimesTable(multiplier: 3)
-print("six times three is \(threeTimesTable[6])")
+//print("six times three is \(threeTimesTable[6])")
 // 打印 "six times three is 18"
 
 //: > `TimesTable` 例子基于一个固定的数学公式，对 `threeTimesTable[someIndex]` 进行赋值操作并不合适，因此下标定义为只读的。
