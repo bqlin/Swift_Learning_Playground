@@ -25,18 +25,18 @@ let john = Person()
 // 这会引发运行时错误
 
 if let roomCount = john.residence?.numberOfRooms {
-	print("John's residence has \(roomCount) room(s).")
+//	print("John's residence has \(roomCount) room(s).")
 } else {
-	print("Unable to retrieve the number of rooms.")
+//	print("Unable to retrieve the number of rooms.")
 }
 // 打印“Unable to retrieve the number of rooms.”
 
 john.residence = Residence()
 
 if let roomCount = john.residence?.numberOfRooms {
-	print("John's residence has \(roomCount) room(s).")
+//	print("John's residence has \(roomCount) room(s).")
 } else {
-	print("Unable to retrieve the number of rooms.")
+//	print("Unable to retrieve the number of rooms.")
 }
 // 打印“John's residence has 1 room(s).”
 
@@ -62,7 +62,7 @@ class Residence2 {
 		}
 	}
 	func printNumberOfRooms() {
-		print("The number of rooms is \(numberOfRooms)")
+//		print("The number of rooms is \(numberOfRooms)")
 	}
 	var address: Address?
 }
@@ -93,9 +93,9 @@ class Address {
 //:
 let john2 = Person2()
 if let roomCount = john2.residence?.numberOfRooms {
-	print("John's residence has \(roomCount) room(s).")
+//	print("John's residence has \(roomCount) room(s).")
 } else {
-	print("Unable to retrieve the number of rooms.")
+//	print("Unable to retrieve the number of rooms.")
 }
 // 打印 “Unable to retrieve the number of rooms.”
 
@@ -109,7 +109,7 @@ john2.residence?.address = someAddress
 //: 上面代码中的赋值过程是可选链式调用的一部分，这意味着可选链式调用失败时，等号右侧的代码不会被执行。对于上面的代码来说，很难验证这一点，因为像这样赋值一个常量没有任何副作用。下面的代码完成了同样的事情，但是它使用一个函数来创建 `Address` 实例，然后将该实例返回用于赋值。该函数会在返回前打印“Function was called”，这使你能验证等号右侧的代码是否被执行。
 //:
 func createAddress() -> Address {
-	print("Function was called.")
+//	print("Function was called.")
 	
 	let someAddress = Address()
 	someAddress.buildingNumber = "29"
@@ -129,16 +129,16 @@ john2.residence?.address = createAddress()
 //: 通过判断返回值是否为 `nil` 可以判断调用是否成功：
 //:
 if john2.residence?.printNumberOfRooms() != nil {
-	print("It was possible to print the number of rooms.")
+//	print("It was possible to print the number of rooms.")
 } else {
-	print("It was not possible to print the number of rooms.")
+//	print("It was not possible to print the number of rooms.")
 }
 // 打印 “It was not possible to print the number of rooms.”
 
 if (john2.residence?.address = someAddress) != nil {
-	print("It was possible to set the address.")
+//	print("It was possible to set the address.")
 } else {
-	print("It was not possible to set the address.")
+//	print("It was not possible to set the address.")
 }
 // 打印 “It was not possible to set the address.”
 
@@ -149,9 +149,9 @@ if (john2.residence?.address = someAddress) != nil {
 //: > 通过可选链式调用访问可选值的下标时，应该将问号放在下标方括号的前面而不是后面。可选链式调用的问号一般直接跟在可选表达式的后面。
 //:
 if let firstRoomName = john2.residence?[0].name {
-	print("The first room name is \(firstRoomName).")
+//	print("The first room name is \(firstRoomName).")
 } else {
-	print("Unable to retrieve the first room name.")
+//	print("Unable to retrieve the first room name.")
 }
 // 打印 “Unable to retrieve the first room name.”
 
@@ -161,9 +161,9 @@ johnsHouse.rooms.append(Room(name: "Kitchen"))
 john2.residence = johnsHouse
 
 if let firstRoomName = john2.residence?[0].name {
-	print("The first room name is \(firstRoomName).")
+//	print("The first room name is \(firstRoomName).")
 } else {
-	print("Unable to retrieve the first room name.")
+//	print("Unable to retrieve the first room name.")
 }
 // 打印 “The first room name is Living Room.”
 
@@ -191,9 +191,9 @@ testScores["Brian"]?[0] = 72
 //: + 类似的，通过可选链式调用访问 `Int?` 值，依旧会返回 `Int?` 值，并不会返回 `Int??`。
 //:
 if let johnsStreet = john2.residence?.address?.street {
-	print("John's street name is \(johnsStreet).")
+//	print("John's street name is \(johnsStreet).")
 } else {
-	print("Unable to retrieve the address.")
+//	print("Unable to retrieve the address.")
 }
 // 打印 “Unable to retrieve the address.”
 
@@ -203,9 +203,9 @@ johnsAddress.street = "Laurel Street"
 john2.residence?.address = johnsAddress
 
 if let johnsStreet = john2.residence?.address?.street {
-	print("John's street name is \(johnsStreet).")
+//	print("John's street name is \(johnsStreet).")
 } else {
-	print("Unable to retrieve the address.")
+//	print("Unable to retrieve the address.")
 }
 // 打印 “John's street name is Laurel Street.”
 
@@ -214,16 +214,16 @@ if let johnsStreet = john2.residence?.address?.street {
 //: 上面的例子展示了如何在一个可选值上通过可选链式调用来获取它的属性值。我们还可以在一个可选值上通过可选链式调用来调用方法，并且可以根据需要继续在方法的可选返回值上进行可选链式调用。
 //:
 if let buildingIdentifier = john2.residence?.address?.buildingIdentifier() {
-	print("John's building identifier is \(buildingIdentifier).")
+//	print("John's building identifier is \(buildingIdentifier).")
 }
 // 打印 “John's building identifier is The Larches.”
 
 if let beginsWithThe =
 	john2.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
 	if beginsWithThe {
-		print("John's building identifier begins with \"The\".")
+//		print("John's building identifier begins with \"The\".")
 	} else {
-		print("John's building identifier does not begin with \"The\".")
+//		print("John's building identifier does not begin with \"The\".")
 	}
 }
 // 打印 “John's building identifier begins with "The".”
