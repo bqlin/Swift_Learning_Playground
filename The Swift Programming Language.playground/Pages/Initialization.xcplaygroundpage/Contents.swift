@@ -24,7 +24,7 @@ struct Fahrenheit {
 	}
 }
 var f = Fahrenheit()
-print("The default temperature is \(f.temperature)° Fahrenheit")
+//print("The default temperature is \(f.temperature)° Fahrenheit")
 // 打印 "The default temperature is 32.0° Fahrenheit"
 
 //: ### 默认属性值
@@ -73,6 +73,9 @@ struct Color {
 		self.green = green
 		self.blue  = blue
 	}
+	init(r: Double, g: Double, b: Double) {
+		red = r; green = g; blue = b
+	}
 	init(white: Double) {
 		red   = white
 		green = white
@@ -109,7 +112,7 @@ class SurveyQuestion {
 		self.text = text
 	}
 	func ask() {
-		print(text)
+//		print(text)
 	}
 }
 
@@ -131,7 +134,7 @@ class SurveyQuestion2 {
 		self.text = text
 	}
 	func ask() {
-		print(text)
+//		print(text)
 	}
 }
 let beetsQuestion = SurveyQuestion2(text: "How about beets?")
@@ -188,7 +191,9 @@ struct Rect {
 	init(center: Point, size: Size) {
 		let originX = center.x - (size.width / 2)
 		let originY = center.y - (size.height / 2)
-		self.init(origin: Point(x: originX, y: originY), size: size)
+		self.origin = Point(x: originX, y: originY)
+		self.size = size
+//		self.init(origin: Point(x: originX, y: originY), size: size)
 	}
 }
 
@@ -325,7 +330,7 @@ class Vehicle {
 //: `Vehicle` 类只为存储型属性提供默认值，也没有提供自定义构造器。因此，它会自动获得一个默认构造器，具体内容请参考[默认构造器](#default_initializers)。默认构造器（如果有的话）总是类中的指定构造器，可以用于创建 `numberOfWheels` 为 `0` 的 `Vehicle`
 //:
 let vehicle = Vehicle()
-print("Vehicle: \(vehicle.description)")
+//print("Vehicle: \(vehicle.description)")
 // Vehicle: 0 wheel(s)
 
 //: 下面例子中定义了一个 `Vehicle` 的子类 `Bicycle`：
@@ -344,7 +349,7 @@ class Bicycle: Vehicle {
 //: 如果你创建一个 `Bicycle` 实例，你可以调用继承的 `description` 计算型属性去查看属性 `numberOfWheels` 是否有改变：
 //:
 let bicycle = Bicycle()
-print("Bicycle: \(bicycle.description)")
+//print("Bicycle: \(bicycle.description)")
 // 打印 "Bicycle: 2 wheel(s)"
 
 //: 如果父类的构造器没有在阶段 2 过程中做自定义操作，并且父类有一个无参数的自定义构造器。你可以在所有父类的存储属性赋值之后省略 `super.init()` 的调用。
@@ -362,7 +367,7 @@ class Hoverboard: Vehicle {
 	}
 }
 let hoverboard = Hoverboard(color: "silver")
-print("Hoverboard: \(hoverboard.description)")
+//print("Hoverboard: \(hoverboard.description)")
 // Hoverboard: 0 wheel(s) in a beautiful silver
 
 //: > 子类可以在构造过程修改继承来的变量属性，但是不能修改继承来的常量属性。
@@ -463,7 +468,7 @@ var breakfastList = [
 breakfastList[0].name = "Orange juice"
 breakfastList[0].purchased = true
 for item in breakfastList {
-	print(item.description)
+//	print(item.description)
 }
 // 1 x orange juice ✔
 // 1 x bacon ✘
@@ -487,7 +492,7 @@ let wholeNumber: Double = 12345.0
 let pi = 3.14159
 
 if let valueMaintained = Int(exactly: wholeNumber) {
-	print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
+//	print("\(wholeNumber) conversion to Int maintains value of \(valueMaintained)")
 }
 // 打印 "12345.0 conversion to Int maintains value of 12345"
 
@@ -495,7 +500,7 @@ let valueChanged = Int(exactly: pi)
 // valueChanged 是 Int? 类型，不是 Int 类型
 
 if valueChanged == nil {
-	print("\(pi) conversion to Int does not maintain value")
+//	print("\(pi) conversion to Int does not maintain value")
 }
 // 打印 "3.14159 conversion to Int does not maintain value"
 
@@ -513,7 +518,7 @@ let someCreature = Animal(species: "Giraffe")
 // someCreature 的类型是 Animal? 而不是 Animal
 
 if let giraffe = someCreature {
-	print("An animal was initialized with a species of \(giraffe.species)")
+//	print("An animal was initialized with a species of \(giraffe.species)")
 }
 // 打印 "An animal was initialized with a species of Giraffe"
 
@@ -521,7 +526,7 @@ let anonymousCreature = Animal(species: "")
 // anonymousCreature 的类型是 Animal?, 而不是 Animal
 
 if anonymousCreature == nil {
-	print("The anonymous creature could not be initialized")
+//	print("The anonymous creature could not be initialized")
 }
 // 打印 "The anonymous creature could not be initialized"
 
@@ -549,13 +554,13 @@ enum TemperatureUnit {
 
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
-	print("This is a defined temperature unit, so initialization succeeded.")
+//	print("This is a defined temperature unit, so initialization succeeded.")
 }
 // 打印 "This is a defined temperature unit, so initialization succeeded."
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
-	print("This is not a defined temperature unit, so initialization failed.")
+//	print("This is not a defined temperature unit, so initialization failed.")
 }
 // 打印 "This is not a defined temperature unit, so initialization failed."
 
@@ -569,13 +574,13 @@ enum TemperatureUnit2: Character {
 
 let fahrenheitUnit2 = TemperatureUnit2(rawValue: "F")
 if fahrenheitUnit2 != nil {
-	print("This is a defined temperature unit, so initialization succeeded.")
+//	print("This is a defined temperature unit, so initialization succeeded.")
 }
 // 打印 "This is a defined temperature unit, so initialization succeeded."
 
 let unknownUnit2 = TemperatureUnit2(rawValue: "X")
 if unknownUnit2 == nil {
-	print("This is not a defined temperature unit, so initialization failed.")
+//	print("This is not a defined temperature unit, so initialization failed.")
 }
 // 打印 "This is not a defined temperature unit, so initialization failed."
 
@@ -605,21 +610,21 @@ class CartItem: Product {
 }
 
 if let twoSocks = CartItem(name: "sock", quantity: 2) {
-	print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+//	print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
 }
 // 打印 "Item: sock, quantity: 2"
 
 if let zeroShirts = CartItem(name: "shirt", quantity: 0) {
-	print("Item: \(zeroShirts.name), quantity: \(zeroShirts.quantity)")
+//	print("Item: \(zeroShirts.name), quantity: \(zeroShirts.quantity)")
 } else {
-	print("Unable to initialize zero shirts")
+//	print("Unable to initialize zero shirts")
 }
 // 打印 "Unable to initialize zero shirts"
 
 if let oneUnnamed = CartItem(name: "", quantity: 1) {
-	print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
+//	print("Item: \(oneUnnamed.name), quantity: \(oneUnnamed.quantity)")
 } else {
-	print("Unable to initialize one unnamed product")
+//	print("Unable to initialize one unnamed product")
 }
 // 打印 "Unable to initialize one unnamed product"
 
@@ -732,9 +737,9 @@ struct Chessboard {
 }
 
 let board = Chessboard()
-print(board.squareIsBlackAt(row: 0, column: 1))
+//print(board.squareIsBlackAt(row: 0, column: 1))
 // 打印 "true"
-print(board.squareIsBlackAt(row: 7, column: 7))
+//print(board.squareIsBlackAt(row: 7, column: 7))
 // 打印 "false”
 
 //: [上一页](@previous) | [下一页](@next)
