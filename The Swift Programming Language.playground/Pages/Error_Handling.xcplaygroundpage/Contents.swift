@@ -73,7 +73,7 @@ class VendingMachine {
 		newItem.count -= 1
 		inventory[name] = newItem
 		
-		print("Dispensing \(name)")
+//		print("Dispensing \(name)")
 	}
 }
 
@@ -119,15 +119,15 @@ var vendingMachine = VendingMachine()
 vendingMachine.coinsDeposited = 8
 do {
 	try buyFavoriteSnack(person: "Alice", vendingMachine: vendingMachine)
-	print("Success! Yum.")
+//	print("Success! Yum.")
 } catch VendingMachineError.invalidSelection {
-	print("Invalid Selection.")
+//	print("Invalid Selection.")
 } catch VendingMachineError.outOfStock {
-	print("Out of Stock.")
+//	print("Out of Stock.")
 } catch VendingMachineError.insufficientFunds(let coinsNeeded) {
-	print("Insufficient funds. Please insert an additional \(coinsNeeded) coins.")
+//	print("Insufficient funds. Please insert an additional \(coinsNeeded) coins.")
 } catch {
-	print("Unexpected error: \(error).")
+//	print("Unexpected error: \(error).")
 }
 // 打印 “Insufficient funds. Please insert an additional 2 coins.”
 
@@ -138,14 +138,14 @@ func nourish(with item: String) throws {
 	do {
 		try vendingMachine.vend(itemNamed: item)
 	} catch is VendingMachineError {
-		print("Invalid selection, out of stock, or not enough money.")
+//		print("Invalid selection, out of stock, or not enough money.")
 	}
 }
 
 do {
 	try nourish(with: "Beet-Flavored Chips")
 } catch {
-	print("Unexpected non-vending-machine-related error: \(error)")
+//	print("Unexpected non-vending-machine-related error: \(error)")
 }
 // 打印 "Invalid selection, out of stock, or not enough money."
 
@@ -198,6 +198,26 @@ do {
 //		// close(file) 会在这里被调用，即作用域的最后。
 //	}
 //}
+
+func testDefer() {
+	defer {
+		print("defer 0")
+	}
+	{
+		let i = 45
+		let ii = 45 ^ 2
+		defer {
+			print("defer 00")
+		}
+	}()
+	defer {
+		print("defer 1")
+	}
+	defer {
+		print("defer 2")
+	}
+}
+testDefer()
 
 //: 上面的代码使用一条 `defer` 语句来确保 `open(_:)` 函数有一个相应的对 `close(_:)` 函数的调用。
 //:
