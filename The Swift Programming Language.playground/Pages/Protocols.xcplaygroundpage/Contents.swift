@@ -91,9 +91,9 @@ class LinearCongruentialGenerator: RandomNumberGenerator {
 	}
 }
 let generator = LinearCongruentialGenerator()
-print("Here's a random number: \(generator.random())")
+//print("Here's a random number: \(generator.random())")
 // 打印“Here's a random number: 0.37464991998171”
-print("And another one: \(generator.random())")
+//print("And another one: \(generator.random())")
 // 打印“And another one: 0.729023776863283”
 
 //: ## 异变方法要求
@@ -195,7 +195,7 @@ class Dice {
 
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
 for _ in 1...5 {
-	print("Random dice roll is \(d6.roll())")
+//	print("Random dice roll is \(d6.roll())")
 }
 // Random dice roll is 3
 // Random dice roll is 5
@@ -253,16 +253,16 @@ class DiceGameTracker: DiceGameDelegate {
 	func gameDidStart(_ game: DiceGame) {
 		numberOfTurns = 0
 		if game is SnakesAndLadders {
-			print("Started a new game of Snakes and Ladders")
+//			print("Started a new game of Snakes and Ladders")
 		}
-		print("The game is using a \(game.dice.sides)-sided dice")
+//		print("The game is using a \(game.dice.sides)-sided dice")
 	}
 	func game(_ game: DiceGame, didStartNewTurnWithDiceRoll diceRoll: Int) {
 		numberOfTurns += 1
-		print("Rolled a \(diceRoll)")
+//		print("Rolled a \(diceRoll)")
 	}
 	func gameDidEnd(_ game: DiceGame) {
-		print("The game lasted for \(numberOfTurns) turns")
+//		print("The game lasted for \(numberOfTurns) turns")
 	}
 }
 
@@ -295,7 +295,7 @@ extension Dice: TextRepresentable {
 }
 
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
-print(d12.textualDescription)
+//print(d12.textualDescription)
 // 打印“A 12-sided dice”
 
 extension SnakesAndLadders: TextRepresentable {
@@ -303,7 +303,7 @@ extension SnakesAndLadders: TextRepresentable {
 		return "A game of Snakes and Ladders with \(finalSquare) squares"
 	}
 }
-print(game.textualDescription)
+//print(game.textualDescription)
 // 打印“A game of Snakes and Ladders with 25 squares”
 
 //: ## 有条件地遵循协议
@@ -317,7 +317,7 @@ extension Array: TextRepresentable where Element: TextRepresentable {
 	}
 }
 let myDice = [d6, d12]
-print(myDice.textualDescription)
+//print(myDice.textualDescription)
 // 打印“[A 6-sided dice, A 12-sided dice]”
 
 //: ## 在扩展里声明遵循协议
@@ -334,7 +334,7 @@ extension Hamster: TextRepresentable {}
 
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
-print(somethingTextRepresentable.textualDescription)
+//print(somethingTextRepresentable.textualDescription)
 // 打印“A hamster named Simon”
 
 //: ## 协议类型的集合
@@ -344,7 +344,7 @@ print(somethingTextRepresentable.textualDescription)
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 
 for thing in things {
-	print(thing.textualDescription)
+//	print(thing.textualDescription)
 }
 // A game of Snakes and Ladders with 25 squares
 // A 12-sided dice
@@ -379,7 +379,7 @@ extension SnakesAndLadders: PrettyTextRepresentable {
 	}
 }
 
-print(game.prettyTextualDescription)
+//print(game.prettyTextualDescription)
 // A game of Snakes and Ladders with 25 squares:
 // ○ ○ ▲ ○ ○ ▲ ○ ○ ▲ ▲ ○ ○ ○ ▼ ○ ○ ○ ○ ▼ ○ ○ ▼ ○ ▼ ○
 
@@ -412,7 +412,7 @@ struct Person2: Named, Aged {
 	var age: Int
 }
 func wishHappyBirthday(to celebrator: Named & Aged) {
-	print("Happy birthday, \(celebrator.name), you're \(celebrator.age)!")
+//	print("Happy birthday, \(celebrator.name), you're \(celebrator.age)!")
 }
 let birthdayPerson = Person2(name: "Malcolm", age: 21)
 wishHappyBirthday(to: birthdayPerson)
@@ -434,7 +434,7 @@ class City: Location, Named {
 	}
 }
 func beginConcert(in location: Location & Named) {
-	print("Hello, \(location.name)!")
+//	print("Hello, \(location.name)!")
 }
 
 let seattle = City(name: "Seattle", latitude: 47.6, longitude: -122.3)
@@ -477,9 +477,9 @@ let objects: [AnyObject] = [
 
 for object in objects {
 	if let objectWithArea = object as? HasArea {
-		print("Area is \(objectWithArea.area)")
+//		print("Area is \(objectWithArea.area)")
 	} else {
-		print("Something that doesn't have an area")
+//		print("Something that doesn't have an area")
 	}
 }
 // Area is 12.5663708
@@ -522,7 +522,7 @@ var counter = Counter()
 counter.dataSource = ThreeSource()
 for _ in 1...4 {
 	counter.increment()
-	print(counter.count)
+//	print(counter.count)
 }
 // 3
 // 6
@@ -545,7 +545,7 @@ counter.count = -4
 counter.dataSource = TowardsZeroSource()
 for _ in 1...5 {
 	counter.increment()
-	print(counter.count)
+//	print(counter.count)
 }
 // -3
 // -2
@@ -563,9 +563,9 @@ extension RandomNumberGenerator {
 	}
 }
 
-print("Here's a random number: \(generator.random())")
+//print("Here's a random number: \(generator.random())")
 // 打印“Here's a random number: 0.37464991998171”
-print("And here's a random Boolean: \(generator.randomBool())")
+//print("And here's a random Boolean: \(generator.randomBool())")
 // 打印“And here's a random Boolean: true”
 
 //: ### 提供默认实现
@@ -598,9 +598,9 @@ extension Collection where Element: Equatable {
 let equalNumbers = [100, 100, 100, 100, 100]
 let differentNumbers = [100, 100, 200, 100, 200]
 
-print(equalNumbers.allEqual())
+//print(equalNumbers.allEqual())
 // 打印“true”
-print(differentNumbers.allEqual())
+//print(differentNumbers.allEqual())
 // 打印“false”
 
 //: > 如果一个遵循的类型满足了为同一方法或属性提供实现的多个限制型扩展的要求， Swift 使用这个实现方法去匹配那个最特殊的限制。
