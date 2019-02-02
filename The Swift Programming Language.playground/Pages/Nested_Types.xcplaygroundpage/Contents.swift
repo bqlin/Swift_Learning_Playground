@@ -44,7 +44,7 @@ struct BlackjackCard {
 }
 
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
-print("theAceOfSpades: \(theAceOfSpades.description)")
+//print("theAceOfSpades: \(theAceOfSpades.description)")
 // 打印 “theAceOfSpades: suit is ♠, value is 1 or 11”
 
 //: ## 引用嵌套类型
