@@ -15,7 +15,7 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
 var someInt = 3
 var anotherInt = 107
 swapTwoInts(&someInt, &anotherInt)
-print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+//print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 // 打印“someInt is now 107, and anotherInt is now 3”
 
 func swapTwoStrings(_ a: inout String, _ b: inout String) {
@@ -108,7 +108,7 @@ extension Stack {
 }
 
 if let topItem = stackOfStrings.topItem {
-	print("The top item on the stack is \(topItem).")
+//	print("The top item on the stack is \(topItem).")
 }
 // 打印“The top item on the stack is tres.”
 
@@ -139,7 +139,7 @@ func findIndex(ofString valueToFind: String, in array: [String]) -> Int? {
 
 let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
 if let foundIndex = findIndex(ofString: "llama", in: strings) {
-	print("The index of llama is \(foundIndex)")
+//	print("The index of llama is \(foundIndex)")
 }
 // 打印“The index of llama is 2”
 
@@ -295,9 +295,9 @@ stackOfStrings2.push("tres")
 var arrayOfStrings = ["uno", "dos", "tres"]
 
 if allItemsMatch(stackOfStrings2, arrayOfStrings) {
-	print("All items match.")
+//	print("All items match.")
 } else {
-	print("Not all items match.")
+//	print("Not all items match.")
 }
 // 打印“All items match.”
 
@@ -313,9 +313,9 @@ extension Stack2 where Element: Equatable {
 }
 
 if stackOfStrings2.isTop("tres") {
-	print("Top element is tres.")
+//	print("Top element is tres.")
 } else {
-	print("Top element is something else.")
+//	print("Top element is something else.")
 }
 // 打印“Top element is tres.”
 
@@ -326,9 +326,9 @@ extension Container where Item: Equatable {
 }
 
 if [9, 9, 9].startsWith(42) {
-	print("Starts with 42.")
+//	print("Starts with 42.")
 } else {
-	print("Starts with something else.")
+//	print("Starts with something else.")
 }
 // 打印“Starts with something else.”
 
@@ -341,7 +341,7 @@ extension Container where Item == Double {
 		return sum / Double(count)
 	}
 }
-print([1260.0, 1200.0, 98.6, 37.0].average())
+//print([1260.0, 1200.0, 98.6, 37.0].average())
 // 打印“648.9”
 
 //: 就像可以在其他地方写泛型 `where` 子句一样，你可以在一个泛型 `where` 子句中包含多个条件作为扩展的一部分。用逗号分隔列表中的每个条件。
