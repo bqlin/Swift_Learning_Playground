@@ -54,7 +54,7 @@ for item in library {
 	}
 }
 
-print("Media library contains \(movieCount) movies and \(songCount) songs")
+//print("Media library contains \(movieCount) movies and \(songCount) songs")
 // 打印 "Media library contains 2 movies and 3 songs"
 
 //: ## 向下转型
@@ -65,9 +65,9 @@ print("Media library contains \(movieCount) movies and \(songCount) songs")
 //:
 for item in library {
 	if let movie = item as? Movie {
-		print("Movie: \(movie.name), dir. \(movie.director)")
+//		print("Movie: \(movie.name), dir. \(movie.director)")
 	} else if let song = item as? Song {
-		print("Song: \(song.name), by \(song.artist)")
+//		print("Song: \(song.name), by \(song.artist)")
 	}
 }
 
