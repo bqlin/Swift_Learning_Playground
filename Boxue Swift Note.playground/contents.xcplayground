@@ -4,5 +4,6 @@
         <page name='Cover'/>
         <page name='Swift基础'/>
         <page name='数组'/>
+        <page name='字典'/>
     </pages>
 </playground>
