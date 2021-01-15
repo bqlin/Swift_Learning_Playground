@@ -6,5 +6,6 @@
         <page name='数组'/>
         <page name='字典'/>
         <page name='集合'/>
+        <page name='样式匹配'/>
     </pages>
 </playground>
