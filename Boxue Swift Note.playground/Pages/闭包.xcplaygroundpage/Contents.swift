@@ -196,4 +196,100 @@ func mergeSortExp() {
 }
 mergeSortExp()
 
+//: 通过Swift类型系统模拟OC的NSSortDescriptor
+
+// 测试数据
+final class Episode: NSObject {
+    @objc var title: String
+    @objc var type: String
+    @objc var length: Int
+    
+    override var description: String {
+        return title as String + "\t" + type as String + "\t" + String(length)
+    }
+    
+    init(title: String, type: String, length: Int) {
+        self.title = title
+        self.type = type
+        self.length = length
+    }
+}
+let episodes = [
+    Episode(title: "title 1", type: "Free", length: 520),
+    Episode(title: "title 4", type: "Paid", length: 500),
+    Episode(title: "title 2", type: "Free", length: 330),
+    Episode(title: "title 5", type: "Paid", length: 260),
+    Episode(title: "title 3", type: "Free", length: 240),
+    Episode(title: "title 6", type: "Paid", length: 390),
+]
+
+// 在OC中使用NSSortDescriptor
+func sortWithNSSortDescriptor() {
+    // 按 type 排序
+    let typeDescription = NSSortDescriptor(key: #keyPath(Episode.type), ascending: true, selector: #selector(NSString.localizedCompare(_:)))
+    // 转换为 NSArray 进行排序
+    print("按 type 排序：")
+    (episodes as NSArray).sortedArray(using: [typeDescription]).forEach {
+        print($0 as! Episode)
+    }
+    
+    // 按视频时长继续排序
+    print("按视频时长继续排序：")
+    let lengthDescriptor = NSSortDescriptor(key: #keyPath(Episode.length), ascending: true)
+    (episodes as NSArray).sortedArray(using: [typeDescription, lengthDescriptor]).forEach {
+        print($0 as! Episode)
+    }
+}
+
+// 使用函数类型表示NSSortDescriptor的排序函数，并将排序的数据模型扩展到更常用的Swift结构体
+typealias SortDescriptor<T> = (T, T) -> Bool
+
+// 对泛型的对象，而不是泛型排序
+func makeDescriptor<Key, Value>(
+    key: @escaping (Key) -> Value, _ isAscending: @escaping (Value, Value) -> Bool
+) -> SortDescriptor<Key> {
+    return { isAscending(key($0), key($1)) }
+}
+
+// 进行排序
+func sortWithTypeExp() {
+    //let myLengthDescriptor: SortDescriptor<Episode> = makeDescriptor(key: { $0.length }, <)
+    let myTypeDescriptor: SortDescriptor<Episode> = makeDescriptor(key: { $0.type }, {
+        $0.localizedCompare($1) == .orderedAscending
+    })
+    print("由 swift 实现的 descriptor 实现排序：")
+    episodes.sorted(by: myTypeDescriptor).forEach {
+        print($0)
+    }
+}
+sortWithTypeExp()
+
+// 合并多个排序条件
+func combine<T>(rules: [SortDescriptor<T>]) -> SortDescriptor<T> {
+    return { l, r in
+        for rule in rules {
+            if rule(l, r) {
+                return true
+            }
+            
+            if rule(r, l) {
+                return false
+            }
+        }
+        
+        return false
+    }
+}
+
+func sortWithTypeExp2() {
+    let myLengthDescriptor: SortDescriptor<Episode> = makeDescriptor(key: { $0.length }, <)
+    let myTypeDescriptor: SortDescriptor<Episode> = makeDescriptor(key: { $0.type }, {
+        $0.localizedCompare($1) == .orderedAscending
+    })
+    let mixDescriptor = combine(rules: [myTypeDescriptor, myLengthDescriptor])
+    print("实现合并排序因子：")
+    episodes.sorted(by: mixDescriptor).forEach{ print($0) }
+}
+sortWithTypeExp2()
+
 //: [上一页](@previous) | [下一页](@next)
