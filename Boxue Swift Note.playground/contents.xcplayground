@@ -9,5 +9,6 @@
         <page name='样式匹配'/>
         <page name='函数'/>
         <page name='闭包'/>
+        <page name='Optional'/>
     </pages>
 </playground>

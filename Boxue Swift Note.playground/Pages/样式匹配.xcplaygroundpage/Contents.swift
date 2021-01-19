@@ -74,7 +74,7 @@ if case Direction.west(let direction) = west {
 }
 
 
-//: 自动提取可选值类型。输出都是具体的类型。
+//: 自动提取可选值类型。输出都是具体的类型。**注意这里是带?的**
 let skills: [String?] = ["Swift", nil, "PHP", "Javascript", nil]
 for case let skill? in skills {
     print(skill)
