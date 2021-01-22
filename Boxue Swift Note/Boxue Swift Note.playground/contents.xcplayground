@@ -10,5 +10,6 @@
         <page name='函数'/>
         <page name='闭包'/>
         <page name='Optional'/>
+        <page name='结构体的值语义与类的引用语义'/>
     </pages>
 </playground>

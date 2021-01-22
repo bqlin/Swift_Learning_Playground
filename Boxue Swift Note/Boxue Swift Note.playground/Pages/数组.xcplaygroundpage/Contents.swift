@@ -1,4 +1,5 @@
 import Foundation
+import Utils
 
 //: # 数组
 //: ## 数组的用法
@@ -14,7 +15,7 @@ var threeInts = [Int](repeating: 3, count: 3)
 // [3, 3, 3, 3, 3, 3]
 var sixInts = threeInts + threeInts
 // [1, 2, 3, 4, 5]
-var fiveInts = [1, 2, 3, 4, 5]
+var fiveInts = [1, 2, 3, 4, 5] 
 
 //: ### 访问数组元素，索引在 Swift 是最不被推荐的用法。
 fiveInts[0...2] // 这里获得的不是一个数组，而是一个 ArraySlice，类似于 String 的某一段内容的 view
@@ -77,13 +78,6 @@ type(of: emptys.first)
 emptys.popLast()
 
 //: ## Array 与 NSArray 的差异
-
-// 把 Array 内容的地址变成一个字符串
-func getBufferAddress<T>(of array: [T]) -> String {
-    return array.withUnsafeBufferPointer { buffer in
-        String(describing: buffer.baseAddress)
-    }
-}
 
 // 按值语义实现的 Array，区别于 NSArray
 var a = [1, 2, 3]
