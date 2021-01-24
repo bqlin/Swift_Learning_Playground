@@ -12,5 +12,6 @@
         <page name='Optional'/>
         <page name='结构体的值语义与类的引用语义'/>
         <page name='解决继承问题：基类的默认参数'/>
+        <page name='闭包的内存管理'/>
     </pages>
 </playground>
