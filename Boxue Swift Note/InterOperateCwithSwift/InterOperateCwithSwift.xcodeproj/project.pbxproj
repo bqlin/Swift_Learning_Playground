@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		036A50B325C10F0300F6EA88 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036A50B225C10F0300F6EA88 /* main.swift */; };
-		036A50BC25C10F5600F6EA88 /* traditional_c.c in Sources */ = {isa = PBXBuildFile; fileRef = 036A50BB25C10F5600F6EA88 /* traditional_c.c */; };
+		036A50C125C1118A00F6EA88 /* traditional_oc.m in Sources */ = {isa = PBXBuildFile; fileRef = 036A50C025C1118A00F6EA88 /* traditional_oc.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,8 +27,8 @@
 		036A50AF25C10F0300F6EA88 /* InterOperateCwithSwift */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InterOperateCwithSwift; sourceTree = BUILT_PRODUCTS_DIR; };
 		036A50B225C10F0300F6EA88 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		036A50B925C10F5600F6EA88 /* InterOperateCwithSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "InterOperateCwithSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		036A50BA25C10F5600F6EA88 /* traditional_c.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = traditional_c.h; sourceTree = "<group>"; };
-		036A50BB25C10F5600F6EA88 /* traditional_c.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = traditional_c.c; sourceTree = "<group>"; };
+		036A50BF25C1118A00F6EA88 /* traditional_oc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = traditional_oc.h; sourceTree = "<group>"; };
+		036A50C025C1118A00F6EA88 /* traditional_oc.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = traditional_oc.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +62,19 @@
 			isa = PBXGroup;
 			children = (
 				036A50B225C10F0300F6EA88 /* main.swift */,
-				036A50BA25C10F5600F6EA88 /* traditional_c.h */,
-				036A50BB25C10F5600F6EA88 /* traditional_c.c */,
 				036A50B925C10F5600F6EA88 /* InterOperateCwithSwift-Bridging-Header.h */,
+				036A50C325C111B200F6EA88 /* oc */,
 			);
 			path = InterOperateCwithSwift;
+			sourceTree = "<group>";
+		};
+		036A50C325C111B200F6EA88 /* oc */ = {
+			isa = PBXGroup;
+			children = (
+				036A50BF25C1118A00F6EA88 /* traditional_oc.h */,
+				036A50C025C1118A00F6EA88 /* traditional_oc.m */,
+			);
+			path = oc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,8 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				036A50C125C1118A00F6EA88 /* traditional_oc.m in Sources */,
 				036A50B325C10F0300F6EA88 /* main.swift in Sources */,
-				036A50BC25C10F5600F6EA88 /* traditional_c.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
