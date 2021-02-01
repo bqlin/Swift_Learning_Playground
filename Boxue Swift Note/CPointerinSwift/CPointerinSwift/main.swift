@@ -216,3 +216,4 @@ func cCallbackPointerExp() {
     }
 }
 cCallbackPointerExp()
+
