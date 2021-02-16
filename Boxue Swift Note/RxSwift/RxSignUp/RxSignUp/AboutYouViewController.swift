@@ -92,6 +92,15 @@ class AboutYouViewController: UIViewController {
         swiftLevel.rx.value.map { $0 != 0 }
             .bind(to: knowSwift.rx.value)
             .disposed(by: bag)
+        
+        /*:
+         实现点击加号的时候，让桃心变大，减号时，让桃心变小。
+         */
+        passionToLearn.rx.value.skip(1).subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            
+            self.heartHeight.constant = CGFloat($0 - 10)
+            }).disposed(by: bag)
     }
     
     deinit {
