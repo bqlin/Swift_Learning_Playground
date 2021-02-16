@@ -33,4 +33,10 @@ class InputValidator {
 
         return valid
     }
+    
+    class func isValidDate(_ date: Date) -> Bool {
+        let calendar = Calendar.current
+        let compare = calendar.compare(date, to: Date(), toGranularity: .day)
+        return compare == .orderedAscending
+    }
 }

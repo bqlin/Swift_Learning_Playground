@@ -42,25 +42,12 @@ class ViewController: UIViewController {
         }
 
         // 优化后的流程
-        let borderColor = { (valid: Bool) -> UIColor in
-            let color: UIColor = valid ? .green : .clear
 
-            return color
-        }
-
-        func initialSetup(textfield: UITextField!) {
-            textfield.layer.borderWidth = 1
-            textfield.layer.cornerRadius = 4
-        }
-
-        func setup(textfield: UITextField!, color: UIColor) {
-            textfield.layer.borderColor = color.cgColor
-        }
-
-        initialSetup(textfield: password)
+        initialSetup(view: password)
+        password.autocorrectionType = .no // 防止 [AutoFill] Cannot show Automatic Strong Passwords for app bundleID
         passwordObservale.map(borderColor).subscribe(onNext: { [weak self] in
             guard let self = self else { return }
-            setup(textfield: self.password, color: $0)
+            setupBorderColor(view: self.password, color: $0)
         }).disposed(by: bag)
 
         // 设置注册按钮
@@ -70,6 +57,6 @@ class ViewController: UIViewController {
     }
 
     deinit {
-        print("\(self) deinit")
+        print("\(#function) in \(type(of: self))")
     }
 }

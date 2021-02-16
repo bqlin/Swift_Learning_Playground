@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0324AE9925DB63250070A508 /* AboutYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324AE9825DB63250070A508 /* AboutYouViewController.swift */; };
+		0324AE9B25DB6C6C0070A508 /* ViewStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0324AE9A25DB6C6C0070A508 /* ViewStatus.swift */; };
 		038296CA25CD3F290067985E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038296C925CD3F290067985E /* AppDelegate.swift */; };
 		038296CC25CD3F290067985E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 038296CB25CD3F290067985E /* ViewController.swift */; };
 		038296CF25CD3F290067985E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038296CD25CD3F290067985E /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0324AE9825DB63250070A508 /* AboutYouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutYouViewController.swift; sourceTree = "<group>"; };
+		0324AE9A25DB6C6C0070A508 /* ViewStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStatus.swift; sourceTree = "<group>"; };
 		038296C625CD3F290067985E /* RxSignUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSignUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		038296C925CD3F290067985E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		038296CB25CD3F290067985E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,7 +78,9 @@
 			children = (
 				0361F1CE25CF82C10082A598 /* Utils */,
 				038296C925CD3F290067985E /* AppDelegate.swift */,
+				0324AE9A25DB6C6C0070A508 /* ViewStatus.swift */,
 				038296CB25CD3F290067985E /* ViewController.swift */,
+				0324AE9825DB63250070A508 /* AboutYouViewController.swift */,
 				038296E225CD42850067985E /* InputValidator.swift */,
 				038296CD25CD3F290067985E /* Main.storyboard */,
 				038296D025CD3F2C0067985E /* Assets.xcassets */,
@@ -163,6 +169,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0324AE9B25DB6C6C0070A508 /* ViewStatus.swift in Sources */,
+				0324AE9925DB63250070A508 /* AboutYouViewController.swift in Sources */,
 				038296CC25CD3F290067985E /* ViewController.swift in Sources */,
 				038296E325CD42850067985E /* InputValidator.swift in Sources */,
 				038296CA25CD3F290067985E /* AppDelegate.swift in Sources */,
@@ -311,12 +319,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxLogin/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxSignUp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bq.RxLogin;
+				PRODUCT_BUNDLE_IDENTIFIER = bq.RxSignUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -328,12 +337,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = RxLogin/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxSignUp/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bq.RxLogin;
+				PRODUCT_BUNDLE_IDENTIFIER = bq.RxSignUp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
