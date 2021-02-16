@@ -70,11 +70,27 @@ class AboutYouViewController: UIViewController {
         }).disposed(by: bag)
         
         // 创建性别合法校验
-        let genderObservable = genderSelection.map{ $0 != .notSelected }
+        let genderObservable = genderSelection.map { $0 != .notSelected }
         
         // 汇总校验，并绑定到update按钮
         Observable.combineLatest(birthdayObserable, genderObservable) { $0 && $1 }
             .bind(to: update.rx.isEnabled)
+            .disposed(by: bag)
+        
+        /*:
+         处理 UISwitch 和 UISlider 联动。
+         对于 UISwitch 来说：
+         1. 当 UISwitch 为OFF时，表示用户不了解Swift，因此，下面的 UISlider 应该为0；
+         2. 当 UISwitch 为ON时，可以默认把 UISlider 设置在1/4的位置，表示大致了解；
+         对于 UISlider 来说：
+         1. 当 UISlider 不为0时，应该自动把 UISwitch 设置为ON；
+         2. 当 UISlider 为0时，应该自动把 UISwitch 设置为OFF；
+         */
+        knowSwift.rx.value.map { $0 ? 0.25 : 0 }
+            .bind(to: swiftLevel.rx.value)
+            .disposed(by: bag)
+        swiftLevel.rx.value.map { $0 != 0 }
+            .bind(to: knowSwift.rx.value)
             .disposed(by: bag)
     }
     
