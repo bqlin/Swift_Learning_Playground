@@ -8,6 +8,7 @@
 
 import Alamofire
 import RxCocoa
+import RxDataSources
 import RxSwift
 import SwiftyJSON
 import UIKit
@@ -19,6 +20,22 @@ class ViewController: UIViewController {
     var bag: DisposeBag! = DisposeBag()
 
     let repositoryNameRelay = BehaviorRelay<String>(value: "")
+
+    // 带分区的数据类型
+    typealias SectionTableModel = SectionModel<String, RepositoryModel>
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionTableModel>(configureCell: { _, tableView, indexPath, element in
+        let cell =
+            tableView.dequeueReusableCell(
+                withIdentifier: "RepositoryInfoCell",
+                for: indexPath
+            )
+            as! RepositoryInfoTableViewCell
+        cell.name.text = element.name
+        cell.detail.text = element.detail
+        return cell
+    },titleForHeaderInSection: { dataSource, sectionIndex in
+        return dataSource[sectionIndex].model
+    })
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,33 +64,40 @@ class ViewController: UIViewController {
                 self.searchResult.dataSource = nil
 
                 // 使用rx方式构建table view cell
-                typealias O = Observable<[RepositoryModel]>
-                typealias CC = (Int, RepositoryModel, RepositoryInfoTableViewCell) -> Void // index, model, cell type
-                
-                let binder: (O) -> (@escaping CC) -> Disposable =
-                    self.searchResult.rx.items(cellIdentifier: "RepositoryInfoCell",
-                                               cellType: RepositoryInfoTableViewCell.self)
-                let curriedArgument = { (
-                    _: Int,
-                    element: RepositoryModel,
-                    cell: RepositoryInfoTableViewCell
-                ) in
-                    cell.name.text = element.name
-                    cell.detail.text = element.detail
-                }
-                Observable.just(results).bind(to: binder, curriedArgument: curriedArgument).disposed(by: self.bag)
-                
+                //typealias O = Observable<[RepositoryModel]>
+                //typealias CC = (Int, RepositoryModel, RepositoryInfoTableViewCell) -> Void // index, model, cell type
+                //
+                //let binder: (O) -> (@escaping CC) -> Disposable =
+                //    self.searchResult.rx.items(cellIdentifier: "RepositoryInfoCell",
+                //                               cellType: RepositoryInfoTableViewCell.self)
+                //let curriedArgument = { (
+                //    _: Int,
+                //    element: RepositoryModel,
+                //    cell: RepositoryInfoTableViewCell
+                //) in
+                //    cell.name.text = element.name
+                //    cell.detail.text = element.detail
+                //}
+                //Observable.just(results).bind(to: binder, curriedArgument: curriedArgument).disposed(by: self.bag)
+
                 // 若是连起来写会易懂一些
-                //Observable.just(results).bind(to: self.searchResult.rx.items(cellIdentifier: "RepositoryInfoCell", cellType: RepositoryInfoTableViewCell.self)) {
+                // Observable.just(results).bind(to: self.searchResult.rx.items(cellIdentifier: "RepositoryInfoCell", cellType: RepositoryInfoTableViewCell.self)) {
                 //    _, element, cell in
                 //    cell.name.text = element.name
                 //    cell.detail.text = element.detail
-                //}.disposed(by: self.bag)
+                // }.disposed(by: self.bag)
+                
+                // 带分区的绑定
+                Observable.just(self.createGithubSearchModel(repoInfo: results)).bind(to: self.searchResult.rx.items(dataSource: self.dataSource)).disposed(by: self.bag)
             }, onError: { error in
                 let err = error as NSError
                 self.displayErrorAlert(error: err)
             })
             .disposed(by: bag)
+        
+        searchResult.rx.itemSelected.subscribe(onNext: { (indexPath) in
+            print(indexPath)
+        }).disposed(by: self.bag)
     }
 
     deinit {
@@ -83,7 +107,28 @@ class ViewController: UIViewController {
 
 // 网络请求相关代码
 extension ViewController {
-    typealias RepositoryInfo = [String: Any]
+    private func createGithubSearchModel(repoInfo: [RepositoryModel]) -> [SectionTableModel] {
+        var ret: [SectionTableModel] = []
+        var items: [RepositoryModel] = []
+        if repoInfo.count <= 10 {
+            let sectionLabel = "TOp 1 - 10"
+            items = repoInfo
+
+            ret.append(SectionTableModel(model: sectionLabel, items: items))
+        } else {
+            for i in 1 ... repoInfo.count {
+                items.append(repoInfo[i - 1])
+
+                if i / 10 != 0, i % 10 == 0 {
+                    let sectionLabel = "Top \(i - 9) - \(i)"
+                    ret.append(SectionTableModel(model: sectionLabel, items: items))
+                    items = []
+                }
+            }
+        }
+        
+        return ret
+    }
 
     private func searchForGithub(_ repositoryName: String) -> Observable<[RepositoryModel]> {
         return Observable<[RepositoryModel]>.create { observer -> Disposable in
@@ -155,10 +200,10 @@ extension ViewController {
 
         present(alert, animated: true, completion: nil)
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        
-        self.view.endEditing(true)
+
+        view.endEditing(true)
     }
 }
