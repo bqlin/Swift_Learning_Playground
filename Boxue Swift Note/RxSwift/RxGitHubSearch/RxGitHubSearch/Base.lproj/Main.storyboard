@@ -16,29 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wyy-YB-cwl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wyy-YB-cwl">
                                 <rect key="frame" x="16" y="317" width="343" height="320"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryInfoCell" rowHeight="101" id="d7L-ll-VGv" customClass="RepositoryInfoTableViewCell" customModule="RxNetworkDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="101"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryInfoCell" rowHeight="119" id="d7L-ll-VGv" customClass="RepositoryInfoTableViewCell" customModule="RxNetworkDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="119"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d7L-ll-VGv" id="cGY-Go-Avf">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="101"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="119"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oWN-AG-2b5" userLabel="RepositoryCellStack">
-                                                    <rect key="frame" x="15" y="11" width="313" height="86"/>
+                                                    <rect key="frame" x="15" y="11" width="313" height="97"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Sk-Vh-aXy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="86"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="86" height="97"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="86" id="RRX-FC-Pnw"/>
                                                                 <constraint firstAttribute="width" constant="86" id="ric-7M-uNe"/>
+                                                                <constraint firstAttribute="width" secondItem="6Sk-Vh-aXy" secondAttribute="height" multiplier="1:1" id="v9J-qT-Bd9"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZxA-lA-Fow" userLabel="RepositoryInfoStack">
-                                                            <rect key="frame" x="96" y="0.0" width="217" height="86"/>
+                                                            <rect key="frame" x="96" y="0.0" width="217" height="97"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQO-qI-6ZW">
                                                                     <rect key="frame" x="0.0" y="0.0" width="217" height="20.5"/>
@@ -47,7 +47,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jn8-H2-Yf5">
-                                                                    <rect key="frame" x="0.0" y="28.5" width="217" height="57.5"/>
+                                                                    <rect key="frame" x="0.0" y="28.5" width="217" height="68.5"/>
                                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -55,12 +55,10 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="86" id="SDg-Ud-4TH"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="oWN-AG-2b5" firstAttribute="centerY" secondItem="cGY-Go-Avf" secondAttribute="centerY" id="4lh-mS-Obr"/>
                                                 <constraint firstItem="oWN-AG-2b5" firstAttribute="top" secondItem="cGY-Go-Avf" secondAttribute="topMargin" id="C6Y-LM-9N7"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="oWN-AG-2b5" secondAttribute="trailing" id="NCI-4r-bHp"/>
                                                 <constraint firstItem="oWN-AG-2b5" firstAttribute="leading" secondItem="cGY-Go-Avf" secondAttribute="leadingMargin" id="nW8-Ms-fsE"/>
@@ -124,7 +122,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1607" y="16"/>
+            <point key="canvasLocation" x="1605.5999999999999" y="15.742128935532236"/>
         </scene>
         <!--RxSearch-->
         <scene sceneID="F95-CG-wg6">

@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
         repositoryName.spellCheckingType = .no
         repositoryName.rx.text.orEmpty.distinctUntilChanged().bind(to: repositoryNameRelay).disposed(by: bag)
-        
+
         repositoryNameRelay
             // 仅当两个字符以上才进行搜索
             .filter {
@@ -34,32 +34,44 @@ class ViewController: UIViewController {
             }
             // 过滤掉0.5秒之间的事件
             .throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
-            .flatMap { [weak self] (name) -> Observable<RepositoryInfo> in
+            .flatMap { [weak self] (name) -> Observable<[RepositoryModel]> in
                 print("input: \(name)")
                 guard let self = self else { return Observable.empty() }
 
                 return self.searchForGithub(name)
             }
-            .subscribe(onNext: {
-                let repoCount = $0["total_count"] as! Int
-                let repoItems = $0["items"] as! [RepositoryInfo]
+            .subscribe(onNext: { [weak self] results in
+                guard let self = self else { return }
 
-                if repoCount != 0 {
-                    print("item count: \(repoCount)")
+                // 清空table view
+                self.searchResult.dataSource = nil
 
-                    for item in repoItems {
-                        print("---------------------------------")
-
-                        let name = item["full_name"]!
-                        let description = item["description"]!
-                        let avatarUrl = item["avatar_url"]!
-
-                        print("full name: \(name)")
-                        print("description: \(description)")
-                        print("avatar_url: \(avatarUrl)")
-                    }
+                // 使用rx方式构建table view cell
+                typealias O = Observable<[RepositoryModel]>
+                typealias CC = (Int, RepositoryModel, RepositoryInfoTableViewCell) -> Void // index, model, cell type
+                
+                let binder: (O) -> (@escaping CC) -> Disposable =
+                    self.searchResult.rx.items(cellIdentifier: "RepositoryInfoCell",
+                                               cellType: RepositoryInfoTableViewCell.self)
+                let curriedArgument = { (
+                    _: Int,
+                    element: RepositoryModel,
+                    cell: RepositoryInfoTableViewCell
+                ) in
+                    cell.name.text = element.name
+                    cell.detail.text = element.detail
                 }
-
+                Observable.just(results).bind(to: binder, curriedArgument: curriedArgument).disposed(by: self.bag)
+                
+                // 若是连起来写会易懂一些
+                //Observable.just(results).bind(to: self.searchResult.rx.items(cellIdentifier: "RepositoryInfoCell", cellType: RepositoryInfoTableViewCell.self)) {
+                //    _, element, cell in
+                //    cell.name.text = element.name
+                //    cell.detail.text = element.detail
+                //}.disposed(by: self.bag)
+            }, onError: { error in
+                let err = error as NSError
+                self.displayErrorAlert(error: err)
             })
             .disposed(by: bag)
     }
@@ -73,8 +85,8 @@ class ViewController: UIViewController {
 extension ViewController {
     typealias RepositoryInfo = [String: Any]
 
-    private func searchForGithub(_ repositoryName: String) -> Observable<RepositoryInfo> {
-        return Observable<RepositoryInfo>.create { observer -> Disposable in
+    private func searchForGithub(_ repositoryName: String) -> Observable<[RepositoryModel]> {
+        return Observable<[RepositoryModel]>.create { observer -> Disposable in
             let url = "https://api.github.com/search/repositories"
             let parameters = [
                 "q": repositoryName + " stars:>=2000"
@@ -87,13 +99,13 @@ extension ViewController {
                     switch response.result {
                         case .success(let json):
                             // 增加与最新一项对比
-                            //print("\nsearch for \(repositoryName)")
+                            // print("\nsearch for \(repositoryName)")
                             guard repositoryName == self.repositoryNameRelay.value else {
                                 observer.onCompleted()
                                 return
                             }
-                            //print(response.request!.url!)
-                            
+                            // print(response.request!.url!)
+
                             let info = self.parseGithubResponse(json)
                             observer.onNext(info)
                             observer.onCompleted()
@@ -108,12 +120,10 @@ extension ViewController {
         }
     }
 
-    private func parseGithubResponse(_ response: Any) -> RepositoryInfo {
+    private func parseGithubResponse(_ response: Any) -> [RepositoryModel] {
         let json = JSON(response)
         let totalCount = json["total_count"].int!
-        var ret: RepositoryInfo = [
-            "total_count": totalCount,
-            "items": []
+        var ret: [RepositoryModel] = [
         ]
 
         guard totalCount > 0 else {
@@ -123,21 +133,32 @@ extension ViewController {
 
         let items = json["items"]
         // print(items)
-        var info: [RepositoryInfo] = []
         for (_, subJson): (String, JSON) in items {
             let fullName = subJson["full_name"].string!
             let description = subJson["description"].string!
             let htmlUrl = subJson["html_url"].string!
             let avatarUrl = subJson["owner"]["avatar_url"].string!
-            info.append([
-                "full_name": fullName,
-                "description": description,
-                "html_url": htmlUrl,
-                "avatar_url": avatarUrl
-            ])
+            ret.append(RepositoryModel(name: fullName, detail: description, htmlUrl: htmlUrl, avatar: avatarUrl))
         }
-        ret["items"] = info
 
         return ret
+    }
+
+    private func displayErrorAlert(error: NSError) {
+        let alert = UIAlertController(title: "Network error",
+                                      message: error.localizedDescription,
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: nil))
+
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
+        self.view.endEditing(true)
     }
 }
