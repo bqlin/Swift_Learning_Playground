@@ -1,0 +1,435 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		037FFF9925E27537008BDE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFF9825E27537008BDE39 /* AppDelegate.swift */; };
+		037FFF9B25E27537008BDE39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFF9A25E27537008BDE39 /* ViewController.swift */; };
+		037FFF9E25E27537008BDE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037FFF9C25E27537008BDE39 /* Main.storyboard */; };
+		037FFFA025E27539008BDE39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037FFF9F25E27539008BDE39 /* Assets.xcassets */; };
+		037FFFA325E27539008BDE39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037FFFA125E27539008BDE39 /* LaunchScreen.storyboard */; };
+		037FFFAB25E27578008BDE39 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFAA25E27578008BDE39 /* TodoListViewController.swift */; };
+		037FFFAD25E27699008BDE39 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFAC25E27699008BDE39 /* Todo.swift */; };
+		037FFFB025E27776008BDE39 /* TodoRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFAF25E27776008BDE39 /* TodoRouter.swift */; };
+		037FFFB225E27A3C008BDE39 /* Todo+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFB125E27A3C008BDE39 /* Todo+Request.swift */; };
+		E491A46B2E5D0D69185DC05E /* Pods_RxOnlineTodo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADC7661E98E6981FCFBC961C /* Pods_RxOnlineTodo.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		037FFF9525E27537008BDE39 /* RxOnlineTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxOnlineTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		037FFF9825E27537008BDE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		037FFF9A25E27537008BDE39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		037FFF9D25E27537008BDE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		037FFF9F25E27539008BDE39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		037FFFA225E27539008BDE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		037FFFA425E27539008BDE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		037FFFAA25E27578008BDE39 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
+		037FFFAC25E27699008BDE39 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		037FFFAF25E27776008BDE39 /* TodoRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRouter.swift; sourceTree = "<group>"; };
+		037FFFB125E27A3C008BDE39 /* Todo+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Request.swift"; sourceTree = "<group>"; };
+		4D59F3609E04054CC22CD394 /* Pods-RxOnlineTodo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxOnlineTodo.debug.xcconfig"; path = "Target Support Files/Pods-RxOnlineTodo/Pods-RxOnlineTodo.debug.xcconfig"; sourceTree = "<group>"; };
+		68945F133701EBFABADFE208 /* Pods-RxOnlineTodo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxOnlineTodo.release.xcconfig"; path = "Target Support Files/Pods-RxOnlineTodo/Pods-RxOnlineTodo.release.xcconfig"; sourceTree = "<group>"; };
+		ADC7661E98E6981FCFBC961C /* Pods_RxOnlineTodo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxOnlineTodo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		037FFF9225E27537008BDE39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E491A46B2E5D0D69185DC05E /* Pods_RxOnlineTodo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		037FFF8C25E27537008BDE39 = {
+			isa = PBXGroup;
+			children = (
+				037FFF9725E27537008BDE39 /* RxOnlineTodo */,
+				037FFF9625E27537008BDE39 /* Products */,
+				D3848C701550BAA62AC46C71 /* Pods */,
+				8F770DC9B913C28FE7C2454F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		037FFF9625E27537008BDE39 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				037FFF9525E27537008BDE39 /* RxOnlineTodo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		037FFF9725E27537008BDE39 /* RxOnlineTodo */ = {
+			isa = PBXGroup;
+			children = (
+				037FFF9825E27537008BDE39 /* AppDelegate.swift */,
+				037FFF9A25E27537008BDE39 /* ViewController.swift */,
+				037FFFAA25E27578008BDE39 /* TodoListViewController.swift */,
+				037FFFAE25E27748008BDE39 /* Model */,
+				037FFF9C25E27537008BDE39 /* Main.storyboard */,
+				037FFF9F25E27539008BDE39 /* Assets.xcassets */,
+				037FFFA125E27539008BDE39 /* LaunchScreen.storyboard */,
+				037FFFA425E27539008BDE39 /* Info.plist */,
+			);
+			path = RxOnlineTodo;
+			sourceTree = "<group>";
+		};
+		037FFFAE25E27748008BDE39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				037FFFAC25E27699008BDE39 /* Todo.swift */,
+				037FFFB125E27A3C008BDE39 /* Todo+Request.swift */,
+				037FFFAF25E27776008BDE39 /* TodoRouter.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		8F770DC9B913C28FE7C2454F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADC7661E98E6981FCFBC961C /* Pods_RxOnlineTodo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3848C701550BAA62AC46C71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D59F3609E04054CC22CD394 /* Pods-RxOnlineTodo.debug.xcconfig */,
+				68945F133701EBFABADFE208 /* Pods-RxOnlineTodo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		037FFF9425E27537008BDE39 /* RxOnlineTodo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 037FFFA725E27539008BDE39 /* Build configuration list for PBXNativeTarget "RxOnlineTodo" */;
+			buildPhases = (
+				3B09BE4DE976473E4D7D04A4 /* [CP] Check Pods Manifest.lock */,
+				037FFF9125E27537008BDE39 /* Sources */,
+				037FFF9225E27537008BDE39 /* Frameworks */,
+				037FFF9325E27537008BDE39 /* Resources */,
+				14DC3695CE9BD55B33B414C0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RxOnlineTodo;
+			productName = RxOnlineTodo;
+			productReference = 037FFF9525E27537008BDE39 /* RxOnlineTodo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		037FFF8D25E27537008BDE39 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = Bq;
+				TargetAttributes = {
+					037FFF9425E27537008BDE39 = {
+						CreatedOnToolsVersion = 11.7;
+					};
+				};
+			};
+			buildConfigurationList = 037FFF9025E27537008BDE39 /* Build configuration list for PBXProject "RxOnlineTodo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 037FFF8C25E27537008BDE39;
+			productRefGroup = 037FFF9625E27537008BDE39 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				037FFF9425E27537008BDE39 /* RxOnlineTodo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		037FFF9325E27537008BDE39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037FFFA325E27539008BDE39 /* LaunchScreen.storyboard in Resources */,
+				037FFFA025E27539008BDE39 /* Assets.xcassets in Resources */,
+				037FFF9E25E27537008BDE39 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14DC3695CE9BD55B33B414C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RxOnlineTodo/Pods-RxOnlineTodo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RxOnlineTodo/Pods-RxOnlineTodo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxOnlineTodo/Pods-RxOnlineTodo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B09BE4DE976473E4D7D04A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RxOnlineTodo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		037FFF9125E27537008BDE39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				037FFFAB25E27578008BDE39 /* TodoListViewController.swift in Sources */,
+				037FFFB225E27A3C008BDE39 /* Todo+Request.swift in Sources */,
+				037FFFB025E27776008BDE39 /* TodoRouter.swift in Sources */,
+				037FFF9B25E27537008BDE39 /* ViewController.swift in Sources */,
+				037FFF9925E27537008BDE39 /* AppDelegate.swift in Sources */,
+				037FFFAD25E27699008BDE39 /* Todo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		037FFF9C25E27537008BDE39 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				037FFF9D25E27537008BDE39 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		037FFFA125E27539008BDE39 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				037FFFA225E27539008BDE39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		037FFFA525E27539008BDE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		037FFFA625E27539008BDE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		037FFFA825E27539008BDE39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D59F3609E04054CC22CD394 /* Pods-RxOnlineTodo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V7WL667MJM;
+				INFOPLIST_FILE = RxOnlineTodo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bq.RxOnlineTodo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		037FFFA925E27539008BDE39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68945F133701EBFABADFE208 /* Pods-RxOnlineTodo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V7WL667MJM;
+				INFOPLIST_FILE = RxOnlineTodo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = bq.RxOnlineTodo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		037FFF9025E27537008BDE39 /* Build configuration list for PBXProject "RxOnlineTodo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				037FFFA525E27539008BDE39 /* Debug */,
+				037FFFA625E27539008BDE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		037FFFA725E27539008BDE39 /* Build configuration list for PBXNativeTarget "RxOnlineTodo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				037FFFA825E27539008BDE39 /* Debug */,
+				037FFFA925E27539008BDE39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 037FFF8D25E27537008BDE39 /* Project object */;
+}
