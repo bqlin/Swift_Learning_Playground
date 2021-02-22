@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0jm-Rv-cPb">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="X1X-OR-f8B">
+            <objects>
+                <viewController id="0jm-Rv-cPb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GFB-GN-bR1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bootscreen" translatesAutoresizingMaskIntoConstraints="NO" id="xYg-CF-16d">
+                                <rect key="frame" x="179" y="418.5" width="56" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="2cc-MM-tSC"/>
+                                    <constraint firstAttribute="height" constant="59" id="NG9-7o-tTi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sky" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONf-je-Mmq">
+                                <rect key="frame" x="193.5" y="485.5" width="27.5" height="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.90127140279999995" green="0.00092728855089999995" blue="0.49631345269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xYg-CF-16d" firstAttribute="centerX" secondItem="GFB-GN-bR1" secondAttribute="centerX" id="9jm-u9-3JZ"/>
+                            <constraint firstItem="ONf-je-Mmq" firstAttribute="centerX" secondItem="GFB-GN-bR1" secondAttribute="centerX" id="i5g-Vg-sOH"/>
+                            <constraint firstItem="ONf-je-Mmq" firstAttribute="top" secondItem="xYg-CF-16d" secondAttribute="bottom" constant="8" id="lKe-tg-Xif"/>
+                            <constraint firstItem="xYg-CF-16d" firstAttribute="centerY" secondItem="GFB-GN-bR1" secondAttribute="centerY" id="qCI-YK-lnK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yae-yi-Htm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s0m-AX-GoX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bootscreen" width="56" height="59"/>
+    </resources>
+</document>
