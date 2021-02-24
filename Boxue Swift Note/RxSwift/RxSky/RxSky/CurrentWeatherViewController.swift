@@ -15,13 +15,12 @@ protocol CurrentWeatherViewControllerDelegate: class {
 
 /// 上半部分展示当前天气的view controller
 class CurrentWeatherViewController: WeatherViewController {
-    
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var weatherIcon: UIImageView!
-    @IBOutlet weak var humidityLabel: UILabel! // 湿度
-    @IBOutlet weak var summaryLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var temperatureLabel: UILabel!
+    @IBOutlet var weatherIcon: UIImageView!
+    @IBOutlet var humidityLabel: UILabel! // 湿度
+    @IBOutlet var summaryLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
     
     weak var delegate: CurrentWeatherViewControllerDelegate?
     
@@ -33,13 +32,8 @@ class CurrentWeatherViewController: WeatherViewController {
         delegate?.settingsButtonPressed(controller: self)
     }
     
-    var nowWeather: WeatherData? {
-        didSet {
-            DispatchQueue.main.async { self.updateView() }
-        }
-    }
-    
-    var location: Location? {
+    var viewModel = CurrentWeatherViewModel() {
+        // 由于viewModel是struct，所以其属性重复赋值时，这里也能监听到
         didSet {
             DispatchQueue.main.async { self.updateView() }
         }
@@ -48,7 +42,7 @@ class CurrentWeatherViewController: WeatherViewController {
     func updateView() {
         activityIndicatorView.stopAnimating()
         
-        if let now = nowWeather, let location = location {
+        if let now = viewModel.weather, let location = viewModel.location {
             updateWeatherContainer(with: now, at: location)
         }
         else {
@@ -60,34 +54,12 @@ class CurrentWeatherViewController: WeatherViewController {
     func updateWeatherContainer(with data: WeatherData, at location: Location) {
         weatherContainerView.isHidden = false
         
-        // 1. Set location
         locationLabel.text = location.name
-        
-        // 2. Format and set temperature
-        temperatureLabel.text = String(
-            format: "%.1f °C",
-            data.currently.temperature.toCelcius())
-        
-        // 3. Set weather icon
-        weatherIcon.image = weatherIcon(
-            of: data.currently.icon)
-        
-        // 4. Format and set humidity
-        let percentNumberFormatter = NumberFormatter()
-        percentNumberFormatter.numberStyle = .percent
-        percentNumberFormatter.maximumFractionDigits = 1
-        percentNumberFormatter.minimumFractionDigits = 0
-        humidityLabel.text = percentNumberFormatter.string(from: data.currently.humidity as NSNumber)
-        
-        
-        // 5. Set weather summary
+        temperatureLabel.text = viewModel.temperature
+        weatherIcon.image = .weatherIcon(of: data.currently.icon)
+        humidityLabel.text = viewModel.humidity
         summaryLabel.text = data.currently.summary
-        
-        // 6. Format and set datetime
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E, dd MMMM"
-        dateLabel.text = formatter.string(
-            from: data.currently.time)
+        dateLabel.text = viewModel.date
     }
 
     override func viewDidLoad() {
@@ -96,15 +68,13 @@ class CurrentWeatherViewController: WeatherViewController {
         // Do any additional setup after loading the view.
     }
     
-
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+         // Get the new view controller using segue.destination.
+         // Pass the selected object to the new view controller.
+     }
+     */
 }

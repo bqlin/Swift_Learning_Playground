@@ -35,7 +35,7 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+
         setupActiveNotification()
     }
 
@@ -81,7 +81,7 @@ class RootViewController: UIViewController {
             guard let city = placemarks?.first?.locality else { return }
 
             // 通知 current weather view controller
-            self.currentWeatherViewController.location = Location(name: city, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+            self.currentWeatherViewController.viewModel.location = Location(name: city, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         }
     }
 
@@ -97,7 +97,7 @@ class RootViewController: UIViewController {
 
             guard let response = response else { return }
             // 通知 current weather view controller
-            self.currentWeatherViewController.nowWeather = response
+            self.currentWeatherViewController.viewModel.weather = response
         }
     }
 }
@@ -129,6 +129,7 @@ extension RootViewController: CurrentWeatherViewControllerDelegate {
     func locationButtonPressed(controller: CurrentWeatherViewController) {
         print("Open locations.")
     }
+
     func settingsButtonPressed(controller: CurrentWeatherViewController) {
         print("Open Settings")
     }

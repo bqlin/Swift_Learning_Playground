@@ -22,6 +22,7 @@
 		03EC04FD25E5DC8E00F649A6 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */; };
 		03EC04FF25E5DFAE00F649A6 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */; };
 		03EC050225E5E08100F649A6 /* UtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC050125E5E08100F649A6 /* UtilExtensions.swift */; };
+		03EC050525E6540700F649A6 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC050425E6540700F649A6 /* CurrentWeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewController.swift; sourceTree = "<group>"; };
 		03EC050125E5E08100F649A6 /* UtilExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilExtensions.swift; sourceTree = "<group>"; };
+		03EC050425E6540700F649A6 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				037F002A25E3A951008BDE39 /* Models */,
 				037F002525E3A3F6008BDE39 /* Configuration */,
 				037FFFF725E39F92008BDE39 /* AppDelegate.swift */,
+				03EC050325E653EE00F649A6 /* ViewModel */,
 				037FFFF925E39F92008BDE39 /* RootViewController.swift */,
 				03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */,
 				03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */,
@@ -179,6 +182,14 @@
 				03EC050125E5E08100F649A6 /* UtilExtensions.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		03EC050325E653EE00F649A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				03EC050425E6540700F649A6 /* CurrentWeatherViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 				03EC050225E5E08100F649A6 /* UtilExtensions.swift in Sources */,
 				037FFFF825E39F92008BDE39 /* AppDelegate.swift in Sources */,
 				03EC04FD25E5DC8E00F649A6 /* WeatherViewController.swift in Sources */,
+				03EC050525E6540700F649A6 /* CurrentWeatherViewModel.swift in Sources */,
 				037F002C25E3A960008BDE39 /* Location.swift in Sources */,
 				037F002725E3A45A008BDE39 /* Configuratioin.swift in Sources */,
 			);
