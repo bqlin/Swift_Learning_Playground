@@ -8,12 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		037F000225E39F93008BDE39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037F000025E39F93008BDE39 /* LaunchScreen.storyboard */; };
-		037F000D25E39F93008BDE39 /* RxSkyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F000C25E39F93008BDE39 /* RxSkyTests.swift */; };
 		037F001825E39F93008BDE39 /* RxSkyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F001725E39F93008BDE39 /* RxSkyUITests.swift */; };
+		037F002725E3A45A008BDE39 /* Configuratioin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F002625E3A45A008BDE39 /* Configuratioin.swift */; };
+		037F002925E3A4A9008BDE39 /* secret-key in Resources */ = {isa = PBXBuildFile; fileRef = 037F002825E3A4A9008BDE39 /* secret-key */; };
+		037F002C25E3A960008BDE39 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F002B25E3A960008BDE39 /* Location.swift */; };
+		037F002E25E3A9C7008BDE39 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F002D25E3A9C7008BDE39 /* WeatherData.swift */; };
+		037F003125E3ABD7008BDE39 /* WeatherDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F003025E3ABD7008BDE39 /* WeatherDataManager.swift */; };
+		037F003625E3B1B1008BDE39 /* WeatherDataManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037F003525E3B1B1008BDE39 /* WeatherDataManagerTest.swift */; };
 		037FFFF825E39F92008BDE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFF725E39F92008BDE39 /* AppDelegate.swift */; };
-		037FFFFA25E39F92008BDE39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFF925E39F92008BDE39 /* ViewController.swift */; };
+		037FFFFA25E39F92008BDE39 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037FFFF925E39F92008BDE39 /* RootViewController.swift */; };
 		037FFFFD25E39F92008BDE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 037FFFFB25E39F92008BDE39 /* Main.storyboard */; };
 		037FFFFF25E39F93008BDE39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 037FFFFE25E39F93008BDE39 /* Assets.xcassets */; };
+		03EC04FD25E5DC8E00F649A6 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */; };
+		03EC04FF25E5DFAE00F649A6 /* CurrentWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */; };
+		03EC050225E5E08100F649A6 /* UtilExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC050125E5E08100F649A6 /* UtilExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,16 +45,24 @@
 		037F000125E39F93008BDE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		037F000325E39F93008BDE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		037F000825E39F93008BDE39 /* RxSkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		037F000C25E39F93008BDE39 /* RxSkyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSkyTests.swift; sourceTree = "<group>"; };
 		037F000E25E39F93008BDE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		037F001325E39F93008BDE39 /* RxSkyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSkyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		037F001725E39F93008BDE39 /* RxSkyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSkyUITests.swift; sourceTree = "<group>"; };
 		037F001925E39F93008BDE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		037F002625E3A45A008BDE39 /* Configuratioin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuratioin.swift; sourceTree = "<group>"; };
+		037F002825E3A4A9008BDE39 /* secret-key */ = {isa = PBXFileReference; lastKnownFileType = text; path = "secret-key"; sourceTree = "<group>"; };
+		037F002B25E3A960008BDE39 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		037F002D25E3A9C7008BDE39 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		037F003025E3ABD7008BDE39 /* WeatherDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManager.swift; sourceTree = "<group>"; };
+		037F003525E3B1B1008BDE39 /* WeatherDataManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataManagerTest.swift; sourceTree = "<group>"; };
 		037FFFF425E39F92008BDE39 /* RxSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		037FFFF725E39F92008BDE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		037FFFF925E39F92008BDE39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		037FFFF925E39F92008BDE39 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		037FFFFC25E39F92008BDE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		037FFFFE25E39F93008BDE39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewController.swift; sourceTree = "<group>"; };
+		03EC050125E5E08100F649A6 /* UtilExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +93,8 @@
 		037F000B25E39F93008BDE39 /* RxSkyTests */ = {
 			isa = PBXGroup;
 			children = (
-				037F000C25E39F93008BDE39 /* RxSkyTests.swift */,
 				037F000E25E39F93008BDE39 /* Info.plist */,
+				037F003525E3B1B1008BDE39 /* WeatherDataManagerTest.swift */,
 			);
 			path = RxSkyTests;
 			sourceTree = "<group>";
@@ -90,6 +106,32 @@
 				037F001925E39F93008BDE39 /* Info.plist */,
 			);
 			path = RxSkyUITests;
+			sourceTree = "<group>";
+		};
+		037F002525E3A3F6008BDE39 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				037F002625E3A45A008BDE39 /* Configuratioin.swift */,
+				037F002825E3A4A9008BDE39 /* secret-key */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		037F002A25E3A951008BDE39 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				037F002B25E3A960008BDE39 /* Location.swift */,
+				037F002D25E3A9C7008BDE39 /* WeatherData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		037F002F25E3ABC5008BDE39 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				037F003025E3ABD7008BDE39 /* WeatherDataManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		037FFFEB25E39F91008BDE39 = {
@@ -115,14 +157,28 @@
 		037FFFF625E39F92008BDE39 /* RxSky */ = {
 			isa = PBXGroup;
 			children = (
+				03EC050025E5E06900F649A6 /* Utils */,
+				037F002F25E3ABC5008BDE39 /* Manager */,
+				037F002A25E3A951008BDE39 /* Models */,
+				037F002525E3A3F6008BDE39 /* Configuration */,
 				037FFFF725E39F92008BDE39 /* AppDelegate.swift */,
-				037FFFF925E39F92008BDE39 /* ViewController.swift */,
+				037FFFF925E39F92008BDE39 /* RootViewController.swift */,
+				03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */,
+				03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */,
 				037FFFFB25E39F92008BDE39 /* Main.storyboard */,
 				037FFFFE25E39F93008BDE39 /* Assets.xcassets */,
 				037F000025E39F93008BDE39 /* LaunchScreen.storyboard */,
 				037F000325E39F93008BDE39 /* Info.plist */,
 			);
 			path = RxSky;
+			sourceTree = "<group>";
+		};
+		03EC050025E5E06900F649A6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				03EC050125E5E08100F649A6 /* UtilExtensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +249,7 @@
 				TargetAttributes = {
 					037F000725E39F93008BDE39 = {
 						CreatedOnToolsVersion = 11.7;
+						LastSwiftMigration = 1170;
 						TestTargetID = 037FFFF325E39F92008BDE39;
 					};
 					037F001225E39F93008BDE39 = {
@@ -245,6 +302,7 @@
 			files = (
 				037F000225E39F93008BDE39 /* LaunchScreen.storyboard in Resources */,
 				037FFFFF25E39F93008BDE39 /* Assets.xcassets in Resources */,
+				037F002925E3A4A9008BDE39 /* secret-key in Resources */,
 				037FFFFD25E39F92008BDE39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				037F000D25E39F93008BDE39 /* RxSkyTests.swift in Sources */,
+				037F003625E3B1B1008BDE39 /* WeatherDataManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +330,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				037FFFFA25E39F92008BDE39 /* ViewController.swift in Sources */,
+				037F003125E3ABD7008BDE39 /* WeatherDataManager.swift in Sources */,
+				037FFFFA25E39F92008BDE39 /* RootViewController.swift in Sources */,
+				037F002E25E3A9C7008BDE39 /* WeatherData.swift in Sources */,
+				03EC04FF25E5DFAE00F649A6 /* CurrentWeatherViewController.swift in Sources */,
+				03EC050225E5E08100F649A6 /* UtilExtensions.swift in Sources */,
 				037FFFF825E39F92008BDE39 /* AppDelegate.swift in Sources */,
+				03EC04FD25E5DC8E00F649A6 /* WeatherViewController.swift in Sources */,
+				037F002C25E3A960008BDE39 /* Location.swift in Sources */,
+				037F002725E3A45A008BDE39 /* Configuratioin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,9 +534,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = RxSkyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -479,6 +546,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = bq.RxSkyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RxSky.app/RxSky";
@@ -490,9 +558,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = RxSkyTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,6 +583,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = RxSkyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,6 +604,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V7WL667MJM;
 				INFOPLIST_FILE = RxSkyUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -2,15 +2,16 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z1D-gz-8ge">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Root View Controller-->
         <scene sceneID="xKA-qm-vAh">
             <objects>
-                <viewController id="Z1D-gz-8ge" customClass="ViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Z1D-gz-8ge" customClass="RootViewController" customModule="RxSky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eqO-Hb-TcC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,7 +19,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4SZ-yp-MyH">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="262"/>
                                 <connections>
-                                    <segue destination="elR-vm-lLb" kind="embed" id="TsK-aD-fqN"/>
+                                    <segue destination="elR-vm-lLb" kind="embed" identifier="SegueCurrentWeather" id="TsK-aD-fqN"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D14-vf-Dmb">
@@ -46,18 +47,27 @@
             </objects>
             <point key="canvasLocation" x="-356" y="129"/>
         </scene>
-        <!--View Controller-->
+        <!--Current Weather View Controller-->
         <scene sceneID="X3X-Y9-IOk">
             <objects>
-                <viewController id="elR-vm-lLb" sceneMemberID="viewController">
+                <viewController id="elR-vm-lLb" customClass="CurrentWeatherViewController" customModule="RxSky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ska-jH-9tj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="262"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="uwN-Ny-bxt">
+                                <rect key="frame" x="169" y="112.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XYb-6i-u46">
+                                <rect key="frame" x="166.5" y="120.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vvJ-cd-OMg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="262"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-day" translatesAutoresizingMaskIntoConstraints="NO" id="M6e-Ja-AOL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clear-day" translatesAutoresizingMaskIntoConstraints="NO" id="M6e-Ja-AOL">
                                         <rect key="frame" x="123.5" y="67" width="128" height="128"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="128" id="HF7-Hs-Nax"/>
@@ -71,6 +81,9 @@
                                             <constraint firstAttribute="height" constant="44" id="YYd-Uz-GZd"/>
                                         </constraints>
                                         <state key="normal" image="LocationBtn"/>
+                                        <connections>
+                                            <action selector="locationButtonPressed:" destination="elR-vm-lLb" eventType="touchUpInside" id="j1x-QG-FKw"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daK-uN-E65">
                                         <rect key="frame" x="323" y="8" width="44" height="44"/>
@@ -79,6 +92,9 @@
                                             <constraint firstAttribute="height" constant="44" id="QX4-qr-Qy3"/>
                                         </constraints>
                                         <state key="normal" image="Setting"/>
+                                        <connections>
+                                            <action selector="settingsButtonPressed:" destination="elR-vm-lLb" eventType="touchUpInside" id="mts-wD-kea"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beijing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-Iq-Qd5">
                                         <rect key="frame" x="60" y="14" width="255" height="32"/>
@@ -138,13 +154,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="uwN-Ny-bxt" firstAttribute="centerY" secondItem="ska-jH-9tj" secondAttribute="centerY" id="6Fc-kU-rhm"/>
+                            <constraint firstItem="uwN-Ny-bxt" firstAttribute="centerX" secondItem="ska-jH-9tj" secondAttribute="centerX" id="Coz-7U-b9Q"/>
                             <constraint firstItem="vvJ-cd-OMg" firstAttribute="top" secondItem="ska-jH-9tj" secondAttribute="top" id="KSm-AN-z6E"/>
                             <constraint firstAttribute="trailing" secondItem="vvJ-cd-OMg" secondAttribute="trailing" id="LT9-ZI-xvd"/>
+                            <constraint firstItem="XYb-6i-u46" firstAttribute="centerX" secondItem="ska-jH-9tj" secondAttribute="centerX" id="Q6j-y3-AfZ"/>
                             <constraint firstAttribute="bottom" secondItem="vvJ-cd-OMg" secondAttribute="bottom" id="Wzi-6T-8sU"/>
                             <constraint firstItem="vvJ-cd-OMg" firstAttribute="leading" secondItem="ska-jH-9tj" secondAttribute="leading" id="l4e-Of-uPI"/>
+                            <constraint firstItem="XYb-6i-u46" firstAttribute="centerY" secondItem="ska-jH-9tj" secondAttribute="centerY" id="pvB-WD-03i"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mIM-Ja-w1a"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="uwN-Ny-bxt" id="knN-fO-z1F"/>
+                        <outlet property="dateLabel" destination="gb4-d2-V5B" id="bD5-j6-Mq8"/>
+                        <outlet property="humidityLabel" destination="P6L-ON-Kn2" id="vmq-d3-3df"/>
+                        <outlet property="loadingFailedLabel" destination="XYb-6i-u46" id="neh-AZ-48m"/>
+                        <outlet property="locationLabel" destination="ceU-Iq-Qd5" id="XOJ-KU-ujP"/>
+                        <outlet property="summaryLabel" destination="haV-rZ-7od" id="U6j-Ly-Fb2"/>
+                        <outlet property="temperatureLabel" destination="1ow-7H-lMK" id="8wu-af-Mxp"/>
+                        <outlet property="weatherContainerView" destination="vvJ-cd-OMg" id="On0-q3-hIw"/>
+                        <outlet property="weatherIcon" destination="M6e-Ja-AOL" id="L9O-x1-7fQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3zS-EV-hwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

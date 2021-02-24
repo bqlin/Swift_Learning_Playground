@@ -115,3 +115,4 @@ iOSInjectionProject/
 xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
+secret-key
