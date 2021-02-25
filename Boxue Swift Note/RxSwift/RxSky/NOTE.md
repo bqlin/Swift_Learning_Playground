@@ -41,7 +41,43 @@ func test_requestWeatherData() {
 }
 ```
 
-更节省时间的方式：mock调用链路，让其变成同步操作。
+更节省时间的方式：mock调用链路，让其变成同步操作。如果是UI测试，还可以获取XCUIApplication对象，设置其启动时到参数，然后在程序中获取，实现根据启动参数自动切换测试环境与生产环境。
+
+```swift
+// 测试环境标记
+app.launchArguments += ["UI-TESTING"]
+
+// 测试环境传递测试数据
+let json = """
+{
+    "longitude" : 100,
+    "latitude" : 52,
+    "currently" : {
+        "temperature" : 23,
+        "humidity" : 0.91,
+        "icon" : "snow",
+        "time" : 1507180335,
+        "summary" : "Light Snow"
+    }
+}
+"""
+app.launchEnvironment["FakeJSON"] = json
+
+// 在代码中实现自动切换测试环境与生产环境
+internal struct Config {
+    private static func isUITesting() -> Bool {
+        return ProcessInfo.processInfo.arguments.contains("UI-TESTING")
+    }
+    static var urlSession: URLSessionProtocol = {
+        if isUITesting() {
+            return DarkSkyURLSession()
+        }
+        else {
+            return URLSession.shared
+        }
+    }()
+}
+```
 
 个人觉得，对于开发这来说，测试工作应该是促进开发工作的。所以它在开发的不同阶段应有不同的使命，因此也不需要把测试用例一次性写得完美。
 
