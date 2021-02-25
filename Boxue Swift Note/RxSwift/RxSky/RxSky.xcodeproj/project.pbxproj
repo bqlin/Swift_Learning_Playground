@@ -165,12 +165,8 @@
 				037F002525E3A3F6008BDE39 /* Configuration */,
 				037FFFF725E39F92008BDE39 /* AppDelegate.swift */,
 				03EC050325E653EE00F649A6 /* ViewModel */,
-				037FFFF925E39F92008BDE39 /* RootViewController.swift */,
-				03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */,
-				03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */,
-				037FFFFB25E39F92008BDE39 /* Main.storyboard */,
+				03EC050625E749E500F649A6 /* UI */,
 				037FFFFE25E39F93008BDE39 /* Assets.xcassets */,
-				037F000025E39F93008BDE39 /* LaunchScreen.storyboard */,
 				037F000325E39F93008BDE39 /* Info.plist */,
 			);
 			path = RxSky;
@@ -190,6 +186,18 @@
 				03EC050425E6540700F649A6 /* CurrentWeatherViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		03EC050625E749E500F649A6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				037FFFF925E39F92008BDE39 /* RootViewController.swift */,
+				03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */,
+				03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */,
+				037FFFFB25E39F92008BDE39 /* Main.storyboard */,
+				037F000025E39F93008BDE39 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
