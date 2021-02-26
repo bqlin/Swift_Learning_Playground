@@ -25,7 +25,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D14-vf-Dmb">
                                 <rect key="frame" x="0.0" y="274" width="375" height="393"/>
                                 <connections>
-                                    <segue destination="okQ-ze-kKv" kind="embed" id="jCs-gh-wMp"/>
+                                    <segue destination="okQ-ze-kKv" kind="embed" identifier="SegueWeekWeather" id="jCs-gh-wMp"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -169,13 +169,13 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="uwN-Ny-bxt" id="knN-fO-z1F"/>
+                        <outlet property="containerView" destination="vvJ-cd-OMg" id="On0-q3-hIw"/>
                         <outlet property="dateLabel" destination="gb4-d2-V5B" id="bD5-j6-Mq8"/>
                         <outlet property="humidityLabel" destination="P6L-ON-Kn2" id="vmq-d3-3df"/>
                         <outlet property="loadingFailedLabel" destination="XYb-6i-u46" id="neh-AZ-48m"/>
                         <outlet property="locationLabel" destination="ceU-Iq-Qd5" id="XOJ-KU-ujP"/>
                         <outlet property="summaryLabel" destination="haV-rZ-7od" id="U6j-Ly-Fb2"/>
                         <outlet property="temperatureLabel" destination="1ow-7H-lMK" id="8wu-af-Mxp"/>
-                        <outlet property="containerView" destination="vvJ-cd-OMg" id="On0-q3-hIw"/>
                         <outlet property="weatherIcon" destination="M6e-Ja-AOL" id="L9O-x1-7fQ"/>
                     </connections>
                 </viewController>
@@ -204,11 +204,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iye-Or-6Av">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="393"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WMq-Aw-lIc">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WMq-Aw-lIc">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="393"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekWeatherCell" rowHeight="104" id="HhW-cY-hCj" customClass="WeekWeatherTableViewCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekWeatherCell" rowHeight="104" id="HhW-cY-hCj" customClass="WeekWeatherTableViewCell" customModule="RxSky" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhW-cY-hCj" id="xgs-sB-sgl">
@@ -239,7 +239,7 @@
                                                             <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGc-nh-92Z">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aGc-nh-92Z">
                                                             <rect key="frame" x="302" y="11" width="58" height="58"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="58" id="Gks-bD-PQf"/>
@@ -266,8 +266,8 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="date" destination="RMF-NQ-XbO" id="mXP-BE-2Gg"/>
-                                                    <outlet property="humid" destination="hQc-3a-Fcg" id="LA0-ne-ADt"/>
+                                                    <outlet property="date" destination="RMF-NQ-XbO" id="2aC-ll-3L1"/>
+                                                    <outlet property="humidity" destination="hQc-3a-Fcg" id="oUt-0S-3qa"/>
                                                     <outlet property="temperature" destination="HYf-0n-Ygo" id="Hbw-dj-al8"/>
                                                     <outlet property="weatherIcon" destination="aGc-nh-92Z" id="eRh-fv-KkV"/>
                                                     <outlet property="week" destination="Gde-AT-urU" id="jnU-Xi-ZVE"/>
@@ -304,8 +304,9 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicatorView" destination="oWm-CS-abS" id="Lio-kJ-btQ"/>
-                        <outlet property="loadingFailedLabel" destination="YHx-17-I9s" id="ham-jK-cYR"/>
                         <outlet property="containerView" destination="iye-Or-6Av" id="bRO-wu-9qB"/>
+                        <outlet property="loadingFailedLabel" destination="YHx-17-I9s" id="ham-jK-cYR"/>
+                        <outlet property="tableView" destination="WMq-Aw-lIc" id="zXK-AD-exw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OM9-Yv-VRh" userLabel="First Responder" sceneMemberID="firstResponder"/>

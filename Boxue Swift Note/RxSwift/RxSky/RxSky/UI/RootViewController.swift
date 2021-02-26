@@ -31,6 +31,8 @@ class RootViewController: UIViewController {
 
     var currentWeatherViewController: CurrentWeatherViewController!
     private let segueCurrentWeather = "SegueCurrentWeather"
+    var weekWeatherViewController: WeekWeatherViewController!
+    private let SegueWeekWeather = "SegueWeekWeather"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,11 @@ class RootViewController: UIViewController {
                 }
                 currentWeatherViewController = viewController
                 currentWeatherViewController.delegate = self
+        case SegueWeekWeather:
+            guard let viewController = segue.destination as? WeekWeatherViewController else {
+                fatalError("Invalid destination view controller!")
+            }
+            weekWeatherViewController = viewController
             default:
                 print("prepare for segue: \(segue)")
         }
@@ -55,12 +62,12 @@ class RootViewController: UIViewController {
     // App激活时监听
     func setupActiveNotification() {
         let observer = NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { _ in
-            self.requestLocaiton()
+            self.requestLocation()
         }
         notificationObservers.append(observer)
     }
 
-    func requestLocaiton() {
+    func requestLocation() {
         locationManager.delegate = self
         switch CLLocationManager.authorizationStatus() {
             case .authorizedWhenInUse:
@@ -98,6 +105,8 @@ class RootViewController: UIViewController {
             guard let response = response else { return }
             // 通知 current weather view controller
             self.currentWeatherViewController.viewModel.weather = response
+            // 通知 week weather view controller
+            self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherData: response.daily.data)
         }
     }
 }

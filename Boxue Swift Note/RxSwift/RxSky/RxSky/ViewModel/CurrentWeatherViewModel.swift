@@ -44,22 +44,14 @@ struct CurrentWeatherViewModel {
     }
 
     var temperature: String {
-        String(
-            format: "%.1f °C",
-            weather.currently.temperature.toCelcius())
+        FormatUtil.temperature(weather.currently.temperature)
     }
 
     var humidity: String {
-        let percentNumberFormatter = NumberFormatter()
-        percentNumberFormatter.numberStyle = .percent
-        percentNumberFormatter.maximumFractionDigits = 1
-        percentNumberFormatter.minimumFractionDigits = 0
-        return percentNumberFormatter.string(from: weather.currently.humidity as NSNumber)!
+        FormatUtil.humidity(weather.currently.humidity)
     }
 
     var date: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E, dd MMMM"
-        return formatter.string(from: weather.currently.time)
+        FormatUtil.weekDate(weather.currently.time)
     }
 }

@@ -20,4 +20,10 @@ struct WeatherData: Codable {
         let temperature: Double
         let humidity: Double
     }
+    
+    let daily: WeekWeatherData
+
+    struct WeekWeatherData: Codable {
+        let data: [ForecastData]
+    }
 }

@@ -26,10 +26,6 @@ class CurrentWeatherViewController: WeatherViewController {
     
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         delegate?.locationButtonPressed(controller: self)
-
-        let i: Int = 3
-        var newValue = 45
-        newValue = 100
     }
     
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
