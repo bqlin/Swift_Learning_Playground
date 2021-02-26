@@ -21,41 +21,22 @@ class SettingsViewController: UITableViewController {
 
 extension SettingsViewController {
 
-    private enum Section: Int {
-        case date
-        case temperature
-        var numberOfRows: Int {
-            2
-        }
-        static var count: Int {
-            Section.temperature.rawValue + 1
-        }
-
-
-    }
-
     // MARK: - Table view data source
     override func numberOfSections(
         in tableView: UITableView) -> Int {
-        Section.count
+        SettingsViewModel.section.count
     }
 
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-        guard let section = Section(rawValue: section) else {
-            fatalError("Unexpected section index")
-        }
-        return section.numberOfRows
+        SettingsViewModel.section[section].count
     }
 
     override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int) -> String? {
-        if (section == 0) {
-            return "Date format"
-        }
-        return "Temperature unit"
+        SettingsViewModel.section[section].name
     }
 
     override func tableView(
@@ -66,29 +47,25 @@ extension SettingsViewController {
             for: indexPath) as? SettingsTableViewCell else {
             fatalError("Unexpected table view cell")
         }
-        guard let section = Section(rawValue: indexPath.section) else {
-            fatalError("Unexpected section index")
-        }
-        switch section {
-        case .date:
-            cell.label.text = (indexPath.row == 0) ?
-                "Fri, 01 December" : "F, 12/01"
-            let timeMode = UserDefaults.dateMode
-            if indexPath.row == timeMode.rawValue {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
+        let vmClass: Any = SettingsViewModel.section[indexPath.section]
+        var vm: SettingViewModelProtocol!
+        switch vmClass {
+        case _ as SettingsViewModel.Date.Type:
+            guard let dateMode = DateMode(rawValue: indexPath.row) else {
+                fatalError("Invalid IndexPath")
             }
-        case .temperature:
-            cell.label.text = (indexPath.row == 0) ?
-                "Celsius" : "Fahrenheit"
-            let temperatureNotation = UserDefaults.temperatureMode
-            if indexPath.row == temperatureNotation.rawValue {
-                cell.accessoryType = .checkmark
-            } else {
-                cell.accessoryType = .none
+            vm = SettingsViewModel.Date(dateMode: dateMode)
+        case _ as SettingsViewModel.Temperature.Type:
+            guard let temperatureMode = TemperatureMode(rawValue: indexPath.row) else {
+                fatalError("Invalid IndexPath")
             }
+            vm = SettingsViewModel.Temperature(
+                temperatureMode: temperatureMode)
+        default:
+            break
         }
+        cell.accessoryType = vm.accessory
+        cell.label.text = vm.labelText
         return cell
     }
 
@@ -96,29 +73,28 @@ extension SettingsViewController {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let section = Section(
-            rawValue: indexPath.section) else {
-            fatalError("Unexpected section index")
-        }
-        switch section {
-        case .date:
-            let dateMode = UserDefaults.dateMode
-            guard indexPath.row != dateMode.rawValue else {
+        let vmClass: Any = SettingsViewModel.section[indexPath.section]
+        switch vmClass {
+        case _ as SettingsViewModel.Date.Type:
+            guard let dateMode = DateMode(rawValue: indexPath.row) else {
+                fatalError("Invalid IndexPath")
+            }
+            guard UserDefaults.dateMode != dateMode else {
                 return
             }
-            if let newMode = DateMode(rawValue: indexPath.row) {
-                UserDefaults.dateMode = newMode
-            }
+            UserDefaults.dateMode = dateMode
             delegate?.controllerDidChangeTimeMode(controller: self)
-        case .temperature:
-            let temperatureMode = UserDefaults.temperatureMode
-            guard indexPath.row != temperatureMode.rawValue else {
+        case _ as SettingsViewModel.Temperature.Type:
+            guard let temperatureMode = TemperatureMode(rawValue: indexPath.row) else {
+                fatalError("Invalid IndexPath")
+            }
+            guard UserDefaults.temperatureMode != temperatureMode else {
                 return
             }
-            if let newMode = TemperatureMode(rawValue: indexPath.row) {
-                UserDefaults.temperatureMode = newMode
-            }
+            UserDefaults.temperatureMode = temperatureMode
             delegate?.controllerDidChangeTemperatureMode(controller: self)
+        default:
+            break
         }
         let sections = IndexSet(integer: indexPath.section)
         tableView.reloadSections(sections, with: .none)

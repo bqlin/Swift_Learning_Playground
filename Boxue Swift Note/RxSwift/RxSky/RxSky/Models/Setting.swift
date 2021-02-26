@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum DateMode: Int {
+enum DateMode: Int, CaseIterable {
     case text
     case digit
     var format: String {
@@ -21,7 +21,7 @@ enum DateMode: Int {
     }
 }
 
-enum TemperatureMode: Int {
+enum TemperatureMode: Int, CaseIterable {
     case celsius
     case fahrenheit
 }
