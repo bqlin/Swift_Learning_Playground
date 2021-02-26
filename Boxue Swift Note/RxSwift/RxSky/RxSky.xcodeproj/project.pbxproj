@@ -28,6 +28,10 @@
 		03EC050F25E87ACF00F649A6 /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC050E25E87ACF00F649A6 /* ForecastData.swift */; };
 		03EC051125E87B0C00F649A6 /* WeekWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051025E87B0C00F649A6 /* WeekWeatherViewModel.swift */; };
 		03EC051325E87B7000F649A6 /* FormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051225E87B7000F649A6 /* FormatUtil.swift */; };
+		03EC051525E8AE4200F649A6 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051425E8AE4200F649A6 /* Setting.swift */; };
+		03EC051725E8CAC000F649A6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051625E8CAC000F649A6 /* SettingsViewController.swift */; };
+		03EC051925E8CAEC00F649A6 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051825E8CAEC00F649A6 /* SettingsTableViewCell.swift */; };
+		03EC051B25E8CBC300F649A6 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051A25E8CBC300F649A6 /* ReusableCellProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		03EC050E25E87ACF00F649A6 /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		03EC051025E87B0C00F649A6 /* WeekWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewModel.swift; sourceTree = "<group>"; };
 		03EC051225E87B7000F649A6 /* FormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatUtil.swift; sourceTree = "<group>"; };
+		03EC051425E8AE4200F649A6 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		03EC051625E8CAC000F649A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		03EC051825E8CAEC00F649A6 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		03EC051A25E8CBC300F649A6 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,7 @@
 				037F002B25E3A960008BDE39 /* Location.swift */,
 				037F002D25E3A9C7008BDE39 /* WeatherData.swift */,
 				03EC050E25E87ACF00F649A6 /* ForecastData.swift */,
+				03EC051425E8AE4200F649A6 /* Setting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +218,7 @@
 				03EC04FC25E5DC8E00F649A6 /* WeatherViewController.swift */,
 				03EC04FE25E5DFAE00F649A6 /* CurrentWeatherViewController.swift */,
 				03EC050A25E74AED00F649A6 /* WeekWeatherViewController.swift */,
+				03EC051625E8CAC000F649A6 /* SettingsViewController.swift */,
 				037FFFFB25E39F92008BDE39 /* Main.storyboard */,
 				037F000025E39F93008BDE39 /* LaunchScreen.storyboard */,
 			);
@@ -218,7 +228,9 @@
 		03EC050725E74A4000F649A6 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				03EC051A25E8CBC300F649A6 /* ReusableCellProtocol.swift */,
 				03EC050C25E74B9400F649A6 /* WeekWeatherTableViewCell.swift */,
+				03EC051825E8CAEC00F649A6 /* SettingsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -374,17 +386,21 @@
 			files = (
 				037F003125E3ABD7008BDE39 /* WeatherDataManager.swift in Sources */,
 				037FFFFA25E39F92008BDE39 /* RootViewController.swift in Sources */,
+				03EC051925E8CAEC00F649A6 /* SettingsTableViewCell.swift in Sources */,
 				03EC050F25E87ACF00F649A6 /* ForecastData.swift in Sources */,
 				037F002E25E3A9C7008BDE39 /* WeatherData.swift in Sources */,
 				03EC04FF25E5DFAE00F649A6 /* CurrentWeatherViewController.swift in Sources */,
 				03EC050D25E74B9400F649A6 /* WeekWeatherTableViewCell.swift in Sources */,
+				03EC051525E8AE4200F649A6 /* Setting.swift in Sources */,
 				03EC050225E5E08100F649A6 /* UtilExtensions.swift in Sources */,
 				03EC050B25E74AED00F649A6 /* WeekWeatherViewController.swift in Sources */,
 				037FFFF825E39F92008BDE39 /* AppDelegate.swift in Sources */,
 				03EC04FD25E5DC8E00F649A6 /* WeatherViewController.swift in Sources */,
 				03EC050525E6540700F649A6 /* CurrentWeatherViewModel.swift in Sources */,
+				03EC051725E8CAC000F649A6 /* SettingsViewController.swift in Sources */,
 				037F002C25E3A960008BDE39 /* Location.swift in Sources */,
 				037F002725E3A45A008BDE39 /* Configuratioin.swift in Sources */,
+				03EC051B25E8CBC300F649A6 /* ReusableCellProtocol.swift in Sources */,
 				03EC051325E87B7000F649A6 /* FormatUtil.swift in Sources */,
 				03EC051125E87B0C00F649A6 /* WeekWeatherViewModel.swift in Sources */,
 			);

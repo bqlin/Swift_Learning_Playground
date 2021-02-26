@@ -21,39 +21,40 @@ class CurrentWeatherViewController: WeatherViewController {
     @IBOutlet var humidityLabel: UILabel! // 湿度
     @IBOutlet var summaryLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
-    
+
     weak var delegate: CurrentWeatherViewControllerDelegate?
-    
+
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         delegate?.locationButtonPressed(controller: self)
     }
-    
+
     @IBAction func settingsButtonPressed(_ sender: UIButton) {
         delegate?.settingsButtonPressed(controller: self)
     }
-    
+
     var viewModel = CurrentWeatherViewModel() {
         // 由于viewModel是struct，所以其属性重复赋值时，这里也能监听到
         didSet {
-            DispatchQueue.main.async { self.updateView() }
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
         }
     }
-    
-    func updateView() {
+
+    func updateUI() {
         activityIndicatorView.stopAnimating()
-        
+
         if let now = viewModel.weather, let location = viewModel.location {
             updateWeatherContainer(with: now, at: location)
-        }
-        else {
+        } else {
             loadingFailedLabel.isHidden = false
             loadingFailedLabel.text = "Fetch weather/location failed."
         }
     }
-    
+
     func updateWeatherContainer(with data: WeatherData, at location: Location) {
         containerView.isHidden = false
-        
+
         locationLabel.text = location.name
         temperatureLabel.text = viewModel.temperature
         weatherIcon.image = .weatherIcon(of: data.currently.icon)
@@ -67,7 +68,7 @@ class CurrentWeatherViewController: WeatherViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
     /*
      // MARK: - Navigation
 

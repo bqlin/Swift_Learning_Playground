@@ -8,16 +8,16 @@
 
 import UIKit
 
-class WeekWeatherTableViewCell: UITableViewCell {
+class WeekWeatherTableViewCell: UITableViewCell, ReusableCellProtocol {
     static let reuseIdentifier = "WeekWeatherCell"
     @IBOutlet weak var week: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var humidity: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
     }
 }

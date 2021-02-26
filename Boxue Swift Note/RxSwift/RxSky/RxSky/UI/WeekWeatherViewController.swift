@@ -19,7 +19,7 @@ class WeekWeatherViewController: WeatherViewController {
         }
     }
 
-    private func updateUI() {
+    func updateUI() {
         activityIndicatorView.stopAnimating()
         guard viewModel != nil else {
             loadingFailedLabel.isHidden = false

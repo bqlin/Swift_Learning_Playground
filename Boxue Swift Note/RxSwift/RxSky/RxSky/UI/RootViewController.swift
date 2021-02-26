@@ -32,7 +32,9 @@ class RootViewController: UIViewController {
     var currentWeatherViewController: CurrentWeatherViewController!
     private let segueCurrentWeather = "SegueCurrentWeather"
     var weekWeatherViewController: WeekWeatherViewController!
-    private let SegueWeekWeather = "SegueWeekWeather"
+    private let segueWeekWeather = "SegueWeekWeather"
+    var settingViewController: SettingsViewController!
+    private let segueSettings = "SegueSettings"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,19 +45,26 @@ class RootViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-            case segueCurrentWeather:
-                guard let viewController = segue.destination as? CurrentWeatherViewController else {
-                    fatalError("Invalid destination view controller!")
-                }
-                currentWeatherViewController = viewController
-                currentWeatherViewController.delegate = self
-        case SegueWeekWeather:
+        case segueCurrentWeather:
+            guard let viewController = segue.destination as? CurrentWeatherViewController else {
+                fatalError("Invalid destination view controller!")
+            }
+            currentWeatherViewController = viewController
+            currentWeatherViewController.delegate = self
+        case segueWeekWeather:
             guard let viewController = segue.destination as? WeekWeatherViewController else {
                 fatalError("Invalid destination view controller!")
             }
             weekWeatherViewController = viewController
-            default:
-                print("prepare for segue: \(segue)")
+        case segueSettings:
+            guard let navigationController = segue.destination as? UINavigationController,
+                  let viewController = navigationController.topViewController as? SettingsViewController else {
+                fatalError("Invalid destination view controller!")
+            }
+            settingViewController = viewController
+            settingViewController.delegate = self
+        default:
+            print("prepare for segue: \(segue)")
         }
     }
 
@@ -70,22 +79,26 @@ class RootViewController: UIViewController {
     func requestLocation() {
         locationManager.delegate = self
         switch CLLocationManager.authorizationStatus() {
-            case .authorizedWhenInUse:
-                locationManager.requestLocation()
-            default:
-                locationManager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse:
+            locationManager.requestLocation()
+        default:
+            locationManager.requestWhenInUseAuthorization()
         }
     }
 
     private func fetchCity() {
-        guard let currentLocation = currentLocation else { return }
+        guard let currentLocation = currentLocation else {
+            return
+        }
         CLGeocoder().reverseGeocodeLocation(currentLocation) { placemarks, error in
             guard error == nil else {
                 dump(error!, name: "获取城市错误")
                 return
             }
 
-            guard let city = placemarks?.first?.locality else { return }
+            guard let city = placemarks?.first?.locality else {
+                return
+            }
 
             // 通知 current weather view controller
             self.currentWeatherViewController.viewModel.location = Location(name: city, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
@@ -93,7 +106,9 @@ class RootViewController: UIViewController {
     }
 
     private func fetchWeather() {
-        guard let currentLocation = currentLocation else { return }
+        guard let currentLocation = currentLocation else {
+            return
+        }
         let latitude = currentLocation.coordinate.latitude
         let longitude = currentLocation.coordinate.longitude
         WeatherDataManager.shared.requestWeatherDataAt(latitude: latitude, longitude: longitude) { response, error in
@@ -102,12 +117,18 @@ class RootViewController: UIViewController {
                 return
             }
 
-            guard let response = response else { return }
+            guard let response = response else {
+                return
+            }
             // 通知 current weather view controller
             self.currentWeatherViewController.viewModel.weather = response
             // 通知 week weather view controller
             self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherData: response.daily.data)
         }
+    }
+
+    @IBAction func unwindToRootViewController(
+        segue: UIStoryboardSegue) {
     }
 }
 
@@ -122,10 +143,10 @@ extension RootViewController: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-            case .authorizedWhenInUse:
-                manager.requestLocation()
-            default:
-                break
+        case .authorizedWhenInUse:
+            manager.requestLocation()
+        default:
+            break
         }
     }
 
@@ -140,6 +161,23 @@ extension RootViewController: CurrentWeatherViewControllerDelegate {
     }
 
     func settingsButtonPressed(controller: CurrentWeatherViewController) {
-        print("Open Settings")
+        performSegue(withIdentifier: segueSettings, sender: self)
+    }
+}
+
+extension RootViewController: SettingsViewControllerDelegate {
+    private func reloadUI() {
+        currentWeatherViewController.updateUI()
+        weekWeatherViewController.updateUI()
+    }
+
+    func controllerDidChangeTimeMode(
+        controller: SettingsViewController) {
+        reloadUI()
+    }
+
+    func controllerDidChangeTemperatureMode(
+        controller: SettingsViewController) {
+        reloadUI()
     }
 }
