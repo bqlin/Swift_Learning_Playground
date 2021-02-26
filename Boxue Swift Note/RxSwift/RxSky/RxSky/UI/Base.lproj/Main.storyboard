@@ -175,7 +175,7 @@
                         <outlet property="locationLabel" destination="ceU-Iq-Qd5" id="XOJ-KU-ujP"/>
                         <outlet property="summaryLabel" destination="haV-rZ-7od" id="U6j-Ly-Fb2"/>
                         <outlet property="temperatureLabel" destination="1ow-7H-lMK" id="8wu-af-Mxp"/>
-                        <outlet property="weatherContainerView" destination="vvJ-cd-OMg" id="On0-q3-hIw"/>
+                        <outlet property="containerView" destination="vvJ-cd-OMg" id="On0-q3-hIw"/>
                         <outlet property="weatherIcon" destination="M6e-Ja-AOL" id="L9O-x1-7fQ"/>
                     </connections>
                 </viewController>
@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="416.80000000000001" y="-65.667166416791616"/>
         </scene>
-        <!--View Controller-->
+        <!--Week Weather View Controller-->
         <scene sceneID="xzO-Mh-nYq">
             <objects>
-                <viewController id="okQ-ze-kKv" sceneMemberID="viewController">
+                <viewController id="okQ-ze-kKv" customClass="WeekWeatherViewController" customModule="RxSky" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fBG-ev-83k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -208,7 +208,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="393"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekWeatherCell" rowHeight="104" id="HhW-cY-hCj" customClass="WeekWeatherTableViewCell" customModule="SkyDemo" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeekWeatherCell" rowHeight="104" id="HhW-cY-hCj" customClass="WeekWeatherTableViewCell">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="104"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HhW-cY-hCj" id="xgs-sB-sgl">
@@ -274,6 +274,9 @@
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="okQ-ze-kKv" id="Vch-86-ejd"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -299,6 +302,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xhh-Lj-28B"/>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="oWm-CS-abS" id="Lio-kJ-btQ"/>
+                        <outlet property="loadingFailedLabel" destination="YHx-17-I9s" id="ham-jK-cYR"/>
+                        <outlet property="containerView" destination="iye-Or-6Av" id="bRO-wu-9qB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OM9-Yv-VRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

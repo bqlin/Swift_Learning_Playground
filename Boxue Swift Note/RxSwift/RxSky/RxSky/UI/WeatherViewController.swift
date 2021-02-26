@@ -10,12 +10,12 @@ import UIKit
 
 /// 上下两部分的基类，处理了两个view controller的公共基础设施
 class WeatherViewController: UIViewController {
-    @IBOutlet var weatherContainerView: UIView!
+    @IBOutlet var containerView: UIView!
     @IBOutlet var loadingFailedLabel: UILabel!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
 
     private func setupUI() {
-        weatherContainerView.isHidden = true
+        containerView.isHidden = true
         loadingFailedLabel.isHidden = true
 
         activityIndicatorView.startAnimating()
