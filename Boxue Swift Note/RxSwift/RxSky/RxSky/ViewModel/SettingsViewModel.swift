@@ -6,7 +6,7 @@
 import UIKit
 
 class SettingsViewModel {
-    struct Date: SettingViewModelProtocol {
+    struct Date: SettingsRepresentable {
         static let name = "Date format"
         static let count = DateMode.allCases.count
 
@@ -20,7 +20,7 @@ class SettingsViewModel {
         }
     }
 
-    struct Temperature: SettingViewModelProtocol {
+    struct Temperature: SettingsRepresentable {
         static let name = "Temperature unit"
         static let count = TemperatureMode.allCases.count
 
@@ -33,10 +33,10 @@ class SettingsViewModel {
         }
     }
 
-    static let section: [SettingViewModelProtocol.Type] = [Date.self, Temperature.self]
+    static let section: [SettingsRepresentable.Type] = [Date.self, Temperature.self]
 }
 
-protocol SettingViewModelProtocol {
+protocol SettingsRepresentable {
     static var name: String { get }
     static var count: Int { get }
 

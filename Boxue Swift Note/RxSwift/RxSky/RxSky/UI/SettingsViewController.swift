@@ -50,7 +50,7 @@ extension SettingsViewController {
 
         // 通过vm配置cell
         let vmClass: Any = SettingsViewModel.section[indexPath.section]
-        var vm: SettingViewModelProtocol?
+        var vm: SettingsRepresentable?
         switch vmClass {
         case _ as SettingsViewModel.Date.Type:
             guard let dateMode = DateMode(rawValue: indexPath.row) else {
