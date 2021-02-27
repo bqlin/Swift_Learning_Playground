@@ -14,9 +14,24 @@ class LocationsViewController: UITableViewController {
     var currentLocation: CLLocation?
     var favourites = UserDefaults.locations
     var delegate: LocationsViewControllerDelegate?
+    private let segueAddLocationView = "SegueAddLocationView"
+
     private var hasFavourites: Bool {
         favourites.count > 0
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case segueAddLocationView:
+            guard let viewController = segue.destination as? AddLocationViewController else {
+                fatalError("Invalid destination view controller!")
+            }
+            viewController.delegate = self
+        default: break
+        }
+    }
+
+    @IBAction func unwindToLocationsViewController(segue: UIStoryboardSegue) {}
 }
 
 extension LocationsViewController {
@@ -136,5 +151,16 @@ extension LocationsViewController {
             delegate?.controller(self, didSelectLocation: location!)
             dismiss(animated: true)
         }
+    }
+}
+
+extension LocationsViewController: AddLocationViewControllerDelegate {
+    func controller(_ controller: AddLocationViewController, didAddLocation location: Location) {
+        // Update User Defaults
+        UserDefaults.addLocation(location)
+        // Update Locations
+        favourites.append(location)
+        // Update Table View
+        tableView.reloadData()
     }
 }

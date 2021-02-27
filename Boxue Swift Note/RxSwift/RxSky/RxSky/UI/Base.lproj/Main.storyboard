@@ -392,7 +392,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="2EE-aa-u96" customClass="LocationTableViewCell" customModule="Sky" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="2EE-aa-u96" customClass="LocationTableViewCell" customModule="RxSky" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="55.5" width="375" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2EE-aa-u96" id="zpk-8X-ZeO">
@@ -444,7 +444,7 @@
         <!--Add Location View Controller-->
         <scene sceneID="Ks1-CW-4NH">
             <objects>
-                <tableViewController id="BzN-Zv-jfa" customClass="AddLocationViewController" customModule="Sky" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="BzN-Zv-jfa" customClass="AddLocationViewController" customModule="RxSky" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bg3-hQ-ReW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -458,7 +458,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="CN7-Ik-ubC" customClass="LocationTableViewCell" customModule="Sky" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="CN7-Ik-ubC" customClass="LocationTableViewCell" customModule="RxSky" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CN7-Ik-ubC" id="r9V-Qs-6yE">
@@ -492,7 +492,7 @@
                     <navigationItem key="navigationItem" id="iae-Vt-5Zz">
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="nOo-St-Vji">
                             <connections>
-                                <segue destination="Wv6-Py-8yu" kind="unwind" unwindAction="unwindToLocationsViewControllerWithSegue:" id="Wgt-df-f1U"/>
+                                <segue destination="Wv6-Py-8yu" kind="unwind" unwindAction="unwindToLocationsViewControllerWithSegue:" id="gzR-a1-eyP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
