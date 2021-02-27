@@ -6,6 +6,18 @@
 import UIKit
 
 class SettingsViewModel {
+    static let section: [SettingsRepresentable.Type] = [Date.self, Temperature.self]
+}
+
+protocol SettingsRepresentable {
+    static var name: String { get }
+    static var count: Int { get }
+
+    var labelText: String { get }
+    var accessory: UITableViewCell.AccessoryType { get }
+}
+
+extension SettingsViewModel {
     struct Date: SettingsRepresentable {
         static let name = "Date format"
         static let count = DateMode.allCases.count
@@ -32,14 +44,4 @@ class SettingsViewModel {
             UserDefaults.temperatureMode == temperatureMode ? .checkmark : .none
         }
     }
-
-    static let section: [SettingsRepresentable.Type] = [Date.self, Temperature.self]
-}
-
-protocol SettingsRepresentable {
-    static var name: String { get }
-    static var count: Int { get }
-
-    var labelText: String { get }
-    var accessory: UITableViewCell.AccessoryType { get }
 }
