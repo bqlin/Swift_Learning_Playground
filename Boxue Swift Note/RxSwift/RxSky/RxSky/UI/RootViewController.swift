@@ -29,12 +29,14 @@ class RootViewController: UIViewController {
         }
     }
 
-    var currentWeatherViewController: CurrentWeatherViewController!
     private let segueCurrentWeather = "SegueCurrentWeather"
-    var weekWeatherViewController: WeekWeatherViewController!
+    var currentWeatherViewController: CurrentWeatherViewController!
+
     private let segueWeekWeather = "SegueWeekWeather"
-    var settingViewController: SettingsViewController!
+    var weekWeatherViewController: WeekWeatherViewController!
+
     private let segueSettings = "SegueSettings"
+    private let segueLocations = "SegueLocations"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +63,14 @@ class RootViewController: UIViewController {
                   let viewController = navigationController.topViewController as? SettingsViewController else {
                 fatalError("Invalid destination view controller!")
             }
-            settingViewController = viewController
-            settingViewController.delegate = self
+            viewController.delegate = self
+        case segueLocations:
+            guard let navigationController = segue.destination as? UINavigationController,
+                  let viewController = navigationController.topViewController as? LocationsViewController else {
+                fatalError("Invalid destination view controller!")
+            }
+            viewController.delegate = self
+            viewController.currentLocation = currentLocation
         default:
             print("prepare for segue: \(segue)")
         }
@@ -157,7 +165,7 @@ extension RootViewController: CLLocationManagerDelegate {
 
 extension RootViewController: CurrentWeatherViewControllerDelegate {
     func locationButtonPressed(controller: CurrentWeatherViewController) {
-        print("Open locations.")
+        performSegue(withIdentifier: segueLocations, sender: self)
     }
 
     func settingsButtonPressed(controller: CurrentWeatherViewController) {
@@ -179,5 +187,11 @@ extension RootViewController: SettingsViewControllerDelegate {
     func controllerDidChangeTemperatureMode(
         controller: SettingsViewController) {
         reloadUI()
+    }
+}
+
+extension RootViewController: LocationsViewControllerDelegate {
+    func controller(_ controller: LocationsViewController, didSelectLocation location: CLLocation) {
+        currentLocation = location
     }
 }

@@ -31,8 +31,11 @@
 		03EC051925E8CAEC00F649A6 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051825E8CAEC00F649A6 /* SettingsTableViewCell.swift */; };
 		03EC051B25E8CBC300F649A6 /* ReusableCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03EC051A25E8CBC300F649A6 /* ReusableCellProtocol.swift */; };
 		C4F1465851FC23D151942823 /* WeekWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFFCD22D59AF9B558BC183 /* WeekWeatherViewModel.swift */; };
+		C4F9CDC17E6EB047993ED13A /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */; };
 		C4FB2713D93AE86C899BC5A0 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FC585BAEFA645020BB7DA3 /* SettingsViewModel.swift */; };
 		C4FC40794AD86D9CA353ED36 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAD646DB1D742A31239D22 /* CurrentWeatherViewModel.swift */; };
+		C4FDCCEBBC06CE74157AD979 /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F0CC844CDCDF8145959219 /* LocationsViewController.swift */; };
+		C4FFC6B39F75C1034F1881BF /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FA381BA7ED6E5A1AA5E184 /* LocationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		03EC051625E8CAC000F649A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		03EC051825E8CAEC00F649A6 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		03EC051A25E8CBC300F649A6 /* ReusableCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProtocol.swift; sourceTree = "<group>"; };
+		C4F0CC844CDCDF8145959219 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		C4FA381BA7ED6E5A1AA5E184 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		C4FAD646DB1D742A31239D22 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 		C4FC585BAEFA645020BB7DA3 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C4FFFCD22D59AF9B558BC183 /* WeekWeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekWeatherViewModel.swift; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 				03EC051625E8CAC000F649A6 /* SettingsViewController.swift */,
 				037FFFFB25E39F92008BDE39 /* Main.storyboard */,
 				037F000025E39F93008BDE39 /* LaunchScreen.storyboard */,
+				C4F0CC844CDCDF8145959219 /* LocationsViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -224,6 +231,7 @@
 				03EC051A25E8CBC300F649A6 /* ReusableCellProtocol.swift */,
 				03EC050C25E74B9400F649A6 /* WeekWeatherTableViewCell.swift */,
 				03EC051825E8CAEC00F649A6 /* SettingsTableViewCell.swift */,
+				C4FA381BA7ED6E5A1AA5E184 /* LocationTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 				C4FAD646DB1D742A31239D22 /* CurrentWeatherViewModel.swift */,
 				C4FFFCD22D59AF9B558BC183 /* WeekWeatherViewModel.swift */,
 				C4FC585BAEFA645020BB7DA3 /* SettingsViewModel.swift */,
+				C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -407,6 +416,9 @@
 				C4FC40794AD86D9CA353ED36 /* CurrentWeatherViewModel.swift in Sources */,
 				C4F1465851FC23D151942823 /* WeekWeatherViewModel.swift in Sources */,
 				C4FB2713D93AE86C899BC5A0 /* SettingsViewModel.swift in Sources */,
+				C4FFC6B39F75C1034F1881BF /* LocationTableViewCell.swift in Sources */,
+				C4F9CDC17E6EB047993ED13A /* LocationsViewModel.swift in Sources */,
+				C4FDCCEBBC06CE74157AD979 /* LocationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

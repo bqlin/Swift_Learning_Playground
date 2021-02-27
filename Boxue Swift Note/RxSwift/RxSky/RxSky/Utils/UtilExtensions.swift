@@ -9,7 +9,7 @@
 import UIKit
 
 extension Double {
-    func toCelcius() -> Double {
+    func toCelsius() -> Double {
         return (self - 32.0) / 1.8
     }
 }
@@ -38,5 +38,14 @@ extension UIImage {
             default:
                 return UIImage(named: "clear-day")
         }
+    }
+}
+
+import CoreLocation
+extension CLLocation {
+    var toString: String {
+        let latitude = String(format: "%.3f", coordinate.latitude)
+        let longitude = String(format: "%.3f", coordinate.longitude)
+        return "\(latitude), \(longitude)"
     }
 }

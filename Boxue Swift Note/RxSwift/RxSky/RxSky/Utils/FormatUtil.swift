@@ -44,7 +44,7 @@ class FormatUtil {
         switch mode {
         case .celsius:
             format = "%.1f °C"
-            value = temperature.toCelcius()
+            value = temperature.toCelsius()
         case .fahrenheit:
             format = "%.1f °F"
             value = temperature
