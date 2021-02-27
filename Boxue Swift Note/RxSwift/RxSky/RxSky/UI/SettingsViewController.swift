@@ -47,8 +47,10 @@ extension SettingsViewController {
             for: indexPath) as? SettingsTableViewCell else {
             fatalError("Unexpected table view cell")
         }
+
+        // 通过vm配置cell
         let vmClass: Any = SettingsViewModel.section[indexPath.section]
-        var vm: SettingViewModelProtocol!
+        var vm: SettingViewModelProtocol?
         switch vmClass {
         case _ as SettingsViewModel.Date.Type:
             guard let dateMode = DateMode(rawValue: indexPath.row) else {
@@ -59,20 +61,24 @@ extension SettingsViewController {
             guard let temperatureMode = TemperatureMode(rawValue: indexPath.row) else {
                 fatalError("Invalid IndexPath")
             }
-            vm = SettingsViewModel.Temperature(
-                temperatureMode: temperatureMode)
+            vm = SettingsViewModel.Temperature(temperatureMode: temperatureMode)
         default:
             break
         }
-        cell.accessoryType = vm.accessory
-        cell.label.text = vm.labelText
+        if let vm = vm {
+            cell.configure(with: vm)
+        }
+
         return cell
     }
 
     override func tableView(
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath) {
+        // 反选
         tableView.deselectRow(at: indexPath, animated: true)
+
+        // 响应点击
         let vmClass: Any = SettingsViewModel.section[indexPath.section]
         switch vmClass {
         case _ as SettingsViewModel.Date.Type:
@@ -96,6 +102,8 @@ extension SettingsViewController {
         default:
             break
         }
+
+        // 刷新UI
         let sections = IndexSet(integer: indexPath.section)
         tableView.reloadSections(sections, with: .none)
     }
