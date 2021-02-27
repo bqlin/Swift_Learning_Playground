@@ -18,6 +18,13 @@ class WeekWeatherTableViewCell: UITableViewCell, ReusableCellProtocol {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
 
+    func configure(with vm: WeekWeatherDayRepresentable) {
+        week.text = vm.week
+        date.text = vm.date
+        humidity.text = vm.humidity
+        temperature.text = vm.temperature
+        weatherIcon.image = vm.weatherIcon
     }
 }

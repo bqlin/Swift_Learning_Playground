@@ -123,7 +123,7 @@ class RootViewController: UIViewController {
             // 通知 current weather view controller
             self.currentWeatherViewController.viewModel.weather = response
             // 通知 week weather view controller
-            self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherData: response.daily.data)
+            self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherDatas: response.daily.data)
         }
     }
 

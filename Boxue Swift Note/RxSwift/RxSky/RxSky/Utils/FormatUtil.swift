@@ -9,7 +9,7 @@
 import Foundation
 
 class FormatUtil {
-    static let percentNumberFormatter: NumberFormatter = {
+    private static let percentNumberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .percent
         formatter.maximumFractionDigits = 1
@@ -18,20 +18,20 @@ class FormatUtil {
         return formatter
     }()
 
-    static let weekDateFormatter: DateFormatter = {
+    private static let weekDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
 
         return formatter
     }()
 
-    static let weekFormatter: DateFormatter = {
+    private static let weekFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEEE"
 
         return formatter
     }()
 
-    static let dateFormatter: DateFormatter = {
+    private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM d"
 

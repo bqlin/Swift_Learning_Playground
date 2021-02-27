@@ -9,28 +9,51 @@
 import UIKit
 
 struct WeekWeatherViewModel {
-    let weatherData: [ForecastData]
-    
-    func week(for index: Int) -> String {
-        FormatUtil.week(weatherData[index].time)
-    }
-    func month(for index: Int) -> String {
-        FormatUtil.date(weatherData[index].time)
-    }
-    func temperature(for index: Int) -> String {
-        "\(FormatUtil.temperature(weatherData[index].temperatureLow)) - \(FormatUtil.temperature(weatherData[index].temperatureHigh))"
-    }
-    func weatherIcon(for index: Int) -> UIImage? {
-        UIImage.weatherIcon(of: weatherData[index].icon)
-    }
-    func humidity(for index: Int) -> String {
-        FormatUtil.humidity(weatherData[index].humidity)
-    }
-    
+    let weatherDatas: [ForecastData]
+
     var numberOfSections: Int {
-        return 1
+        1
     }
+
     var numberOfDays: Int {
-        return weatherData.count
+        weatherDatas.count
+    }
+
+    func viewModel(for index: Int) -> WeekWeatherViewModel.Day {
+        WeekWeatherViewModel.Day(weatherData: weatherDatas[index])
+    }
+}
+
+protocol WeekWeatherDayRepresentable {
+    var week: String { get }
+    var date: String { get }
+    var temperature: String { get }
+    var weatherIcon: UIImage? { get }
+    var humidity: String { get }
+}
+
+extension WeekWeatherViewModel {
+    struct Day: WeekWeatherDayRepresentable {
+        let weatherData: ForecastData
+
+        var week: String {
+            FormatUtil.week(weatherData.time)
+        }
+
+        var date: String {
+            FormatUtil.date(weatherData.time)
+        }
+
+        var temperature: String {
+            "\(FormatUtil.temperature(weatherData.temperatureLow)) - \(FormatUtil.temperature(weatherData.temperatureHigh))"
+        }
+
+        var weatherIcon: UIImage? {
+            UIImage.weatherIcon(of: weatherData.icon)
+        }
+
+        var humidity: String {
+            FormatUtil.humidity(weatherData.humidity)
+        }
     }
 }
