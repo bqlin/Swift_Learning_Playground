@@ -6,7 +6,7 @@
 import UIKit
 
 class SettingsViewModel {
-    static let section: [SettingsRepresentable.Type] = [Date.self, Temperature.self]
+    static let sections: [SettingsRepresentable.Type] = [Date.self, Temperature.self]
 }
 
 protocol SettingsRepresentable {
@@ -24,7 +24,12 @@ extension SettingsViewModel {
 
         let dateMode: DateMode
         var labelText: String {
-            dateMode == .text ? "Fri, 01 December" : "F, 12/01"
+            switch dateMode {
+                case .text:
+                    return "Fri, 01 December"
+                case .digit:
+                    return "F, 12/01"
+            }
         }
 
         var accessory: UITableViewCell.AccessoryType {
@@ -38,8 +43,14 @@ extension SettingsViewModel {
 
         let temperatureMode: TemperatureMode
         var labelText: String {
-            temperatureMode == .celsius ? "Celsius" : "Fahrenheit"
+            switch temperatureMode {
+                case .celsius:
+                    return "Celsius"
+                case .fahrenheit:
+                    return "Fahrenheit"
+            }
         }
+
         var accessory: UITableViewCell.AccessoryType {
             UserDefaults.temperatureMode == temperatureMode ? .checkmark : .none
         }

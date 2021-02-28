@@ -35,7 +35,7 @@ class LocationsViewController: UITableViewController {
 }
 
 extension LocationsViewController {
-    private enum Section: Int {
+    private enum Section: Int, CaseIterable {
         case current
         case favourite
         var title: String {
@@ -47,7 +47,7 @@ extension LocationsViewController {
             }
         }
         static var count: Int {
-            Section.favourite.rawValue + 1
+            Section.allCases.count
         }
     }
 

@@ -133,3 +133,79 @@ MVC中常常通过传递一个M给V，从而进行配置，仔细想想，V这�
 当然，为了预防无脑地套用规则导致代码无意义地增长，可以遵循以下一些原则：
 
 - 如果是一次性的配置，无需要重用，那就用最简单的方式实现。既然不需要考虑重用、灵活，那自然用简洁直接的方式开干就行。
+
+### Table View中的分区表达
+
+项目中带Section的table view有多个，带分区的数据结构，说白就是对一组数据进行分组，并添加描述信息，又或者说不能的分区展示不同的数据。简单地可分为以下几种：
+
+- 使用类型声明
+- delegate实现处添加枚举，返回需要的值
+
+设置列表使用了类型包含组内项对象属性，用类型属性表达组所附带的信息。因为设置项每个都是固定的（固定的名称、固定的数量），即使要添加，也是需要添加显式的类型声明。所以这个页面使用类型表达分区是最合适的。
+
+```swift
+class SettingsViewModel {
+    static let section: [SettingsRepresentable.Type] = [Date.self, Temperature.self]
+}
+
+protocol SettingsRepresentable {
+    static var name: String { get }
+    static var count: Int { get }
+
+    var labelText: String { get }
+    var accessory: UITableViewCell.AccessoryType { get }
+}
+
+extension SettingsViewModel {
+    struct Date: SettingsRepresentable {
+        static let name = "Date format"
+        static let count = DateMode.allCases.count
+
+        let dateMode: DateMode
+        var labelText: String {
+            switch dateMode {
+                case .text:
+                    return "Fri, 01 December"
+                case .digit:
+                    return "F, 12/01"
+            }
+        }
+
+        var accessory: UITableViewCell.AccessoryType {
+            UserDefaults.dateMode == dateMode ? .checkmark : .none
+        }
+    }
+
+    struct Temperature: SettingsRepresentable {
+        // ...
+    }
+}
+```
+
+位置列表也有分区的table view，但这是使用了内部定义结构体，返回代理所需要的数据。
+
+```swift
+extension LocationsViewController {
+    private enum Section: Int, CaseIterable {
+        case current
+        case favourite
+        var title: String {
+            switch self {
+            case .current:
+                return "Current Location"
+            case .favourite:
+                return "Favourite Locations"
+            }
+        }
+        static var count: Int {
+            Section.allCases.count
+        }
+    }
+}
+```
+
+这里主要是因为列表项内容是一样的，只是分组方式不一样而已，这里的列表项是不固定的，分组方式是固定的。
+
+### 数据绑定
+
+上面从MVC到MVVM，通过抽取出VM的方式的只是MVVM的一部分，C每次更新数据仍需全部刷新，并不能实现按需加载与刷新。

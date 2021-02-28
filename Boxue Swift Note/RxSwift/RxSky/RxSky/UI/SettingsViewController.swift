@@ -24,19 +24,19 @@ extension SettingsViewController {
     // MARK: - Table view data source
     override func numberOfSections(
         in tableView: UITableView) -> Int {
-        SettingsViewModel.section.count
+        SettingsViewModel.sections.count
     }
 
     override func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
-        SettingsViewModel.section[section].count
+        SettingsViewModel.sections[section].count
     }
 
     override func tableView(
         _ tableView: UITableView,
         titleForHeaderInSection section: Int) -> String? {
-        SettingsViewModel.section[section].name
+        SettingsViewModel.sections[section].name
     }
 
     override func tableView(
@@ -49,7 +49,7 @@ extension SettingsViewController {
         }
 
         // 通过vm配置cell
-        let vmClass: Any = SettingsViewModel.section[indexPath.section]
+        let vmClass: Any = SettingsViewModel.sections[indexPath.section]
         var vm: SettingsRepresentable?
         switch vmClass {
         case _ as SettingsViewModel.Date.Type:
@@ -79,7 +79,7 @@ extension SettingsViewController {
         tableView.deselectRow(at: indexPath, animated: true)
 
         // 响应点击
-        let vmClass: Any = SettingsViewModel.section[indexPath.section]
+        let vmClass: Any = SettingsViewModel.sections[indexPath.section]
         switch vmClass {
         case _ as SettingsViewModel.Date.Type:
             guard let dateMode = DateMode(rawValue: indexPath.row) else {
