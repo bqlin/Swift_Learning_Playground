@@ -20,6 +20,8 @@ extension Location {
     var location: CLLocation {
         CLLocation(latitude: latitude, longitude: longitude)
     }
+    
+    static let empty = Location(name: "", latitude: 0, longitude: 0)
 }
 
 extension UserDefaults {

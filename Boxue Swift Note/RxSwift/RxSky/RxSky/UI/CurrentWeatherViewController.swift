@@ -6,6 +6,8 @@
 //  Copyright © 2021 Bq. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 protocol CurrentWeatherViewControllerDelegate: class {
@@ -32,50 +34,37 @@ class CurrentWeatherViewController: WeatherViewController {
         delegate?.settingsButtonPressed(controller: self)
     }
 
-    var viewModel = CurrentWeatherViewModel() {
-        // 由于viewModel是struct，所以其属性重复赋值时，这里也能监听到
-        didSet {
-            DispatchQueue.main.async {
-                self.updateUI()
-            }
-        }
-    }
+    private var bag = DisposeBag()
+
+    var weatherVM = BehaviorRelay(value: CurrentWeatherViewModel.empty)
+    var locationVM = BehaviorRelay(value: CurrentLocationViewModel.empty)
 
     func updateUI() {
-        activityIndicatorView.stopAnimating()
-
-        if let now = viewModel.weather, let location = viewModel.location {
-            updateWeatherContainer(with: now, at: location)
-        } else {
-            loadingFailedLabel.isHidden = false
-            loadingFailedLabel.text = "Fetch weather/location failed."
-        }
-    }
-
-    func updateWeatherContainer(with data: WeatherData, at location: Location) {
-        containerView.isHidden = false
-
-        locationLabel.text = location.name
-        temperatureLabel.text = viewModel.temperature
-        weatherIcon.image = .weatherIcon(of: data.currently.icon)
-        humidityLabel.text = viewModel.humidity
-        summaryLabel.text = data.currently.summary
-        dateLabel.text = viewModel.date
+        weatherVM.accept(weatherVM.value)
+        locationVM.accept(locationVM.value)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        Observable.combineLatest(locationVM, weatherVM) {
+            ($0, $1)
+        }.filter { location, weather in
+            !location.isEmpty && !weather.isEmpty
+        }.observe(on: MainScheduler.instance).subscribe(onNext: { [weak self] location, weather in
+            guard let self = self else { return }
+
+            self.activityIndicatorView.stopAnimating()
+            self.containerView.isHidden = false
+
+            self.locationLabel.text = location.location.name
+
+            self.temperatureLabel.text = weather.temperature
+            self.weatherIcon.image = weather.weatherIcon
+            self.humidityLabel.text = weather.humidity
+            self.summaryLabel.text = weather.summary
+            self.dateLabel.text = weather.date
+        }).disposed(by: bag)
     }
-
-    /*
-     // MARK: - Navigation
-
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         // Get the new view controller using segue.destination.
-         // Pass the selected object to the new view controller.
-     }
-     */
 }

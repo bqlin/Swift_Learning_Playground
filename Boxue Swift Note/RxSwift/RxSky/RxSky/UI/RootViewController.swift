@@ -7,6 +7,8 @@
 //
 
 import CoreLocation
+import RxCocoa
+import RxSwift
 import UIKit
 
 class RootViewController: UIViewController {
@@ -38,6 +40,8 @@ class RootViewController: UIViewController {
     private let segueSettings = "SegueSettings"
     private let segueLocations = "SegueLocations"
 
+    private var bag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -60,13 +64,15 @@ class RootViewController: UIViewController {
             weekWeatherViewController = viewController
         case segueSettings:
             guard let navigationController = segue.destination as? UINavigationController,
-                  let viewController = navigationController.topViewController as? SettingsViewController else {
+                  let viewController = navigationController.topViewController as? SettingsViewController
+            else {
                 fatalError("Invalid destination view controller!")
             }
             viewController.delegate = self
         case segueLocations:
             guard let navigationController = segue.destination as? UINavigationController,
-                  let viewController = navigationController.topViewController as? LocationsViewController else {
+                  let viewController = navigationController.topViewController as? LocationsViewController
+            else {
                 fatalError("Invalid destination view controller!")
             }
             viewController.delegate = self
@@ -109,7 +115,8 @@ class RootViewController: UIViewController {
             }
 
             // 通知 current weather view controller
-            self.currentWeatherViewController.viewModel.location = Location(name: city, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+            let location = Location(name: city, latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
+            self.currentWeatherViewController.locationVM.accept(CurrentLocationViewModel(location: location))
         }
     }
 
@@ -119,25 +126,16 @@ class RootViewController: UIViewController {
         }
         let latitude = currentLocation.coordinate.latitude
         let longitude = currentLocation.coordinate.longitude
-        WeatherDataManager.shared.requestWeatherDataAt(latitude: latitude, longitude: longitude) { response, error in
-            guard error == nil else {
-                dump(error, name: "天气请求错误")
-                return
-            }
+        WeatherDataManager.shared.requestWeatherDataAt(latitude: latitude, longitude: longitude).subscribe(onNext: { [weak self] data in
+            guard let self = self else { return }
 
-            guard let response = response else {
-                return
-            }
-            // 通知 current weather view controller
-            self.currentWeatherViewController.viewModel.weather = response
-            // 通知 week weather view controller
-            self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherDatas: response.daily.data)
-        }
+            self.currentWeatherViewController.weatherVM.accept(CurrentWeatherViewModel(weather: data))
+            self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherDatas: data.daily.data)
+        }).disposed(by: bag)
     }
 
     @IBAction func unwindToRootViewController(
-        segue: UIStoryboardSegue) {
-    }
+        segue: UIStoryboardSegue) {}
 }
 
 extension RootViewController: CLLocationManagerDelegate {
@@ -180,12 +178,14 @@ extension RootViewController: SettingsViewControllerDelegate {
     }
 
     func controllerDidChangeTimeMode(
-        controller: SettingsViewController) {
+        controller: SettingsViewController)
+    {
         reloadUI()
     }
 
     func controllerDidChangeTemperatureMode(
-        controller: SettingsViewController) {
+        controller: SettingsViewController)
+    {
         reloadUI()
     }
 }

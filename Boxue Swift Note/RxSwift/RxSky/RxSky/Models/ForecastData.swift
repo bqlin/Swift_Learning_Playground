@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ForecastData: Codable {
+struct ForecastData: Codable, Equatable {
     let time: Date
     let temperatureLow: Double
     let temperatureHigh: Double

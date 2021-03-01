@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -33,6 +33,7 @@
 		B50FE1833B8F5BC052D6A40B /* Pods_RxSky_RxSkyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D154B7E0AB0C8B4B0B07E2D1 /* Pods_RxSky_RxSkyUITests.framework */; };
 		BF223EF2DE92D2156B0B1D67 /* Pods_RxSky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F359AFE44C95CDFB8B2A55 /* Pods_RxSky.framework */; };
 		C4F1465851FC23D151942823 /* WeekWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFFCD22D59AF9B558BC183 /* WeekWeatherViewModel.swift */; };
+		C4F3A332D98FE582C2BB6701 /* CurrentLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F96167BC28D313145E262D /* CurrentLocationViewModel.swift */; };
 		C4F3B0B6AFCCA1F8507504FB /* AddLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F74200F4DD09DFF594C472 /* AddLocationViewModel.swift */; };
 		C4F6C523CB429AEC04CD69B0 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F00868CC708DDCE1851319 /* AddLocationViewController.swift */; };
 		C4F9CDC17E6EB047993ED13A /* LocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */; };
@@ -101,6 +102,7 @@
 		C4F0CC844CDCDF8145959219 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		C4F74200F4DD09DFF594C472 /* AddLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewModel.swift; sourceTree = "<group>"; };
 		C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
+		C4F96167BC28D313145E262D /* CurrentLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewModel.swift; sourceTree = "<group>"; };
 		C4FA381BA7ED6E5A1AA5E184 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		C4FAD646DB1D742A31239D22 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
 		C4FC585BAEFA645020BB7DA3 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				C4FAD646DB1D742A31239D22 /* CurrentWeatherViewModel.swift */,
+				C4F96167BC28D313145E262D /* CurrentLocationViewModel.swift */,
 				C4FFFCD22D59AF9B558BC183 /* WeekWeatherViewModel.swift */,
 				C4FC585BAEFA645020BB7DA3 /* SettingsViewModel.swift */,
 				C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */,
@@ -290,7 +293,6 @@
 				77ED0A1F93DD71D73A9A50F5 /* Pods-RxSkyTests.debug.xcconfig */,
 				68E8003030C6A862F99A4058 /* Pods-RxSkyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -576,6 +578,7 @@
 				C4FDCCEBBC06CE74157AD979 /* LocationsViewController.swift in Sources */,
 				C4F6C523CB429AEC04CD69B0 /* AddLocationViewController.swift in Sources */,
 				C4F3B0B6AFCCA1F8507504FB /* AddLocationViewModel.swift in Sources */,
+				C4F3A332D98FE582C2BB6701 /* CurrentLocationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

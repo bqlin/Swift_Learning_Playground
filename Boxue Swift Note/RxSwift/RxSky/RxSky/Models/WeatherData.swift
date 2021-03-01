@@ -8,12 +8,13 @@
 
 import Foundation
 
-struct WeatherData: Codable {
+struct WeatherData: Codable, Equatable {
     let latitude: Double
     let longitude: Double
-    let currently: CurrentWeather
     
-    struct CurrentWeather: Codable {
+    let currently: Current
+    
+    struct Current: Codable, Equatable {
         let time: Date
         let summary: String
         let icon: String
@@ -21,9 +22,13 @@ struct WeatherData: Codable {
         let humidity: Double
     }
     
-    let daily: WeekWeatherData
-
-    struct WeekWeatherData: Codable {
+    let daily: Week
+    
+    struct Week: Codable, Equatable {
         let data: [ForecastData]
     }
+    
+    static let empty = WeatherData(latitude: 0, longitude: 0,
+        currently: Current(time: Date(), summary: "", icon: "", temperature: 0, humidity: 0),
+        daily: Week(data: []))
 }

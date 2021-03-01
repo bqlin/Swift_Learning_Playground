@@ -11,38 +11,17 @@ import UIKit
 struct CurrentWeatherViewModel {
     // MARK: model
 
-    var location: Location! {
-        didSet {
-            if location != nil {
-                isLocationReady = true
-            }
-            else {
-                isLocationReady = false
-            }
-        }
+    var weather: WeatherData
+
+    static let empty = CurrentWeatherViewModel(weather: .empty)
+    var isEmpty: Bool {
+        weather == .empty
     }
+}
 
-    var weather: WeatherData! {
-        didSet {
-            if weather != nil {
-                isWeatherReady = true
-            }
-            else {
-                isWeatherReady = false
-            }
-        }
-    }
+// MARK: 数据转换
 
-    // MARK: 数据转换
-
-    // 这里对于可以通过属性获取的值就没有多此一举地在这里添加属性
-
-    var isLocationReady = false
-    var isWeatherReady = false
-    var isUpdateReady: Bool {
-        return isLocationReady && isWeatherReady
-    }
-
+extension CurrentWeatherViewModel {
     var temperature: String {
         FormatUtil.temperature(weather.currently.temperature)
     }
@@ -53,5 +32,13 @@ struct CurrentWeatherViewModel {
 
     var date: String {
         FormatUtil.weekDate(weather.currently.time)
+    }
+
+    var weatherIcon: UIImage {
+        .weatherIcon(of: weather.currently.icon)!
+    }
+
+    var summary: String {
+        weather.currently.summary
     }
 }
