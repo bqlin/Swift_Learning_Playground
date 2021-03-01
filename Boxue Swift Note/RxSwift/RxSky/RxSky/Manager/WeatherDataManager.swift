@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxSwift
 
 enum DataManagerError: Error {
     case failedRequest
@@ -37,14 +38,14 @@ final class WeatherDataManager {
         request.httpMethod = "GET"
 
         URLSession.shared.dataTask(with: request) { data, response, error in
-            self.didFinishRquestingWeatherData(data: data, response: response, error: error, completion: completion)
+            self.didFinishRequestingWeatherData(data: data, response: response, error: error, completion: completion)
         }.resume()
     }
 
-    func didFinishRquestingWeatherData(data: Data?,
-                                       response: URLResponse?,
-                                       error: Error?,
-                                       completion: CompletionHandler)
+    func didFinishRequestingWeatherData(data: Data?,
+                                        response: URLResponse?,
+                                        error: Error?,
+                                        completion: CompletionHandler)
     {
         guard error == nil else {
             completion(nil, .failedRequest)
