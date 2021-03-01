@@ -12,14 +12,33 @@ protocol AddLocationViewControllerDelegate {
 
 class AddLocationViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
-    private var locations: [Location] = []
     var delegate: AddLocationViewControllerDelegate?
-    private lazy var geocoder = CLGeocoder()
-
+    
+    var viewModel: AddLocationViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Add a location"
+        
+        viewModel = AddLocationViewModel()
+        viewModel.locationsDidChange = { [weak self] locations in
+            guard let self = self else {
+                return
+            }
+            self.tableView.reloadData()
+        }
+        viewModel.queryingStatusDidChange = { [weak self] isQuerying in
+            guard let self = self else {
+                return
+            }
+            if isQuerying {
+                self.title = "Searching..."
+            } else {
+                self.title = "Add a location"
+            }
+        }
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Show Keyboard
@@ -30,8 +49,9 @@ class AddLocationViewController: UITableViewController {
 extension AddLocationViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        locations.count
+        viewModel.numberOfLocations
     }
+    
     override func tableView(_ tableView: UITableView,
                             cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
@@ -39,17 +59,16 @@ extension AddLocationViewController {
             for: indexPath) as? LocationTableViewCell else {
             fatalError("Unexpected table view cell")
         }
-        let location = locations[indexPath.row]
-        let vm = LocationsViewModel(
-            location: location.location,
-            locationText: location.name)
-        cell.configure(with: vm)
+        if let vm = viewModel.locationViewModel(at: indexPath.row) {
+            cell.configure(with: vm)
+        }
         return cell
     }
-
+    
     // MARK: - Table view delegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let location = locations[indexPath.row]
+        guard let location = viewModel.location(at: indexPath.row) else { return }
+        
         delegate?.controller(self, didAddLocation: location)
         navigationController?.popViewController(animated: true)
     }
@@ -59,45 +78,14 @@ extension AddLocationViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(
         _ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        geocode(address: searchBar.text)
+        
+        viewModel.queryText = searchBar.text ?? ""
     }
+    
     func searchBarCancelButtonClicked(
         _ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        locations = []
-        tableView.reloadData()
-    }
-
-    private func geocode(address: String?) {
-        guard let address = address else {
-            locations = []
-            tableView.reloadData()
-            return
-        }
-        geocoder.geocodeAddressString(address) {
-            [weak self] (placemarks, error) in
-            DispatchQueue.main.async {
-                self?.processResponse(with: placemarks, error: error)
-            }
-        }
-    }
-
-    private func processResponse(with placemarks: [CLPlacemark]?, error: Error?) {
-        if let error = error {
-            print("Cannot handle Geocode Address! \(error)")
-        }
-        else if let results = placemarks {
-            locations = results.compactMap {
-                result -> Location? in
-                guard let name = result.name else { return nil }
-                guard let location = result.location else { return nil }
-
-                return Location(name: name,
-                    latitude: location.coordinate.latitude,
-                    longitude: location.coordinate.longitude)
-            }
-
-            tableView.reloadData()
-        }
+        
+        viewModel.queryText = searchBar.text ?? ""
     }
 }
