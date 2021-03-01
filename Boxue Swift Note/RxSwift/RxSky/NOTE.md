@@ -218,3 +218,8 @@ extension LocationsViewController {
 - VM细化成独立的数据流；
 - 使用BehaviorRelay表达VM数据流；
 - C中进行组织订阅；
+
+使用注意：
+
+- 绑定只是个语义更加明确的订阅而已，并无本质的区别。
+- 如果是个Observable是从同一个订阅中分拆开来的多个绑定，记得要添加`share(replay: 1)`，不然序列会每个绑定执行一遍。
