@@ -219,7 +219,70 @@ extension LocationsViewController {
 - 使用BehaviorRelay表达VM数据流；
 - C中进行组织订阅；
 
+bind方法中，经常要和`observe(on: MainScheduler.instance)`搭配实现在主线程更新UI控件，更语义话的方式是使用asDeiver和drive方法实现绑定，当然这只是语义话了而已。
+
 使用注意：
 
 - 绑定只是个语义更加明确的订阅而已，并无本质的区别。
 - 如果是个Observable是从同一个订阅中分拆开来的多个绑定，记得要添加`share(replay: 1)`，不然序列会每个绑定执行一遍。
+
+#### 扩展RxCocoa
+
+定义目标对象的`.rx.扩展方法或属性`：
+
+```swift
+extension Reactive where Base: 目标对象 {
+    
+}
+```
+
+##### delegate回调改成rx扩展回调
+
+```swift
+// 实现具有delegate属性的类型说明
+extension CLLocationManager: HasDelegate {
+    public typealias Delegate = CLLocationManagerDelegate
+}
+
+// 定义具体的proxy
+class CLLocationManagerDelegateProxy: DelegateProxy<CLLocationManager, CLLocationManagerDelegate>, DelegateProxyType, CLLocationManagerDelegate {
+    weak private(set) var locationManager: CLLocationManager?
+    
+    init(locationManager: ParentObject) {
+        self.locationManager = locationManager
+        super.init(parentObject: locationManager, delegateProxy: CLLocationManagerDelegateProxy.self)
+    }
+    
+    static func registerKnownImplementations() {
+        register {
+            CLLocationManagerDelegateProxy(locationManager: $0)
+        }
+    }
+}
+
+// 定义Rx扩展
+extension Reactive where Base: CLLocationManager {
+    var delegate: CLLocationManagerDelegateProxy {
+        CLLocationManagerDelegateProxy.proxy(for: base)
+    }
+    
+    var didUpdateLocations: Observable<[CLLocation]> {
+        let sel = #selector(CLLocationManagerDelegate.locationManager(_:didUpdateLocations:))
+        return delegate.methodInvoked(sel).map {
+            $0[1] as! [CLLocation]
+        }
+    }
+}
+```
+
+#### 调试Rx
+
+```swift
+.materialize()
+.do(onNext: { print("Do: \($0)") })
+.dematerialize()
+```
+
+`materialize`可以把一个Observable的所有事件：`.next`，`.complete`和`.error`都变成另一个Observable的`.next`事件。这样，我们只要观察这个转化过的Observable，就会知道之前的Observable从开始到结束的所有过程了。而`dematerialize`的作用则是把这个转化过的Observable变回原来的样子。
+
+或者添加debug方法。

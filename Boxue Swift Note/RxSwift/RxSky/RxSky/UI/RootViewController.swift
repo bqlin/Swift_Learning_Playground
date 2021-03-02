@@ -65,14 +65,14 @@ class RootViewController: UIViewController {
             case segueSettings:
                 guard let navigationController = segue.destination as? UINavigationController,
                       let viewController = navigationController.topViewController as? SettingsViewController
-                    else {
+                else {
                     fatalError("Invalid destination view controller!")
                 }
                 viewController.delegate = self
             case segueLocations:
                 guard let navigationController = segue.destination as? UINavigationController,
                       let viewController = navigationController.topViewController as? LocationsViewController
-                    else {
+                else {
                     fatalError("Invalid destination view controller!")
                 }
                 viewController.delegate = self
@@ -100,17 +100,19 @@ class RootViewController: UIViewController {
         }
     }
     
-    private func fetchCity() {
+    func fetchCity() {
         guard let currentLocation = currentLocation else {
             return
         }
         CLGeocoder().reverseGeocodeLocation(currentLocation) { placemarks, error in
             guard error == nil else {
                 dump(error!, name: "获取城市错误")
+                self.currentWeatherViewController.locationVM.accept(.invalid)
                 return
             }
             
             guard let city = placemarks?.first?.locality else {
+                print("无法获取城市名称")
                 return
             }
             
@@ -120,7 +122,8 @@ class RootViewController: UIViewController {
         }
     }
     
-    private func fetchWeather() {
+    // 请求数据，并将其绑定到vm数据中
+    func fetchWeather() {
         guard let currentLocation = currentLocation else {
             return
         }
@@ -129,24 +132,27 @@ class RootViewController: UIViewController {
         
         let weather = WeatherDataManager.shared
             .requestWeatherDataAt(latitude: latitude, longitude: longitude)
+            .catch({ (error) -> Observable<WeatherData> in
+                dump(error, name: "请求天气错误")
+                return Observable.just(.invalid)
+            })
             .share(replay: 1)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
         
         weather.map {
             CurrentWeatherViewModel(weather: $0)
         }.bind(to: currentWeatherViewController.weatherVM).disposed(by: bag)
-        
+
         weather.subscribe(onNext: { [weak self] data in
             guard let self = self else {
                 return
             }
-            
+
             self.weekWeatherViewController.viewModel = WeekWeatherViewModel(weatherDatas: data.daily.data)
         }).disposed(by: bag)
     }
     
-    @IBAction func unwindToRootViewController(
-        segue: UIStoryboardSegue) {}
+    @IBAction func unwindToRootViewController(segue: UIStoryboardSegue) {}
 }
 
 extension RootViewController: CLLocationManagerDelegate {
@@ -189,12 +195,14 @@ extension RootViewController: SettingsViewControllerDelegate {
     }
     
     func controllerDidChangeTimeMode(
-        controller: SettingsViewController) {
+        controller: SettingsViewController)
+    {
         reloadUI()
     }
     
     func controllerDidChangeTemperatureMode(
-        controller: SettingsViewController) {
+        controller: SettingsViewController)
+    {
         reloadUI()
     }
 }

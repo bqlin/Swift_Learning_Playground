@@ -33,6 +33,7 @@
 		B50FE1833B8F5BC052D6A40B /* Pods_RxSky_RxSkyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D154B7E0AB0C8B4B0B07E2D1 /* Pods_RxSky_RxSkyUITests.framework */; };
 		BF223EF2DE92D2156B0B1D67 /* Pods_RxSky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02F359AFE44C95CDFB8B2A55 /* Pods_RxSky.framework */; };
 		C4F1465851FC23D151942823 /* WeekWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FFFCD22D59AF9B558BC183 /* WeekWeatherViewModel.swift */; };
+		C4F2D13237732F9E197D0748 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F1D2CAD74B740AB9E198D1 /* CLLocationManager+Rx.swift */; };
 		C4F3A332D98FE582C2BB6701 /* CurrentLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F96167BC28D313145E262D /* CurrentLocationViewModel.swift */; };
 		C4F3B0B6AFCCA1F8507504FB /* AddLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F74200F4DD09DFF594C472 /* AddLocationViewModel.swift */; };
 		C4F6C523CB429AEC04CD69B0 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F00868CC708DDCE1851319 /* AddLocationViewController.swift */; };
@@ -100,6 +101,7 @@
 		ADB2A64D9CEC619FF8C9AEE3 /* Pods-RxSky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSky.release.xcconfig"; path = "Target Support Files/Pods-RxSky/Pods-RxSky.release.xcconfig"; sourceTree = "<group>"; };
 		C4F00868CC708DDCE1851319 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 		C4F0CC844CDCDF8145959219 /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
+		C4F1D2CAD74B740AB9E198D1 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
 		C4F74200F4DD09DFF594C472 /* AddLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewModel.swift; sourceTree = "<group>"; };
 		C4F812B9FF3EA4305873504C /* LocationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewModel.swift; sourceTree = "<group>"; };
 		C4F96167BC28D313145E262D /* CurrentLocationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentLocationViewModel.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 			children = (
 				03EC050125E5E08100F649A6 /* UtilExtensions.swift */,
 				03EC051225E87B7000F649A6 /* FormatUtil.swift */,
+				C4F9B1968711B94CF1060770 /* Rx */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -271,6 +274,14 @@
 				C4F74200F4DD09DFF594C472 /* AddLocationViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C4F9B1968711B94CF1060770 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				C4F1D2CAD74B740AB9E198D1 /* CLLocationManager+Rx.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		E8DDAF936A3B57EFD2DEBC25 /* Frameworks */ = {
@@ -579,6 +590,7 @@
 				C4F6C523CB429AEC04CD69B0 /* AddLocationViewController.swift in Sources */,
 				C4F3B0B6AFCCA1F8507504FB /* AddLocationViewModel.swift in Sources */,
 				C4F3A332D98FE582C2BB6701 /* CurrentLocationViewModel.swift in Sources */,
+				C4F2D13237732F9E197D0748 /* CLLocationManager+Rx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

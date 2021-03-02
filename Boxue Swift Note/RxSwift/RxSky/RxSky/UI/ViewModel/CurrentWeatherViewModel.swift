@@ -12,10 +12,21 @@ struct CurrentWeatherViewModel {
     // MARK: model
 
     var weather: WeatherData
+}
 
+extension CurrentWeatherViewModel {
     static let empty = CurrentWeatherViewModel(weather: .empty)
     var isEmpty: Bool {
-        weather == .empty
+        weather.isEmpty
+    }
+    
+    static let invalid = CurrentWeatherViewModel(weather: .invalid)
+    var isInvalid: Bool {
+        weather.isInvalid
+    }
+    
+    var isEmptyOrInvalid: Bool {
+        isEmpty || isInvalid
     }
 }
 

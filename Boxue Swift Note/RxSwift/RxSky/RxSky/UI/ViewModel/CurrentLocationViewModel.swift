@@ -8,7 +8,6 @@ import Foundation
 struct CurrentLocationViewModel {
     var location: Location
 
-    static let empty = CurrentLocationViewModel(location: .empty)
 }
 
 extension CurrentLocationViewModel {
@@ -16,7 +15,17 @@ extension CurrentLocationViewModel {
         location.name
     }
 
+    static let empty = CurrentLocationViewModel(location: .empty)
     var isEmpty: Bool {
-        location == .empty
+        location.isEmpty
+    }
+    
+    static let invalid = CurrentLocationViewModel(location: .invalid)
+    var isInvalid: Bool {
+        location.isInvalid
+    }
+    
+    var isEmptyOrInvalid: Bool {
+        isEmpty || isInvalid
     }
 }

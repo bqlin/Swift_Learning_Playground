@@ -22,6 +22,14 @@ extension Location {
     }
     
     static let empty = Location(name: "", latitude: 0, longitude: 0)
+    var isEmpty: Bool {
+        self == .empty
+    }
+    
+    static let invalid = Location(name: "n/a", latitude: 0, longitude: 0)
+    var isInvalid: Bool {
+        self == .invalid
+    }
 }
 
 extension UserDefaults {
