@@ -17,5 +17,6 @@
         <page name='错误处理'/>
         <page name='Codable'/>
         <page name='KeyPath'/>
+        <page name='属性观察器'/>
     </pages>
 </playground>

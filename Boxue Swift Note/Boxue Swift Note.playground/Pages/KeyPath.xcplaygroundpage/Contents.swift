@@ -1,5 +1,3 @@
-//: [Previous](@previous)
-
 import Foundation
 
 //: KeyPath
@@ -34,4 +32,4 @@ print("KeyPath type: \(type(of: \ClassType.id))")
 
 //: KeyPath带来的更多作用是约定了类型及其元素的组合，在范型中可以直接操作模型中的属性
 
-//: [Next](@next)
+//: [上一页](@previous) | [下一页](@next)
